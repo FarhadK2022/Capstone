@@ -1,0 +1,65 @@
+.spots-list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  align-items: flex-start;
+  column-gap: 35px;
+  row-gap: 40px;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  margin: 0px 80px
+}
+.card-container{
+  border-color: transparent;
+  border-style: solid;
+  border-radius: 15px;
+  border-width: 1px;
+  height: 300px;
+  width: 300px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+.card-info{
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  align-content: space-around;
+}
+.card-price{
+  display: flex;
+  justify-content: flex-start;
+}
+.card > img {
+  object-fit: fill;
+  object-position: top;
+  min-width: 300px;
+  min-height: 200px;
+  width: 100%;
+}
+.card-info > h2 {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 10px
+}
+.card-info > h3 {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 10px
+}
+
+.card-price > h2{
+  font-size: 16px;
+  font-weight: 400;
+  margin: 25px 10px 10px 10px;
+}
+.footer{
+  display: flex;
+  height: 50px;
+  justify-content: right;
+  align-content: flex-end;
+  border-top: 1px solid lightgray;
+}

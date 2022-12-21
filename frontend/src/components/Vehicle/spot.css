@@ -1,0 +1,111 @@
+.one-spot-container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  box-sizing: border-box;
+  padding: 0px 40px;
+}
+
+.one-spot-info-section{
+  display: block;
+  max-width: 900px;
+  justify-content: center;
+  align-content: flex-start;
+  padding: 0px 40px
+}
+
+.one-spot-title {
+  display: flex;
+  justify-content: flex-start;
+  vertical-align: top;
+  margin: 0px;
+  height: 40px;
+}
+
+.one-spot-title h1{
+  display: flex;
+  justify-content: flex-start;
+  vertical-align: top;
+  margin-top: 10px;
+  height: 40px;
+}
+
+.one-spot-info{
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+  margin: 0px;
+}
+
+.one-spot-images-section{
+  display: flex;
+  justify-content: flex-start;
+  max-width: 900px;
+  padding: 0px 40px;
+}
+
+.cardimage-one{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  box-sizing: border-box;
+  object-fit: contain;
+  width: 61%;
+  /* height: 100%; */
+  padding-top: 5px;
+}
+
+.cardimage-quad{
+display: flex;
+justify-content: center;
+flex-direction: row;
+flex-wrap: wrap;
+column-gap: 10px;
+row-gap: 10px;
+align-content: flex-start;
+width: 50%;
+}
+
+.one-spot-description-section{
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+  max-width: 900px;
+  padding: 0px 40px;
+}
+
+.one-spot-review-title{
+  display: flex;
+  justify-content: space-between;
+  justify-items: flex-start;
+  align-content: flex-start;
+  height: 40px;
+  padding: 0px 40px;
+}
+
+.reviews-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: flex-start;
+  max-width: 900px;
+  padding: 40px;
+  row-gap: 5px;
+}
+
+.owners-tools{
+  display: flex;
+  justify-content: space-between;
+  align-content: flex-start;
+  padding: 0px 40px
+}
+
+.footer{
+  display: flex;
+  height: 30px;
+  justify-content: right;
+  align-content: flex-end;
+  border-top: 1px solid lightgray;
+}

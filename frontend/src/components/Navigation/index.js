@@ -6,7 +6,6 @@ import LoginForm from "../LoginFormModal/LoginForm";
 import SignupForm from "../SignupFormModal/SignupForm";
 import CreateSpotForm from "../CreateSpotFormModal/CreateSpotForm";
 import { Modal } from "../../context/Modal";
-import image from "../../images/dontbnb-rev3.svg"
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
@@ -19,11 +18,7 @@ function Navigation({ isLoaded }) {
       <div className="navbar">
         <div className="navbar-left">
           <Link exact to="/">
-            <img
-              className="navbar-icon"
-              src= {image}
-              alt="Don'tBnB logo"
-            ></img>
+           <p>Home</p>
           </Link>
         </div>
         <div className="navbar-right">

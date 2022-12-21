@@ -4,10 +4,10 @@ import * as reviewActions from "../../store/reviews";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import SpotCardAll from "../SpotCard";
+import SpotCardAll from "../VehicleCard";
 import "./spots.css";
 
-function GetAllSpotsPage() {
+function GetAllVehiclesPage() {
   const dispatch = useDispatch();
   const currentSpots = useSelector((state) => state.spots.allSpots);
   const spotsObj = Object.values(currentSpots);
@@ -42,4 +42,4 @@ function GetAllSpotsPage() {
   );
 }
 
-export default GetAllSpotsPage;
+export default GetAllVehiclesPage;

@@ -9,7 +9,7 @@ import EditSpotFormModal from "../EditSpotFormModal/index";
 import CreateReviewFormModal from "../CreateReviewFormModal/index";
 import "./spot.css";
 
-function GetOneSpotPage() {
+function GetOneVehiclePage() {
   const dispatch = useDispatch();
   const { spotId } = useParams();
 
@@ -190,4 +190,4 @@ function GetOneSpotPage() {
   }
 }
 
-export default GetOneSpotPage;
+export default GetOneVehiclePage;

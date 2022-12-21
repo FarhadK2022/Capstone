@@ -3,6 +3,9 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import GetAllVehiclesPage from "./components/Vehicles";
+import GetOneVehiclePage from "./components/Vehicle"
+import SplashPage from "./components/SplashPage"
 
 function App() {
   const dispatch = useDispatch();
@@ -18,10 +21,13 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/">
-            <GetAllSpotsPage />
+            <SplashPage />
           </Route>
-          <Route path="/spots/:spotId">
-            <GetOneSpotPage />
+          <Route exact path="/vehicles">
+            <GetAllVehiclesPage />
+          </Route>
+          <Route path="/vehicles/:vehicleId">
+            <GetOneVehiclePage />
           </Route>
         </Switch>
       )}

@@ -38,7 +38,11 @@ module.exports = (sequelize, DataTypes) => {
       return await User.scope('currentUser').findByPk(user.id);
     }
     static associate(models) {
-      // define association here
+      User.hasMany(models.Vehicle, {foreignKey: 'ownerId', onDelete: 'CASCADE', hooks: true,});
+
+      User.hasMany(models.Booking, {foreignKey: 'userId', onDelete: 'CASCADE', hooks: true});
+
+      User.hasMany(models.Review, {foreignKey: 'userId', onDelete: 'CASCADE', hooks: true});
     }
   };
 
@@ -48,19 +52,32 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [3, 30]
+          len: [3, 30],
+          isAlpha: true,
+          capitalized(value) {
+            if (value[0] !== value[0].toUpperCase()){
+              throw new Error("First name needs to be capitalized")
+            }
+          }
         }
       },
       lastName: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [3, 30]
+          len: [3, 30],
+          isAlpha: true,
+          capitalized(value) {
+            if (value[0] !== value[0].toUpperCase()){
+              throw new Error("Last name needs to be capitalized")
+            }
+          }
         }
       },
       username: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
         validate: {
           len: [4, 30],
           isNotEmail(value) {

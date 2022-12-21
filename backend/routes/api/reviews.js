@@ -3,10 +3,9 @@ const router = express.Router();
 
 const {
   Review,
-  ReviewImage,
   User,
-  Spot,
-  SpotImage,
+  Vehicle,
+  VehicleImage,
 } = require("../../db/models");
 const {
   setTokenCookie,
@@ -24,7 +23,7 @@ router.get("/current", restoreUser, async (req, res) => {
         attributes: ["id", "firstName", "lastName"],
       },
       {
-        model: Spot,
+        model: Vehicle,
         attributes: [
           "id",
           "ownerId",
@@ -32,63 +31,43 @@ router.get("/current", restoreUser, async (req, res) => {
           "city",
           "state",
           "country",
-          "lat",
-          "lng",
-          "name",
+          "latitude",
+          "longitude",
+          "type",
+          "category",
+          "make",
+          "model",
+          "year",
+          "trim",
+          "doors",
+          "drivetrain",
+          "MPG",
+          "transmission",
+          "numSeats",
+          "petFriendly",
+          "description",
           "price",
         ],
-      },
-      {
-        model: ReviewImage,
-        attributes: ["id", "url"],
       },
     ],
   });
 
   for (let review of Reviews) {
-    const images = await SpotImage.findAll({
-      where: { spotId: review.spotId },
+    const images = await VehicleImage.findAll({
+      where: { vehicleId: review.vehicleId },
     });
     for (let image of images) {
       if (!image) {
-        review.Spot.dataValues.previewImage = null;
+        review.Vehicle.dataValues.previewImage = null;
       }
       if (image.preview === true) {
-        review.Spot.dataValues.previewImage = image.url;
+        review.Vehicle.dataValues.previewImage = image.url;
       }
     }
   }
 
   res.status(200);
   return res.json({ Reviews });
-});
-
-//Add an Image to a Review based on the Review's id
-router.post("/:reviewId/images", restoreUser, requireAuth, async (req, res) => {
-  const { url } = req.body;
-  const review = await Review.findByPk(req.params.reviewId);
-
-  if (!review) {
-    res.status(404);
-    return res.json({
-      message: "Review couldn't be found",
-      statusCode: 404,
-    });
-  }
-  if (review.userId === req.user.id) {
-    const newImage = await ReviewImage.create({
-      reviewId: req.params.reviewId,
-      url: url,
-    });
-    res.status(200);
-    return res.json(newImage.toSafeObject());
-  } else {
-    res.status(403);
-    return res.json({
-      message: "Forbidden",
-      statusCode: 403,
-    });
-  }
 });
 
 //Edit a Review

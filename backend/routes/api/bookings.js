@@ -5,7 +5,7 @@ const {
   restoreUser,
   requireAuth,
 } = require("../../utils/auth");
-const { Booking, User, Spot, SpotImage } = require("../../db/models");
+const { Booking, Vehicle, VehicleImage } = require("../../db/models");
 
 //Get all of the Current User's Bookings
 router.get("/current", restoreUser, async (req, res) => {
@@ -15,7 +15,7 @@ router.get("/current", restoreUser, async (req, res) => {
     },
     include: [
       {
-        model: Spot,
+        model: Vehicle,
         attributes: [
           "id",
           "ownerId",
@@ -23,25 +23,37 @@ router.get("/current", restoreUser, async (req, res) => {
           "city",
           "state",
           "country",
-          "lat",
-          "lng",
-          "name",
+          "latitude",
+          "longitude",
+          "type",
+          "category",
+          "make",
+          "model",
+          "year",
+          "trim",
+          "doors",
+          "drivetrain",
+          "MPG",
+          "transmission",
+          "numSeats",
+          "petFriendly",
+          "description",
           "price",
         ],
       },
     ],
   });
   for (let booking of Bookings) {
-    const images = await SpotImage.findAll({
-      where: { spotId: booking.spotId },
+    const images = await VehicleImage.findAll({
+      where: { vehicleId: booking.vehicleId },
     });
     for (let image of images) {
       if (image) {
         if (image.preview === true) {
-          booking.Spot.dataValues.previewImage = image.url;
+          booking.Vehicle.dataValues.previewImage = image.url;
         }
         if (image.preview === false) {
-          booking.Spot.dataValues.previewImage = null;
+          booking.Vehicle.dataValues.previewImage = null;
         }
       }
     }
@@ -70,7 +82,7 @@ router.put("/:bookingId", restoreUser, requireAuth, async (req, res) => {
       message: "Validation error",
       statusCode: 400,
       errors: {
-        endDate: "endDate cannot be on or before startDate",
+        endDate: "End date cannot be on or before Start date",
       },
     });
   }
@@ -91,7 +103,7 @@ router.put("/:bookingId", restoreUser, requireAuth, async (req, res) => {
     if (oldBooking) {
       res.status(403);
       return res.json({
-        message: "Sorry, this spot is already booked for the specified dates",
+        message: "Sorry, this vehicle is already booked for the specified dates",
         statusCode: 403,
         errors: {
           startDate: "Start date conflicts with an existing booking",
@@ -136,8 +148,8 @@ router.delete("/:bookingId", restoreUser, requireAuth, async (req, res) => {
       statusCode: 403,
     });
   }
-  const spot = await SpotImage.findAll();
-  if (booking.userId === req.user.id && spot.ownerId === req.user.id) {
+  const vehicle = await SpotImage.findAll();
+  if (booking.userId === req.user.id && vehicle.ownerId === req.user.id) {
   }
   if (booking.userId === req.user.id) {
     await booking.destroy();

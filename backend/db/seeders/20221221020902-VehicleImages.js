@@ -1,5 +1,4 @@
 'use strict';
-const bcrypt = require("bcryptjs");
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {
@@ -11,26 +10,9 @@ module.exports = {
     options.tableName = 'VehicleImages';
     return queryInterface.bulkInsert(options, [
       {
-        ownerId: 1,
-        address: '2008 Wineberry Dr',
-        city: 'San Ramon',
-        state: 'California',
-        latitude: 37.785364645578184,
-        longitude: -121.97959600251846,
-        type: 'Cars',
-        category: 'Sporty',
-        make: 'Ford',
-        model: 'Mustang',
-        year: 1998,
-        trim: 'SVT Cobra',
-        doors: 2,
-        drivetrain: 'Gas',
-        MPG: 20,
-        transmission: 'Manual',
-        numSeats: 4,
-        petFriendly: false,
-        description: 'One of the most fun vehicles on the planet. Taking cues from what needed to be improved from the Fox Body mustang, this is much sharper and quicker.',
-        price: 100,
+       vehicleId: 1,
+       url: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.motortrend.com%2Ffeatures%2F1704-hugger-orange-1998-cobra-is-one-slick-snake%2F&psig=AOvVaw0TvoETwnB8KtqqXeXVpuIN&ust=1671680474997000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCKDmi5nlifwCFQAAAAAdAAAAABAE",
+       preview: true,
       },
 
     ], {});

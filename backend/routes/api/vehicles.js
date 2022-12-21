@@ -1,11 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const {
-  Spot,
-  SpotImage,
+  Vehicle,
+  VehicleImage,
   Review,
   User,
-  ReviewImage,
   Booking,
   sequelize,
 } = require("../../db/models");
@@ -15,7 +14,7 @@ const {
   requireAuth,
 } = require("../../utils/auth");
 
-//Get all spots
+//Get all vehicles
 router.get("/", async (req, res) => {
   let { page, size } = req.query;
 
@@ -25,62 +24,70 @@ router.get("/", async (req, res) => {
   if (Number.isNaN(page)) page = 1;
   if (Number.isNaN(size)) size = 20;
 
-  const Spots = await Spot.findAll();
+  const Vehicles = await Vehicle.findAll();
 
-  for (let spot of Spots) {
-    let reviews = await Review.sum("stars", { where: { spotId: spot.id } });
-    let count = await Review.count({ where: { spotId: spot.id } });
-    let images = await SpotImage.findOne({ where: { spotId: spot.id } });
+  for (let vehicle of Vehicles) {
+    let reviews = await Review.sum("stars", {
+      where: { vehicleId: vehicle.id },
+    });
+    let count = await Review.count({ where: { vehicleId: vehicle.id } });
+    let images = await VehicleImage.findOne({
+      where: { vehicleId: vehicle.id },
+    });
 
     let averageStars = reviews / count;
-    spot.dataValues.avgRating = averageStars;
+    vehicle.dataValues.avgRating = averageStars;
 
     if (images.preview === true) {
-      spot.dataValues.previewImage = images.url;
+      vehicle.dataValues.previewImage = images.url;
     } else {
-      spot.dataValues.previewImage = null;
+      vehicle.dataValues.previewImage = null;
     }
   }
   res.status(200);
-  res.json({ Spots, page, size });
+  res.json({ Vehicles, page, size });
 });
 
-//Get all spots owned by the Current User
+//Get all vehicles owned by the Current User
 router.get("/current", restoreUser, async (req, res) => {
-  const Spots = await Spot.findAll({ where: { ownerId: req.user.id } });
+  const Vehicles = await Vehicle.findAll({ where: { ownerId: req.user.id } });
 
-  for (let spot of Spots) {
-    let reviews = await Review.sum("stars", { where: { spotId: spot.id } });
-    let count = await Review.count({ where: { spotId: spot.id } });
-    let image = await SpotImage.findOne({ where: { spotId: spot.id } });
+  for (let vehicle of Vehicles) {
+    let reviews = await Review.sum("stars", {
+      where: { vehicleId: vehicle.id },
+    });
+    let count = await Review.count({ where: { vehicleId: vehicle.id } });
+    let image = await VehicleImage.findOne({
+      where: { vehicleId: vehicle.id },
+    });
 
     let averageStars = reviews / count;
-    spot.dataValues.avgRating = averageStars;
+    vehicle.dataValues.avgRating = averageStars;
 
     if (image) {
       if (image.preview === true) {
-        spot.dataValues.previewImage = image.url;
+        vehicle.dataValues.previewImage = image.url;
       }
     }
     if (!image) {
-      spot.dataValues.previewImage = null;
+      vehicle.dataValues.previewImage = null;
     }
   }
 
   res.status(200);
-  return res.json({ Spots });
+  return res.json({ Vehicles });
 });
 
-//Get details of a spot from an id
-router.get("/:spotId", async (req, res) => {
-  const spot = await Spot.findByPk(req.params.spotId, {
+//Get details of a vehicle from an id
+router.get("/:vehicleId", async (req, res) => {
+  const vehicle = await Vehicle.findByPk(req.params.vehicleId, {
     include: [
       {
         model: Review,
         attributes: [],
       },
       {
-        model: SpotImage,
+        model: VehicleImage,
         attributes: ["id", "url", "preview"],
       },
       {
@@ -90,14 +97,14 @@ router.get("/:spotId", async (req, res) => {
       },
     ],
   });
-  if (!spot) {
+  if (!vehicle) {
     res.status(404);
     return res.json({
-      message: "Spot couldn't be found",
+      message: "Vehicle couldn't be found",
       statusCode: 404,
     });
   }
-  if (!spot.address) {
+  if (!vehicle.address) {
     res.status(400);
     return res.json({
       message: "Validation Error",
@@ -107,7 +114,7 @@ router.get("/:spotId", async (req, res) => {
       },
     });
   }
-  if (!spot.city) {
+  if (!vehicle.city) {
     res.status(400);
     return res.json({
       message: "Validation Error",
@@ -117,7 +124,7 @@ router.get("/:spotId", async (req, res) => {
       },
     });
   }
-  if (!spot.state) {
+  if (!vehicle.state) {
     res.status(400);
     return res.json({
       message: "Validation Error",
@@ -127,17 +134,7 @@ router.get("/:spotId", async (req, res) => {
       },
     });
   }
-  if (!spot.country) {
-    res.status(400);
-    return res.json({
-      message: "Validation Error",
-      statusCode: 400,
-      errors: {
-        country: "Country is required",
-      },
-    });
-  }
-  if (!spot.lat || spot.lat < -90 || spot.lat > 90) {
+  if (!vehicle.latitude || vehicle.latitude < -90 || vehicle.latitude > 90) {
     res.status(400);
     return res.json({
       message: "Validation Error",
@@ -147,7 +144,11 @@ router.get("/:spotId", async (req, res) => {
       },
     });
   }
-  if (!spot.lng || spot.lng < -180 || spot.lng > 180) {
+  if (
+    !vehicle.longitude ||
+    vehicle.longitude < -180 ||
+    vehicle.longitude > 180
+  ) {
     res.status(400);
     return res.json({
       message: "Validation Error",
@@ -157,17 +158,127 @@ router.get("/:spotId", async (req, res) => {
       },
     });
   }
-  if (!spot.name || spot.name > 50) {
+  if (!vehicle.type) {
     res.status(400);
     return res.json({
       message: "Validation Error",
       statusCode: 400,
       errors: {
-        name: "Name must be less than 50 characters",
+        name: "Type is required",
       },
     });
   }
-  if (!spot.description) {
+  if (!vehicle.category) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        name: "Category is required",
+      },
+    });
+  }
+  if (!vehicle.make) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        name: "Make is required",
+      },
+    });
+  }
+  if (!vehicle.model) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        name: "Model is required",
+      },
+    });
+  }
+  if (!vehicle.year) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        name: "Year is required",
+      },
+    });
+  }
+  if (!vehicle.trim) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        name: "Trim is required",
+      },
+    });
+  }
+  if (!vehicle.doors) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        name: "Doors field is required",
+      },
+    });
+  }
+  if (!vehicle.drivetrain) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        name: "Drivetrain is required",
+      },
+    });
+  }
+  if (!vehicle.MPG) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        name: "MPG is required",
+      },
+    });
+  }
+  if (!vehicle.transmission) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        name: "Transmission is required",
+      },
+    });
+  }
+  if (!vehicle.numSeats) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        name: "Seats field is required",
+      },
+    });
+  }
+  if (!vehicle.petFriendly) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        name: "Pet Friendliness is required",
+      },
+    });
+  }
+  if (!vehicle.description) {
     res.status(400);
     return res.json({
       message: "Validation Error",
@@ -177,7 +288,7 @@ router.get("/:spotId", async (req, res) => {
       },
     });
   }
-  if (!spot.price) {
+  if (!vehicle.price) {
     res.status(400);
     return res.json({
       message: "Validation Error",
@@ -188,22 +299,44 @@ router.get("/:spotId", async (req, res) => {
     });
   }
   let reviews = await Review.sum("stars", {
-    where: { spotId: req.params.spotId },
+    where: { vehicleId: req.params.vehicleId },
   });
-  let count = await Review.count({ where: { spotId: req.params.spotId } });
+  let count = await Review.count({
+    where: { vehicleId: req.params.vehicleId },
+  });
 
   let averageStars = reviews / count;
-  spot.dataValues.avgStarRating = averageStars;
-  spot.dataValues.numReviews = count;
+  vehicle.dataValues.avgStarRating = averageStars;
+  vehicle.dataValues.numReviews = count;
 
   res.status(200);
-  return res.json(spot);
+  return res.json(vehicle);
 });
 
-//Create a spot
+//Create a vehicle
 router.post("/", restoreUser, async (req, res) => {
-  const { address, city, state, country, lat, lng, name, description, price } =
-    req.body;
+  const {
+    address,
+    city,
+    state,
+    country,
+    latitude,
+    longitude,
+    type,
+    category,
+    make,
+    model,
+    year,
+    trim,
+    doors,
+    drivetrain,
+    MPG,
+    transmission,
+    numSeats,
+    petFriendly,
+    description,
+    price,
+  } = req.body;
   if (!address) {
     res.status(400);
     return res.json({
@@ -234,17 +367,7 @@ router.post("/", restoreUser, async (req, res) => {
       },
     });
   }
-  if (!country) {
-    res.status(400);
-    return res.json({
-      message: "Validation Error",
-      statusCode: 400,
-      errors: {
-        country: "Country is required",
-      },
-    });
-  }
-  if (!lat || lat < -90 || lat > 90) {
+  if (!latitude || latitude < -90 || latitude > 90) {
     res.status(400);
     return res.json({
       message: "Validation Error",
@@ -254,7 +377,7 @@ router.post("/", restoreUser, async (req, res) => {
       },
     });
   }
-  if (!lng || lng < -180 || lng > 180) {
+  if (!longitude || longitude < -180 || longitude > 180) {
     res.status(400);
     return res.json({
       message: "Validation Error",
@@ -264,13 +387,123 @@ router.post("/", restoreUser, async (req, res) => {
       },
     });
   }
-  if (!name || name > 50) {
+  if (!type) {
     res.status(400);
     return res.json({
       message: "Validation Error",
       statusCode: 400,
       errors: {
-        name: "Name must be less than 50 characters",
+        name: "Type is required",
+      },
+    });
+  }
+  if (!category) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "Category is required",
+      },
+    });
+  }
+  if (!make) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "Make is required",
+      },
+    });
+  }
+  if (!model) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "Model is required",
+      },
+    });
+  }
+  if (!year) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "Year is required",
+      },
+    });
+  }
+  if (!trim) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "Trim is required",
+      },
+    });
+  }
+  if (!doors) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "Doors field is required",
+      },
+    });
+  }
+  if (!drivetrain) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "Drivetrain is required",
+      },
+    });
+  }
+  if (!MPG) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "MPG is required",
+      },
+    });
+  }
+  if (!transmission) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "Transmission is required",
+      },
+    });
+  }
+  if (!numSeats) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "Seats field is required",
+      },
+    });
+  }
+  if (!petFriendly) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "Pet friendliness is required",
       },
     });
   }
@@ -294,64 +527,93 @@ router.post("/", restoreUser, async (req, res) => {
       },
     });
   }
-  const newSpot = await Spot.create({
+  const newVehicle = await Vehicle.create({
     ownerId: req.user.id,
     address: address,
     city: city,
     state: state,
     country: country,
-    lat: lat,
-    lng: lng,
-    name: name,
+    latitude: latitude,
+    longitude: longitude,
+    type: type,
+    category: category,
+    make: make,
+    model: model,
+    year: year,
+    trim: trim,
+    doors: doors,
+    drivetrain: drivetrain,
+    MPG: MPG,
+    transmission: transmission,
+    numSeats: numSeats,
+    petFriendly: petFriendly,
     description: description,
     price: price,
   });
   res.status(201);
-  return res.json(newSpot);
+  return res.json(newVehicle);
 });
 
-//Add an image to a spot based on spotId
-router.post("/:spotId/images", restoreUser, requireAuth, async (req, res) => {
-  const { url, preview } = req.body;
+//Add an image to a vehicle based on vehicleId
+router.post(
+  "/:vehicleId/images",
+  restoreUser,
+  requireAuth,
+  async (req, res) => {
+    const { url, preview } = req.body;
 
-  const spot = await Spot.findByPk(req.params.spotId);
-  if (!spot) {
-    const statusCode = 404;
-    res.status(statusCode);
-    return res.json({
-      message: "Spot couldn't be found",
-      statusCode,
-    });
+    const vehicle = await Vehicle.findByPk(req.params.vehicleId);
+    if (!vehicle) {
+      const statusCode = 404;
+      res.status(statusCode);
+      return res.json({
+        message: "Vehicle couldn't be found",
+        statusCode,
+      });
+    }
+    if (vehicle.ownerId === req.user.id) {
+      const newImage = await VehicleImage.create({
+        spotId: req.params.spotId,
+        url: url,
+        preview: preview,
+      });
+      res.status(200);
+      return res.json(newImage);
+    } else {
+      res.status(403);
+      return res.json({
+        message: "Forbidden",
+        statusCode: 403,
+      });
+    }
   }
-  if (spot.ownerId === req.user.id) {
-    const newImage = await SpotImage.create({
-      spotId: req.params.spotId,
-      url: url,
-      preview: preview,
-    });
-    res.status(200);
-    return res.json(newImage.toSafeObject());
-  } else {
-    res.status(403);
-    return res.json({
-      message: "Forbidden",
-      statusCode: 403,
-    });
-  }
-});
+);
 
-//Edit a Spot
-router.put("/:spotId", restoreUser, requireAuth, async (req, res) => {
-  const { address, city, state, country, lat, lng, name, description, price } =
-    req.body;
-  const spot = await Spot.findByPk(req.params.spotId);
-  if (!spot) {
-    res.status(404);
-    return res.json({
-      message: "Spot couldn't be found",
-      statusCode: 404,
-    });
-  }
+//Edit a Vehicle
+router.put("/:vehicleId", restoreUser, requireAuth, async (req, res) => {
+  const {
+    address,
+    city,
+    state,
+    country,
+    latitude,
+    longitude,
+    type,
+    category,
+    make,
+    model,
+    year,
+    trim,
+    doors,
+    drivetrain,
+    MPG,
+    transmission,
+    numSeats,
+    petFriendly,
+    description,
+    price,
+  } = req.body;
+  const vehicle = await Vehicle.findByPk(req.params.vehicleId);
   if (!address) {
     res.status(400);
     return res.json({
@@ -382,17 +644,7 @@ router.put("/:spotId", restoreUser, requireAuth, async (req, res) => {
       },
     });
   }
-  if (!country) {
-    res.status(400);
-    return res.json({
-      message: "Validation Error",
-      statusCode: 400,
-      errors: {
-        country: "Country is required",
-      },
-    });
-  }
-  if (!lat || lat < -90 || lat > 90) {
+  if (!latitude || latitude < -90 || latitude > 90) {
     res.status(400);
     return res.json({
       message: "Validation Error",
@@ -402,7 +654,7 @@ router.put("/:spotId", restoreUser, requireAuth, async (req, res) => {
       },
     });
   }
-  if (!lng || lng < -180 || lng > 180) {
+  if (!longitude || longitude < -180 || longitude > 180) {
     res.status(400);
     return res.json({
       message: "Validation Error",
@@ -412,13 +664,123 @@ router.put("/:spotId", restoreUser, requireAuth, async (req, res) => {
       },
     });
   }
-  if (!name || name > 50) {
+  if (!type) {
     res.status(400);
     return res.json({
       message: "Validation Error",
       statusCode: 400,
       errors: {
-        name: "Name must be less than 50 characters",
+        name: "Type is required",
+      },
+    });
+  }
+  if (!category) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "Category is required",
+      },
+    });
+  }
+  if (!make) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "Make is required",
+      },
+    });
+  }
+  if (!model) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "Model is required",
+      },
+    });
+  }
+  if (!year) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "Year is required",
+      },
+    });
+  }
+  if (!trim) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "Trim is required",
+      },
+    });
+  }
+  if (!doors) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "Doors field is required",
+      },
+    });
+  }
+  if (!drivetrain) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "Drivetrain is required",
+      },
+    });
+  }
+  if (!MPG) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "MPG is required",
+      },
+    });
+  }
+  if (!transmission) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "Transmission is required",
+      },
+    });
+  }
+  if (!numSeats) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "Seats field is required",
+      },
+    });
+  }
+  if (!petFriendly) {
+    res.status(400);
+    return res.json({
+      message: "Validation Error",
+      statusCode: 400,
+      errors: {
+        description: "Pet friendliness is required",
       },
     });
   }
@@ -442,15 +804,27 @@ router.put("/:spotId", restoreUser, requireAuth, async (req, res) => {
       },
     });
   }
-  if (spot.ownerId === req.user.id) {
-    await spot.update({
+  if (vehicle.ownerId === req.user.id) {
+    await vehicle.update({
+      ownerId: req.user.id,
       address: address,
       city: city,
       state: state,
       country: country,
-      lat: lat,
-      lng: lng,
-      name: name,
+      latitude: latitude,
+      longitude: longitude,
+      type: type,
+      category: category,
+      make: make,
+      model: model,
+      year: year,
+      trim: trim,
+      doors: doors,
+      drivetrain: drivetrain,
+      MPG: MPG,
+      transmission: transmission,
+      numSeats: numSeats,
+      petFriendly: petFriendly,
       description: description,
       price: price,
     });
@@ -462,21 +836,21 @@ router.put("/:spotId", restoreUser, requireAuth, async (req, res) => {
     });
   }
   res.status(200);
-  return res.json(spot);
+  return res.json(vehicle);
 });
 
-//Delete a spot
-router.delete("/:spotId", restoreUser, requireAuth, async (req, res) => {
-  const spot = await Spot.findByPk(req.params.spotId);
-  if (!spot) {
+//Delete a vehicle
+router.delete("/:vehicleId", restoreUser, requireAuth, async (req, res) => {
+  const vehicle = await Vehicle.findByPk(req.params.vehicleId);
+  if (!vehicle) {
     res.status(404);
     return res.json({
-      message: "Spot couldn't be found",
+      message: "Vehicle couldn't be found",
       statusCode: 404,
     });
   }
-  if (spot.ownerId === req.user.id) {
-    await spot.destroy();
+  if (vehicle.ownerId === req.user.id) {
+    await vehicle.destroy();
     res.status(200);
     return res.json({
       message: "Successfully deleted",
@@ -491,25 +865,21 @@ router.delete("/:spotId", restoreUser, requireAuth, async (req, res) => {
   }
 });
 
-//Get all Reviews by a SpotId
-router.get("/:spotId/reviews", async (req, res) => {
+//Get all Reviews by a VehicleId
+router.get("/:vehicleId/reviews", async (req, res) => {
   const Reviews = await Review.findAll({
-    where: { spotId: req.params.spotId },
+    where: { vehicleId: req.params.vehicleId },
     include: [
       {
         model: User,
         attributes: ["id", "firstName", "lastName"],
-      },
-      {
-        model: ReviewImage,
-        attributes: ["id", "url"],
       },
     ],
   });
   if (Reviews.length === 0) {
     res.status(404);
     return res.json({
-      message: "Spot couldn't be found",
+      message: "Vehicle couldn't be found",
       statusCode: 404,
     });
   }
@@ -517,15 +887,15 @@ router.get("/:spotId/reviews", async (req, res) => {
   return res.json({ Reviews });
 });
 
-//Create a Review for a Spot based on the SpotId
-router.post("/:spotId/reviews", restoreUser, async (req, res) => {
+//Create a Review for a Vehicle based on the VehicleId
+router.post("/:vehicleId/reviews", restoreUser, async (req, res) => {
   const { review, stars } = req.body;
-  const spot = await Spot.findByPk(req.params.spotId);
+  const vehicle = await Vehicle.findByPk(req.params.vehicleId);
 
-  if (!spot) {
+  if (!vehicle) {
     res.status(404);
     return res.json({
-      message: "Spot couldn't be found",
+      message: "Vehicle couldn't be found",
       statusCode: 404,
     });
   }
@@ -552,19 +922,19 @@ router.post("/:spotId/reviews", restoreUser, async (req, res) => {
   const oldReview = await Review.findOne({
     where: {
       userId: req.user.id,
-      spotId: req.params.spotId,
+      vehicleId: req.params.vehicleId,
     },
   });
   if (oldReview) {
     res.status(403);
     return res.json({
-      message: "User already has a review for this spot",
+      message: "User already has a review for this vehicle",
       statusCode: 403,
     });
   }
   const newReview = await Review.create({
     userId: req.user.id,
-    spotId: req.params.spotId,
+    vehicleId: req.params.vehicleId,
     review: review,
     stars: stars,
   });
@@ -572,11 +942,13 @@ router.post("/:spotId/reviews", restoreUser, async (req, res) => {
   return res.json(newReview);
 });
 
-//Get all Bookings for a Spot based on the Spot's id
-router.get("/:spotId/bookings", restoreUser, async (req, res) => {
-  const spots = await Spot.findAll({ where: { id: req.params.spotId } });
+//Get all Bookings for a Vehicle based on the Vehicle's id
+router.get("/:vehicleId/bookings", restoreUser, async (req, res) => {
+  const vehicles = await Vehicle.findAll({
+    where: { id: req.params.vehicleId },
+  });
   const Bookings = await Booking.findAll({
-    where: { spotId: req.params.spotId },
+    where: { vehicleId: req.params.vehicleId },
     include: [
       {
         model: User,
@@ -588,7 +960,7 @@ router.get("/:spotId/bookings", restoreUser, async (req, res) => {
   if (Bookings.length === 0) {
     res.status(404);
     return res.json({
-      message: "Spot couldn't be found",
+      message: "Vehicle couldn't be found",
       statusCode: 404,
     });
   }
@@ -596,57 +968,63 @@ router.get("/:spotId/bookings", restoreUser, async (req, res) => {
   return res.json({ Bookings });
 });
 
-//Create a Booking from a Spot based on the Spot's id
-router.post("/:spotId/bookings", restoreUser, requireAuth, async (req, res) => {
-  const { startDate, endDate } = req.body;
-  const spot = await Spot.findByPk(req.params.spotId);
+//Create a Booking from a Vehicle based on the Vehicle's id
+router.post(
+  "/:vehicleId/bookings",
+  restoreUser,
+  requireAuth,
+  async (req, res) => {
+    const { startDate, endDate } = req.body;
+    const vehicle = await Vehicle.findByPk(req.params.vehicleId);
 
-  if (!spot) {
-    res.status(404);
-    return res.json({
-      message: "Spot couldn't be found",
-      statusCode: 404,
-    });
-  }
-  const date1 = Date.parse(startDate);
-  const date2 = Date.parse(endDate);
-  if (date1 > date2) {
-    res.status(400);
-    return res.json({
-      message: "Validation error",
-      statusCode: 400,
-      errors: {
-        endDate: "endDate cannot be on or before startDate",
+    if (!vehicle) {
+      res.status(404);
+      return res.json({
+        message: "Vehicle couldn't be found",
+        statusCode: 404,
+      });
+    }
+    const date1 = Date.parse(startDate);
+    const date2 = Date.parse(endDate);
+    if (date1 > date2) {
+      res.status(400);
+      return res.json({
+        message: "Validation error",
+        statusCode: 400,
+        errors: {
+          endDate: "endDate cannot be on or before startDate",
+        },
+      });
+    }
+    const oldBooking = await Booking.findOne({
+      where: {
+        userId: req.user.id,
+        vehcileId: req.params.vehicleId,
+        startDate: startDate,
+        endDate: endDate,
       },
     });
-  }
-  const oldBooking = await Booking.findOne({
-    where: {
+    if (oldBooking) {
+      res.status(403);
+      return res.json({
+        message:
+          "Sorry, this vehicle is already booked for the specified dates",
+        statusCode: 403,
+        errors: {
+          startDate: "Start date conflicts with an existing booking",
+          endDate: "End date conflicts with an existing booking",
+        },
+      });
+    }
+    const newBooking = await Booking.create({
       userId: req.user.id,
-      spotId: req.params.spotId,
+      vehicleId: req.params.vehicleId,
       startDate: startDate,
       endDate: endDate,
-    },
-  });
-  if (oldBooking) {
-    res.status(403);
-    return res.json({
-      message: "Sorry, this spot is already booked for the specified dates",
-      statusCode: 403,
-      errors: {
-        startDate: "Start date conflicts with an existing booking",
-        endDate: "End date conflicts with an existing booking",
-      },
     });
+    res.status(200);
+    return res.json(newBooking);
   }
-  const newBooking = await Booking.create({
-    userId: req.user.id,
-    spotId: req.params.spotId,
-    startDate: startDate,
-    endDate: endDate,
-  });
-  res.status(200);
-  return res.json(newBooking);
-});
+);
 
 module.exports = router;

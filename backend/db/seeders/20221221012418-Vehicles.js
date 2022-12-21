@@ -1,5 +1,4 @@
 'use strict';
-const bcrypt = require("bcryptjs");
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {
@@ -18,7 +17,7 @@ module.exports = {
         latitude: 37.785364645578184,
         longitude: -121.97959600251846,
         type: 'Cars',
-        category: 'Sporty',
+        category: 'Sport',
         make: 'Ford',
         model: 'Mustang',
         year: 1998,
@@ -29,7 +28,7 @@ module.exports = {
         transmission: 'Manual',
         numSeats: 4,
         petFriendly: false,
-        description: 'One of the most fun vehicles on the planet. Taking cues from what needed to be improved from the Fox Body mustang, this is much sharper and quicker.',
+        description: 'One of the most fun vehicles on the planet. Taking cues from what needed to be improved from the Fox Body mustang, this is much sharper and quicker. I have had the entire thing rebuilt from the ground up.',
         price: 100,
       },
 

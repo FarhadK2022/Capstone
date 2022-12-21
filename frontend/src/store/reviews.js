@@ -35,8 +35,8 @@ export const clearReviewsThunk = () => async (dispatch) => {
   dispatch(clearReviews())
 }
 
-export const allReviewsThunk = (spotId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/spots/${spotId}/reviews`, {
+export const allReviewsThunk = (vehicleId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/vehicles/${vehicleId}/reviews`, {
     method: "GET",
   });
   if (response.ok) {
@@ -46,9 +46,9 @@ export const allReviewsThunk = (spotId) => async (dispatch) => {
   }
 };
 
-export const createReviewThunk = (newReview, spotId, user) => async (dispatch) => {
+export const createReviewThunk = (newReview, vehicleId, user) => async (dispatch) => {
   const { review, stars } = newReview;
-  const response = await csrfFetch(`/api/spots/${spotId}/reviews`, {
+  const response = await csrfFetch(`/api/vehicles/${vehicleId}/reviews`, {
     method: "POST",
     body: JSON.stringify({
       review,

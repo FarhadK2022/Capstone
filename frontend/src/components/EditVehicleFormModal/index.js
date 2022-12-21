@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
-import EditSpotForm from "./EditSpotForm";
+import EditVehicleForm from "./EditVehicleForm";
 import "./EditSpotFormModal.css";
 
-function EditSpotFormModal({ spot }) {
+function EditVehicleFormModal({ vehicle }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button className="button" onClick={() => setShowModal(true)}>Edit Spot</button>
+      <button className="button" onClick={() => setShowModal(true)}>Edit Vehicle</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditSpotForm spot={spot} setShowModal={setShowModal} />
+          <EditVehicleForm vehicle={vehicle} setShowModal={setShowModal} />
         </Modal>
       )}
     </>
   );
 }
 
-export default EditSpotFormModal;
+export default EditVehicleFormModal;

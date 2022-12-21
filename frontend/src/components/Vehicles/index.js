@@ -1,5 +1,5 @@
 import React from "react";
-import * as spotsActions from "../../store/spots";
+import * as vehicleActions from "../../store/vehicles";
 import * as reviewActions from "../../store/reviews";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -9,23 +9,22 @@ import "./spots.css";
 
 function GetAllVehiclesPage() {
   const dispatch = useDispatch();
-  const currentSpots = useSelector((state) => state.spots.allSpots);
-  const spotsObj = Object.values(currentSpots);
+  const currentVehicles = useSelector((state) => state.vehicle.allVehicles);
+  const spotsObj = Object.values(currentVehicles);
 
   useEffect(() => {
-    dispatch(spotsActions.allSpotsThunk());
+    dispatch(vehicleActions.allVehiclesThunk());
   }, [dispatch]);
 
   useEffect(() => {
     dispatch(reviewActions.clearReviewsThunk());
   });
-  if (!currentSpots) {
+  if (!currentVehicles) {
     return null;
   }
 
   return (
     <>
-
       <div className="spots-list">
         {spotsObj.map((spot) => (
           <Link to={`/spots/${spot.id}`}>
@@ -37,7 +36,7 @@ function GetAllVehiclesPage() {
       </div>
       <footer className="footer">
         <p>Developed By Farhad Koushan</p>
-        </footer>
+      </footer>
     </>
   );
 }

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginForm from "../LoginFormModal/LoginForm";
 import SignupForm from "../SignupFormModal/SignupForm";
-import CreateSpotForm from "../CreateSpotFormModal/CreateSpotForm";
+import CreateVehicleForm from "../CreateVehicleFormModal/CreateVehicleForm";
 import { Modal } from "../../context/Modal";
 import "./Navigation.css";
 
@@ -39,7 +39,7 @@ function Navigation({ isLoaded }) {
                 <SignupForm setShowModal={setShowModal} />
               )}
               {login && sessionUser ? (
-                <CreateSpotForm setShowModal={setShowModal} />
+                <CreateVehicleForm setShowModal={setShowModal} />
               ) : (
                 false
               )}

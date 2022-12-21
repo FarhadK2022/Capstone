@@ -30,7 +30,6 @@ router.get("/current", restoreUser, async (req, res) => {
           "address",
           "city",
           "state",
-          "country",
           "latitude",
           "longitude",
           "type",

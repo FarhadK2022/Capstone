@@ -1,33 +1,33 @@
 import React from "react";
-import * as spotActions from "../../store/spots";
+import * as vehicleActions from "../../store/vehicles";
 import * as reviewActions from "../../store/reviews";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import ReviewCard from "../ReviewCard/index";
-import EditSpotFormModal from "../EditSpotFormModal/index";
+import EditVehicleFormModal from "../EditVehicleFormModal/index";
 import CreateReviewFormModal from "../CreateReviewFormModal/index";
 import "./spot.css";
 
 function GetOneVehiclePage() {
   const dispatch = useDispatch();
-  const { spotId } = useParams();
+  const { vehicleId } = useParams();
 
   useEffect(() => {
-    dispatch(spotActions.spotThunk(spotId));
-  }, [dispatch, spotId]);
+    dispatch(vehicleActions.vehicleThunk(vehicleId));
+  }, [dispatch, vehicleId]);
 
   useEffect(() => {
-    dispatch(reviewActions.allReviewsThunk(spotId));
-  }, [dispatch, spotId]);
+    dispatch(reviewActions.allReviewsThunk(vehicleId));
+  }, [dispatch, vehicleId]);
 
   const sessionUser = useSelector((state) => state.session.user);
-  const spot = useSelector((state) => state.spots.singleSpot);
+  const vehicle = useSelector((state) => state.vehicles.singleVehicle);
 
   const reviews = useSelector((state) => state.reviews.allReviews);
   const reviewsArr = Object.values(reviews);
 
-  if (!spot.SpotImages) {
+  if (!vehicle.VehicleImages) {
     return null;
   }
 
@@ -35,20 +35,20 @@ function GetOneVehiclePage() {
     return (
       <>
         <div className="one-spot-container">
-          <div className="one-spot-info-section" key={spot.id}>
+          <div className="one-spot-info-section" key={vehicle.id}>
             <div className="one-spot-title">
-              <h1>{spot.name}</h1>
+              <h1>{vehicle.model}</h1>
             </div>
             <div className="one-spot-info">
               <p>
-                ★ {spot.avgStarRating} • {spot.numReviews} reviews • {spot.city},{" "}
-                {spot.state}, {spot.country} • ${spot.price} night
+                ★ {vehicle.avgStarRating} • {vehicle.numReviews} trips • {vehicle.city}
+                , {vehicle.state} • ${vehicle.price}
               </p>
             </div>
           </div>
           <div className="one-spot-images-section">
             <div className="cardimage-one">
-              <img src={spot.SpotImages[0]?.url} alt={""} />
+              <img src={vehicle.VehicleImages[0]?.url} alt={""} />
             </div>
             <div className="cardimage-quad">
               <i class="fa-solid fa-image fa-9x"></i>
@@ -58,11 +58,11 @@ function GetOneVehiclePage() {
             </div>
           </div>
           <div className="one-spot-description-section">
-            <p>{spot.description}</p>
+            <p>{vehicle.description}</p>
           </div>
           <div className="one-spot-review-title">
             <h2>
-              ★ {spot.avgStarRating} • {spot.numReviews} reviews
+              ★ {vehicle.avgStarRating} • {vehicle.numReviews} trips
             </h2>
           </div>
           <div className="reviews-section">
@@ -78,24 +78,24 @@ function GetOneVehiclePage() {
         </footer>
       </>
     );
-  } else if (sessionUser.id === spot.ownerId) {
+  } else if (sessionUser.id === vehicle.ownerId) {
     return (
       <>
         <div className="one-spot-container">
-          <div className="one-spot-info-section" key={spot.id}>
+          <div className="one-spot-info-section" key={vehicle.id}>
             <div className="one-spot-title">
-              <h1>{spot.name}</h1>
+              <h1>{vehicle.model}</h1>
             </div>
             <div className="one-spot-info">
               <p>
-                ★ {spot.avgStarRating} • {spot.numReviews} reviews • {spot.city},{" "}
-                {spot.state}, {spot.country} • ${spot.price} night
+                ★ {vehicle.avgStarRating} • {vehicle.numReviews} trips • {vehicle.city}
+                , {vehicle.state} • ${vehicle.price}
               </p>
             </div>
           </div>
           <div className="one-spot-images-section">
             <div className="cardimage-one">
-              <img src={spot.SpotImages[0]?.url} alt={""} />
+              <img src={vehicle.SpotImages[0]?.url} alt={""} />
             </div>
             <div className="cardimage-quad">
               <i class="fa-solid fa-image fa-9x"></i>
@@ -105,11 +105,11 @@ function GetOneVehiclePage() {
             </div>
           </div>
           <div className="one-spot-description-section">
-            <p>{spot.description}</p>
+            <p>{vehicle.description}</p>
           </div>
           <div className="one-spot-review-title">
             <h2>
-              ★ {spot.avgStarRating} • {spot.numReviews} reviews
+              ★ {vehicle.avgStarRating} • {vehicle.numReviews} trips
             </h2>
           </div>
           <div className="reviews-section">
@@ -120,16 +120,16 @@ function GetOneVehiclePage() {
             ))}
           </div>
           <div className="owners-tools">
-            <EditSpotFormModal spot={spot} />
+            <EditVehicleFormModal vehicle ={vehicle} />
             <Link to={`/`}>
               <button
                 className="button"
                 onClick={async () => {
                   // event.stopPropagation();
-                  await dispatch(spotActions.deleteSpotThunk(spot.id));
+                  await dispatch(vehicleActions.deleteVehicleThunk(vehicle.id));
                 }}
               >
-                Delete Spot
+                Delete Vehicle
               </button>
             </Link>
           </div>
@@ -139,24 +139,24 @@ function GetOneVehiclePage() {
         </footer>
       </>
     );
-  } else if (sessionUser.id !== spot.ownerId) {
+  } else if (sessionUser.id !== vehicle.ownerId) {
     return (
       <>
         <div className="one-spot-container">
-          <div className="one-spot-info-section" key={spot.id}>
+          <div className="one-spot-info-section" key={vehicle.id}>
             <div className="one-spot-title">
-              <h1>{spot.name}</h1>
+              <h1>{vehicle.model}</h1>
             </div>
             <div className="one-spot-info">
               <p>
-                ★ {spot.avgStarRating} • {spot.numReviews} reviews • {spot.city},{" "}
-                {spot.state}, {spot.country} • ${spot.price} night
+                ★ {vehicle.avgStarRating} • {vehicle.numReviews} trips • {vehicle.city}
+                , {vehicle.state} • ${vehicle.price}
               </p>
             </div>
           </div>
           <div className="one-spot-images-section">
             <div className="cardimage-one">
-              <img src={spot.SpotImages[0]?.url} alt={""} />
+              <img src={vehicle.VehicleImages[0]?.url} alt={""} />
             </div>
             <div className="cardimage-quad">
               <i class="fa-solid fa-image fa-9x"></i>
@@ -166,13 +166,13 @@ function GetOneVehiclePage() {
             </div>
           </div>
           <div className="one-spot-description-section">
-            <p>{spot.description}</p>
+            <p>{vehicle.description}</p>
           </div>
           <div className="one-spot-review-title">
             <h2>
-              ★ {spot.avgStarRating} • {spot.numReviews} reviews
+              ★ {vehicle.avgStarRating} • {vehicle.numReviews} trips
             </h2>
-            <CreateReviewFormModal spot={spot} />
+            <CreateReviewFormModal vehicle={vehicle} />
           </div>
           <div className="reviews-section">
             {reviewsArr.map((review) => (

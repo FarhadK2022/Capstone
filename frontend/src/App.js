@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import GetAllVehiclesPage from "./components/Vehicles";
 import GetOneVehiclePage from "./components/Vehicle"
 import SplashPage from "./components/SplashPage"
+import HomePage from "./components/HomePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,10 +24,13 @@ function App() {
           <Route exact path="/">
             <SplashPage />
           </Route>
-          <Route exact path="/vehicles">
+          <Route exact path="/home">
+            <HomePage />
+          </Route>
+          <Route exact path="/cars">
             <GetAllVehiclesPage />
           </Route>
-          <Route path="/vehicles/:vehicleId">
+          <Route path="/cars/:vehicleId">
             <GetOneVehiclePage />
           </Route>
         </Switch>

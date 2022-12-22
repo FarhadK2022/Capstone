@@ -1,7 +1,7 @@
 import "./SpotCardAll.css";
 
 function VehicleCardAll( {vehicle} ) {
-  console.log("AAAAAAAA",vehicle)
+
   return (
     <>
       <div className="card-container">
@@ -16,7 +16,6 @@ function VehicleCardAll( {vehicle} ) {
           </div>
        </div>
       </div>
-
     </>
   );
 }

@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import * as reviewActions from "../../store/reviews";
+import EditReviewFormModal from "../EditReviewFormModal/EditReviewForm";
 import "./ReviewCard.css";
 
 function ReviewCard({ review }) {
@@ -35,6 +36,7 @@ function ReviewCard({ review }) {
           <div className="bottom-line">
 
               <p>{review.stars} ★</p>
+              <EditReviewFormModal review={review}/>
               <button
                 className="button"
                 onClick={(event) => {

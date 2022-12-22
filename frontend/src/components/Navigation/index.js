@@ -17,9 +17,13 @@ function Navigation({ isLoaded }) {
     <>
       <div className="navbar">
         <div className="navbar-left">
-          <Link exact to="/">
+          {sessionUser ? (<Link exact to="/home">
            <p>Home</p>
-          </Link>
+          </Link>) : ( <Link exact to="/">
+           <p>Home</p>
+          </Link>)
+
+        }
         </div>
         <div className="navbar-right">
           <li>

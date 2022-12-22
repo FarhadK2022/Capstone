@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 
-function SplashPage() {
+function HomePage() {
   return (
     <>
-      <h1>Welcome to GetThere</h1>
-      <h2>Where you can find the car to get you there as fast as possible</h2>
-      <Link to="/home">GetThere Home Page</Link>
+      <h1>GetThere</h1>
+      <h2>as fast as possible</h2>
+      <Link to="/cars">All Cars</Link>
       <footer className="footer">
         <a href="https://www.linkedin.com/in/farhad-koushan-63b920167/">
-          <i class="fa-brands fa-linkedin"></i>
+          <i className="fa-brands fa-linkedin"></i>
         </a>
         <a href="https://github.com/FarhadK2022">
           <i className="fa-brands fa-github"></i>
@@ -18,4 +18,4 @@ function SplashPage() {
     </>
   );
 }
-export default SplashPage;
+export default HomePage;

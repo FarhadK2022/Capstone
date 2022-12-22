@@ -3,13 +3,13 @@ import * as reviewActions from "../../store/reviews";
 import { useDispatch, useSelector } from "react-redux";
 import "./CreateReviewFormModal.css";
 
-function CreateReviewForm({ vehicle, setShowModal }) {
+function EditReviewForm({ review, setShowModal }) {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
   const [review, setReview] = useState("");
   const [stars, setStars] = useState("");
   const [errors, setErrors] = useState([]);
-  let vehicleId = vehicle.vehicle.id;
+  let reviewId = review.review.id;
 
   useEffect(() => {
     dispatch(reviewActions.allReviewsThunk(vehicleId));
@@ -84,4 +84,4 @@ function CreateReviewForm({ vehicle, setShowModal }) {
   );
 }
 
-export default CreateReviewForm;
+export default EditReviewForm;

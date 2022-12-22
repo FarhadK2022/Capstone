@@ -71,7 +71,7 @@ router.get("/current", restoreUser, async (req, res) => {
 
 //Edit a Review
 router.put("/:reviewId", restoreUser, requireAuth, async (req, res) => {
-  const { review, stars } = req.body;
+  const { ereview, estars } = req.body;
   const rev = await Review.findByPk(req.params.reviewId);
 
   if (!rev) {
@@ -81,7 +81,7 @@ router.put("/:reviewId", restoreUser, requireAuth, async (req, res) => {
       statusCode: 404,
     });
   }
-  if (!review) {
+  if (!ereview) {
     res.status(400);
     return res.json({
       message: "Validation error",
@@ -91,7 +91,7 @@ router.put("/:reviewId", restoreUser, requireAuth, async (req, res) => {
       },
     });
   }
-  if (!stars) {
+  if (!estars) {
     res.status(400);
     return res.json({
       message: "Validation error",
@@ -103,8 +103,8 @@ router.put("/:reviewId", restoreUser, requireAuth, async (req, res) => {
   }
   if (rev.userId === req.user.id) {
     await rev.update({
-      review: review,
-      stars: stars,
+      review: ereview,
+      stars: estars,
     });
     res.status(200);
     return res.json(rev);

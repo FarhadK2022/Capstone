@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import * as reviewActions from "../../store/reviews";
+import EditReviewFormModal from "../EditReviewFormModal";
 import "./ReviewCard.css";
 
 function ReviewCard({ review }) {
@@ -20,13 +21,14 @@ function ReviewCard({ review }) {
       </div>
     );
   } else if (sessionUser.id === review.User.id) {
+    
     return (
       <div className="reviewcard">
         <div className="reviewinfo">
           <div className="top-line">
             <i className="fas fa-user-circle fa-2xl" />
             <p>
-              {review.User.firstName} {review.createdAt}
+              {review.User?.firstName} {review.createdAt}
             </p>
           </div>
           <div className="middle-line">
@@ -35,6 +37,7 @@ function ReviewCard({ review }) {
           <div className="bottom-line">
 
               <p>{review.stars} ★</p>
+              <EditReviewFormModal review={review}/>
               <button
                 className="button"
                 onClick={(event) => {

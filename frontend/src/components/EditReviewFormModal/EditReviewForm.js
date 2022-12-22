@@ -1,55 +1,43 @@
 import React, { useState, useEffect } from "react";
 import * as reviewActions from "../../store/reviews";
 import { useDispatch, useSelector } from "react-redux";
-import "./CreateReviewFormModal.css";
 
-function CreateReviewForm({ vehicle, setShowModal }) {
+
+function EditReviewForm({ review, setShowModal }) {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
-  const [review, setReview] = useState("");
-  const [stars, setStars] = useState("");
+  const [ereview, setReview] = useState(review.review.review);
+  const [estars, setStars] = useState(review.review.stars);
   const [errors, setErrors] = useState([]);
-  let vehicleId = vehicle.vehicle.id;
-
-  useEffect(() => {
-    dispatch(reviewActions.allReviewsThunk(vehicleId));
-  }, [dispatch, vehicleId]);
+  let reviewId = review.review.id;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const newReview = {
-      review,
-      stars,
+    const editReview = {
+      ereview,
+      estars,
     };
 
-    const createdReview = await dispatch(
-      reviewActions.createReviewThunk(newReview, vehicleId, currentUser)
-    ).catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
-    });
-    if (createdReview) {
+    const edittedReview = await dispatch(
+      reviewActions.editReviewThunk(editReview, reviewId, currentUser)
+    )
+    if (edittedReview) {
       setShowModal(false);
-    } else {
-      return setErrors([
-        " You already have a review for this vehicle!"
-      ]);
     }
 
   };
 
   return (
     <form className="formModal" onSubmit={handleSubmit}>
-      <h1>Create Review</h1>
+      <h1>Edit Review</h1>
       <h2>Review Details</h2>
       <label>
         Review
         <input
           className="inputField"
           type="text"
-          placeholder="Review"
-          value={review}
+          value={ereview}
           onChange={(e) => setReview(e.target.value)}
           required
         />
@@ -59,7 +47,7 @@ function CreateReviewForm({ vehicle, setShowModal }) {
         <select
           className="inputField"
           type="text"
-          value={stars}
+          value={estars}
           onChange={(e) => setStars(e.target.value)}
           required
         >
@@ -73,10 +61,10 @@ function CreateReviewForm({ vehicle, setShowModal }) {
       </label>
 
       <button className="button" type="submit">
-        Create New Review
+        Edit Review
       </button>
     </form>
   );
 }
 
-export default CreateReviewForm;
+export default EditReviewForm;

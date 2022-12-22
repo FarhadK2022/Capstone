@@ -22,7 +22,7 @@ function GetOneVehiclePage() {
   }, [dispatch, vehicleId]);
 
   const sessionUser = useSelector((state) => state.session.user);
-  const vehicle = useSelector((state) => state.vehicles.singleVehicle);
+  const vehicle = useSelector((state) => state.vehicle.singleVehicle);
 
   const reviews = useSelector((state) => state.reviews.allReviews);
   const reviewsArr = Object.values(reviews);
@@ -49,12 +49,6 @@ function GetOneVehiclePage() {
           <div className="one-spot-images-section">
             <div className="cardimage-one">
               <img src={vehicle.VehicleImages[0]?.url} alt={""} />
-            </div>
-            <div className="cardimage-quad">
-              <i class="fa-solid fa-image fa-9x"></i>
-              <i class="fa-solid fa-image fa-9x"></i>
-              <i class="fa-solid fa-image fa-9x"></i>
-              <i class="fa-solid fa-image fa-9x"></i>
             </div>
           </div>
           <div className="one-spot-description-section">
@@ -95,13 +89,7 @@ function GetOneVehiclePage() {
           </div>
           <div className="one-spot-images-section">
             <div className="cardimage-one">
-              <img src={vehicle.SpotImages[0]?.url} alt={""} />
-            </div>
-            <div className="cardimage-quad">
-              <i class="fa-solid fa-image fa-9x"></i>
-              <i class="fa-solid fa-image fa-9x"></i>
-              <i class="fa-solid fa-image fa-9x"></i>
-              <i class="fa-solid fa-image fa-9x"></i>
+              <img src={vehicle.VehicleImages[0]?.url} alt={""} />
             </div>
           </div>
           <div className="one-spot-description-section">
@@ -157,12 +145,6 @@ function GetOneVehiclePage() {
           <div className="one-spot-images-section">
             <div className="cardimage-one">
               <img src={vehicle.VehicleImages[0]?.url} alt={""} />
-            </div>
-            <div className="cardimage-quad">
-              <i class="fa-solid fa-image fa-9x"></i>
-              <i class="fa-solid fa-image fa-9x"></i>
-              <i class="fa-solid fa-image fa-9x"></i>
-              <i class="fa-solid fa-image fa-9x"></i>
             </div>
           </div>
           <div className="one-spot-description-section">

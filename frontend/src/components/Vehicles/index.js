@@ -2,7 +2,7 @@ import React from "react";
 import * as vehicleActions from "../../store/vehicles";
 import * as reviewActions from "../../store/reviews";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import VehicleCardAll from "../VehicleCard";
 import "./spots.css";
@@ -11,7 +11,7 @@ function GetAllVehiclesPage() {
   const dispatch = useDispatch();
   const currentVehicles = useSelector((state) => state.vehicle.allVehicles);
   const vehiclesObj = Object.values(currentVehicles);
-  
+
   useEffect(() => {
     dispatch(vehicleActions.allVehiclesThunk());
   }, [dispatch]);
@@ -27,7 +27,7 @@ function GetAllVehiclesPage() {
     <>
       <div className="spots-list">
         {vehiclesObj.map((vehicle) => (
-          <Link to={`/vehicles/${vehicle.id}`}>
+          <Link to={`/cars/${vehicle.id}`}>
             <div className="card" key={vehicle.id} value={vehicle.id}>
               <VehicleCardAll vehicle={vehicle} />
             </div>
@@ -35,7 +35,13 @@ function GetAllVehiclesPage() {
         ))}
       </div>
       <footer className="footer">
-        <p>Developed By Farhad Koushan</p>
+        <a href="https://www.linkedin.com/in/farhad-koushan-63b920167/">
+          <i className="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/FarhadK2022">
+          <i className="fa-brands fa-github"></i>
+        </a>
+        Developed By Farhad Koushan
       </footer>
     </>
   );

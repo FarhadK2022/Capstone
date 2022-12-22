@@ -3,7 +3,7 @@ import { Modal } from "../../context/Modal";
 import CreateReviewForm from "./CreateReviewForm";
 import "./CreateReviewFormModal.css";
 
-function CreateReviewFormModal(spot) {
+function CreateReviewFormModal(vehicle) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -11,7 +11,7 @@ function CreateReviewFormModal(spot) {
       <button className="button" onClick={() => setShowModal(true)}>Create Review</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <CreateReviewForm setShowModal={setShowModal} spot={spot} />
+          <CreateReviewForm setShowModal={setShowModal} vehicle={vehicle} />
         </Modal>
       )}
     </>

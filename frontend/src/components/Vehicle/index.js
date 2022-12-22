@@ -50,12 +50,6 @@ function GetOneVehiclePage() {
             <div className="cardimage-one">
               <img src={vehicle.VehicleImages[0]?.url} alt={""} />
             </div>
-            <div className="cardimage-quad">
-              <i class="fa-solid fa-image fa-9x"></i>
-              <i class="fa-solid fa-image fa-9x"></i>
-              <i class="fa-solid fa-image fa-9x"></i>
-              <i class="fa-solid fa-image fa-9x"></i>
-            </div>
           </div>
           <div className="one-spot-description-section">
             <p>{vehicle.description}</p>
@@ -96,12 +90,6 @@ function GetOneVehiclePage() {
           <div className="one-spot-images-section">
             <div className="cardimage-one">
               <img src={vehicle.VehicleImages[0]?.url} alt={""} />
-            </div>
-            <div className="cardimage-quad">
-              <i class="fa-solid fa-image fa-9x"></i>
-              <i class="fa-solid fa-image fa-9x"></i>
-              <i class="fa-solid fa-image fa-9x"></i>
-              <i class="fa-solid fa-image fa-9x"></i>
             </div>
           </div>
           <div className="one-spot-description-section">
@@ -157,12 +145,6 @@ function GetOneVehiclePage() {
           <div className="one-spot-images-section">
             <div className="cardimage-one">
               <img src={vehicle.VehicleImages[0]?.url} alt={""} />
-            </div>
-            <div className="cardimage-quad">
-              <i class="fa-solid fa-image fa-9x"></i>
-              <i class="fa-solid fa-image fa-9x"></i>
-              <i class="fa-solid fa-image fa-9x"></i>
-              <i class="fa-solid fa-image fa-9x"></i>
             </div>
           </div>
           <div className="one-spot-description-section">

@@ -43,11 +43,6 @@ function CreateReviewForm({ vehicle, setShowModal }) {
     <form className="formModal" onSubmit={handleSubmit}>
       <h1>Create Review</h1>
       <h2>Review Details</h2>
-      <ul>
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </ul>
       <label>
         Review
         <input

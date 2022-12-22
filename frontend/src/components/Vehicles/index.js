@@ -4,14 +4,14 @@ import * as reviewActions from "../../store/reviews";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import SpotCardAll from "../VehicleCard";
+import VehicleCardAll from "../VehicleCard";
 import "./spots.css";
 
 function GetAllVehiclesPage() {
   const dispatch = useDispatch();
   const currentVehicles = useSelector((state) => state.vehicle.allVehicles);
-  const spotsObj = Object.values(currentVehicles);
-
+  const vehiclesObj = Object.values(currentVehicles);
+  
   useEffect(() => {
     dispatch(vehicleActions.allVehiclesThunk());
   }, [dispatch]);
@@ -26,10 +26,10 @@ function GetAllVehiclesPage() {
   return (
     <>
       <div className="spots-list">
-        {spotsObj.map((spot) => (
-          <Link to={`/spots/${spot.id}`}>
-            <div className="card" key={spot.id} value={spot.id}>
-              <SpotCardAll spot={spot} />
+        {vehiclesObj.map((vehicle) => (
+          <Link to={`/vehicles/${vehicle.id}`}>
+            <div className="card" key={vehicle.id} value={vehicle.id}>
+              <VehicleCardAll vehicle={vehicle} />
             </div>
           </Link>
         ))}

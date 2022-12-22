@@ -11,7 +11,7 @@ module.exports = {
     return queryInterface.bulkInsert(options, [
       {
        vehicleId: 1,
-       url: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.motortrend.com%2Ffeatures%2F1704-hugger-orange-1998-cobra-is-one-slick-snake%2F&psig=AOvVaw0TvoETwnB8KtqqXeXVpuIN&ust=1671680474997000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCKDmi5nlifwCFQAAAAAdAAAAABAE",
+       url: "https://www.motortrend.com/uploads/f/223932614.jpg?fit=around%7C875:492",
        preview: true,
       },
 

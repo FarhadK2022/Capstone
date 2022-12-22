@@ -6,10 +6,10 @@ const CREATE_VEHICLE = "vehicles/createVehicle";
 const EDIT_VEHICLE = "vehicles/editVehicle";
 const DELETE_VEHICLE = "vehicles/deleteVehicle";
 
-const getAllVehicles = (vehicles) => {
+const getAllVehicles = (data) => {
   return {
     type: GET_VEHICLES,
-    vehicles,
+    data,
   };
 };
 
@@ -47,13 +47,13 @@ export const allVehiclesThunk = () => async (dispatch) => {
   });
   if (response.ok) {
     const data = await response.json();
-    dispatch(getAllVehicles(data.vehicles));
+    dispatch(getAllVehicles(data));
   }
   return response;
 };
 
 export const vehicleThunk = (vehicleId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/spots/${vehicleId}`, {
+  const response = await csrfFetch(`/api/vehicles/${vehicleId}`, {
     method: "GET",
   });
   if (response.ok) {
@@ -199,7 +199,7 @@ const vehicleReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_VEHICLES: {
       const newState = {allVehicles:{}, singleVehicle:{}};
-      action.vehicles.forEach((vehicle) => (newState.allVehicles[vehicle.id] = vehicle));
+      action.data.Vehicles.forEach((vehicle) => (newState.allVehicles[vehicle.id] = vehicle));
       return newState;
     }
     case GET_VEHICLE: {

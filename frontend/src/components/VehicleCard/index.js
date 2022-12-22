@@ -1,17 +1,18 @@
 import "./SpotCardAll.css";
 
-function SpotCardAll({ spot }) {
+function VehicleCardAll( {vehicle} ) {
+  console.log("AAAAAAAA",vehicle)
   return (
     <>
       <div className="card-container">
         <div className="card">
-          <img src={spot.previewImage} alt={""} />
+          <img src={vehicle.previewImage} alt={""} />
           <div className="card-info">
-            <h2>{spot.city}, {spot.state}</h2>
-            <h3>★ {spot.avgRating}</h3>
+            <h2>{vehicle.make} {vehicle.model} {vehicle.year}</h2>
+            <h3>{vehicle.avgRating} ★</h3>
             </div>
             <div className="card-price">
-           <h2>${spot.price} night</h2>
+           <h2>${vehicle.price} /day</h2>
           </div>
        </div>
       </div>
@@ -20,4 +21,4 @@ function SpotCardAll({ spot }) {
   );
 }
 
-export default SpotCardAll;
+export default VehicleCardAll;

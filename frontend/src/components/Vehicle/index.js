@@ -36,27 +36,36 @@ function GetOneVehiclePage() {
       <>
         <div className="one-spot-container">
           <div className="one-spot-info-section" key={vehicle.id}>
-            <div className="one-spot-title">
-              <h1>{vehicle.model}</h1>
-            </div>
-            <div className="one-spot-info">
-              <p>
-                ★ {vehicle.avgStarRating} • {vehicle.numReviews} trips • {vehicle.city}
-                , {vehicle.state} • ${vehicle.price}
-              </p>
-            </div>
-          </div>
-          <div className="one-spot-images-section">
             <div className="cardimage-one">
               <img src={vehicle.VehicleImages[0]?.url} alt={""} />
             </div>
+            <div className="one-spot-title">
+              <h1>{vehicle.make} {vehicle.model} {vehicle.year}{" "}</h1>{" "}
+              {" "}<h3>{" "}${vehicle.price}</h3>
+            </div>
+            <div className="one-spot-info">
+              <p>
+                ★ {vehicle.avgStarRating} • ({vehicle.numReviews} trips)
+              </p>
+              <p>
+              <i className="fa-solid fa-gauge"/>
+                {vehicle.MPG}MPG
+              <i className="fa-solid fa-gas-pump"/>
+                  {vehicle.drivetrain} premium
+                  {vehicle.doors} Doors
+                  {vehicle.numSeats} Seats
+                  </p>
+            </div>
+          </div>
+          <div className="one-spot-images-section">
           </div>
           <div className="one-spot-description-section">
+            <h4>Description</h4>
             <p>{vehicle.description}</p>
           </div>
           <div className="one-spot-review-title">
-            <h2>
-              ★ {vehicle.avgStarRating} • {vehicle.numReviews} trips
+            <h2>Ratings and Reviews
+              ★ {vehicle.avgStarRating} • ({vehicle.numReviews} ratings)
             </h2>
           </div>
           <div className="reviews-section">
@@ -81,6 +90,9 @@ function GetOneVehiclePage() {
       <>
         <div className="one-spot-container">
           <div className="one-spot-info-section" key={vehicle.id}>
+            <div className="cardimage-one">
+              <img src={vehicle.VehicleImages[0]?.url} alt={""} />
+            </div>
             <div className="one-spot-title">
               <h1>{vehicle.model}</h1>
             </div>
@@ -92,9 +104,6 @@ function GetOneVehiclePage() {
             </div>
           </div>
           <div className="one-spot-images-section">
-            <div className="cardimage-one">
-              <img src={vehicle.VehicleImages[0]?.url} alt={""} />
-            </div>
           </div>
           <div className="one-spot-description-section">
             <p>{vehicle.description}</p>
@@ -113,7 +122,7 @@ function GetOneVehiclePage() {
           </div>
           <div className="owners-tools">
             <EditVehicleFormModal vehicle ={vehicle} />
-            <Link to={`/`}>
+            {/* <Link to={`/`}> */}
               <button
                 className="button"
                 onClick={async () => {
@@ -123,7 +132,7 @@ function GetOneVehiclePage() {
               >
                 Delete Vehicle
               </button>
-            </Link>
+            {/* </Link> */}
           </div>
         </div>
         <footer className="footer">
@@ -140,6 +149,9 @@ function GetOneVehiclePage() {
       <>
         <div className="one-spot-container">
           <div className="one-spot-info-section" key={vehicle.id}>
+            <div className="cardimage-one">
+              <img src={vehicle.VehicleImages[0]?.url} alt={""} />
+            </div>
             <div className="one-spot-title">
               <h1>{vehicle.model}</h1>
             </div>
@@ -151,9 +163,6 @@ function GetOneVehiclePage() {
             </div>
           </div>
           <div className="one-spot-images-section">
-            <div className="cardimage-one">
-              <img src={vehicle.VehicleImages[0]?.url} alt={""} />
-            </div>
           </div>
           <div className="one-spot-description-section">
             <p>{vehicle.description}</p>

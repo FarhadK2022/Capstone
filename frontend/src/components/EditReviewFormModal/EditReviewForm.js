@@ -6,10 +6,17 @@ import "./EditReviewFormModal.css";
 function EditReviewForm({ review, setShowModal }) {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
+  const currentCar = useSelector((state) => state.vehicle.singleVehicle)
   const [ereview, setReview] = useState(review.review.review);
   const [estars, setStars] = useState(review.review.stars);
   const [errors, setErrors] = useState([]);
   let reviewId = review.review.id;
+  let vehicleId = currentCar.id
+  useEffect(() => {
+    dispatch(reviewActions.allReviewsThunk(vehicleId));
+  }
+  , [dispatch, vehicleId]
+  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -4,6 +4,7 @@ import EditReviewFormModal from "../EditReviewFormModal";
 import "./ReviewCard.css";
 
 function ReviewCard({ review }) {
+  console.log(review)
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -20,15 +21,15 @@ function ReviewCard({ review }) {
         </div>
       </div>
     );
-  } else if (sessionUser.id === review.User.id) {
-    
+  } else if (sessionUser.id === review.userId) {
+
     return (
       <div className="reviewcard">
         <div className="reviewinfo">
           <div className="top-line">
             <i className="fas fa-user-circle fa-2xl" />
             <p>
-              {review.User?.firstName} {review.createdAt}
+              {review.User.firstName}, {review.createdAt}
             </p>
           </div>
           <div className="middle-line">
@@ -57,9 +58,7 @@ function ReviewCard({ review }) {
       <div className="reviewcard">
         <div className="reviewinfo">
           <i className="fas fa-user-circle fa-2xl" />
-          <p>
-            {review.User.firstName}, {review.createdAt}
-          </p>
+          <p>{review.User.firstName}, {review.createdAt}</p>
           <p>{review.review}</p>
           <p>{review.stars} ★</p>
         </div>

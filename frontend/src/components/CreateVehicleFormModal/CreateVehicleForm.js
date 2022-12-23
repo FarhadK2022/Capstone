@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as vehicleActions from "../../store/vehicles";
 import { useDispatch } from "react-redux";
-import "./CreateSpotFormModal.css";
+import "./CreateVehicleFormModal.css";
 
 function CreateVehicleForm({ setShowModal }) {
   const dispatch = useDispatch();

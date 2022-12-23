@@ -1,4 +1,4 @@
-import "./SpotCardAll.css";
+import "./VehicleCardAll.css";
 
 function VehicleCardAll( {vehicle} ) {
 

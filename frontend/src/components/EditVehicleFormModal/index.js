@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
 import EditVehicleForm from "./EditVehicleForm";
-import "./EditSpotFormModal.css";
+import "./EditVehicleFormModal.css";
 
 function EditVehicleFormModal({ vehicle }) {
   const [showModal, setShowModal] = useState(false);

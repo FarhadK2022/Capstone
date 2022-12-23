@@ -7,7 +7,7 @@ import { useParams, Link } from "react-router-dom";
 import ReviewCard from "../ReviewCard/index";
 import EditVehicleFormModal from "../EditVehicleFormModal/index";
 import CreateReviewFormModal from "../CreateReviewFormModal/index";
-import "./spot.css";
+import "./vehicle.css";
 
 function GetOneVehiclePage() {
   const dispatch = useDispatch();

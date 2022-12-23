@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import VehicleCardAll from "../VehicleCard";
-import "./spots.css";
+import "./vehicles.css";
 
 function GetAllVehiclesPage() {
   const dispatch = useDispatch();

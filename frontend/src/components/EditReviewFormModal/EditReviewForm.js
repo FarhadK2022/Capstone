@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as reviewActions from "../../store/reviews";
 import { useDispatch, useSelector } from "react-redux";
-
+import "./EditReviewFormModal.css";
 
 function EditReviewForm({ review, setShowModal }) {
   const dispatch = useDispatch();

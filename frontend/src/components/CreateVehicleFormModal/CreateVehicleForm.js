@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as vehicleActions from "../../store/vehicles";
 import { useDispatch } from "react-redux";
-import "./CreateSpotFormModal.css";
+import "./CreateVehicleFormModal.css";
 
 function CreateVehicleForm({ setShowModal }) {
   const dispatch = useDispatch();
@@ -259,7 +259,7 @@ function CreateVehicleForm({ setShowModal }) {
         />
       </label>
       <button className="button" type="submit">
-        Create New Spot
+       New Vehicle
       </button>
     </form>
   );

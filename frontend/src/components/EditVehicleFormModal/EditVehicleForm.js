@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as vehicleActions from "../../store/vehicles";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import "./EditVehicleFormModal.css"
 
 function EditVehicleForm({ vehicle, setShowModal }) {
   const dispatch = useDispatch();
@@ -230,7 +231,7 @@ function EditVehicleForm({ vehicle, setShowModal }) {
         />
       </label>
       <button className="button" type="submit">
-        Edit This Vehicle
+        Edit Vehicle
       </button>
     </form>
   );

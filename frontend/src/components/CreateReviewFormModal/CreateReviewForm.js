@@ -73,7 +73,7 @@ function CreateReviewForm({ vehicle, setShowModal }) {
       </label>
 
       <button className="button" type="submit">
-        Create New Review
+        Submit Review
       </button>
     </form>
   );

@@ -32,8 +32,8 @@ function ProfileButton({ user, setLogin, setShowModal }) {
     <>
       <button className="user-menu" onClick={openMenu}>
 
-        <i className="fa-solid fa-bars fa-xl"/>
-        <i className="fas fa-user-circle fa-2xl" />
+        <i className="fa-solid fa-bars fa"/>
+        <i className="fas fa-user-circle fa-xl" />
 
       </button>
 
@@ -49,7 +49,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
                   setShowModal(true);
                 }}
               >
-                Become a Host
+                List Your Car
               </button>
             </li>
             <li>

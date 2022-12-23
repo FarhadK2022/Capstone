@@ -1,6 +1,6 @@
 .formModal {
   height: auto;
-  width: 500px;
+  width: auto;
   padding: 25px;
 }
 
@@ -8,7 +8,7 @@
   width: 100px;
   height: 50px;
   color: white;
-  background-color: #ff385c;
+
   margin-top: 15px;
 }
 

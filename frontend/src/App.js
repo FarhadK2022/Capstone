@@ -7,7 +7,7 @@ import GetAllVehiclesPage from "./components/Vehicles";
 import GetOneVehiclePage from "./components/Vehicle"
 import SplashPage from "./components/SplashPage"
 import HomePage from "./components/HomePage";
-
+import UnderDevelopmentPage from "./components/ComingSoon/UnderDevelopmentPage";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -32,6 +32,9 @@ function App() {
           </Route>
           <Route path="/cars/:vehicleId">
             <GetOneVehiclePage />
+          </Route>
+          <Route path="/comingsoon">
+            <UnderDevelopmentPage/>
           </Route>
         </Switch>
       )}

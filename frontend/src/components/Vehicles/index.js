@@ -35,13 +35,11 @@ function GetAllVehiclesPage() {
         ))}
       </div>
       <footer className="footer">
-        <a href="https://www.linkedin.com/in/farhad-koushan-63b920167/">
-          <i className="fa-brands fa-linkedin"></i>
-        </a>
-        <a href="https://github.com/FarhadK2022">
-          <i className="fa-brands fa-github"></i>
-        </a>
-        Developed By Farhad Koushan
+        <a href="https://www.linkedin.com/in/farhad-koushan-63b920167/" rel="noreferrer" target="_blank">
+          <i className="fa-brands fa-linkedin"/></a>{" "}
+          {" "}Developed By Farhad Koushan{" "}
+          {" "}<a href="https://github.com/FarhadK2022" rel="noreferrer" target="_blank">
+          <i className="fa-brands fa-github"/></a>
       </footer>
     </>
   );

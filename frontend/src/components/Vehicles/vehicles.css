@@ -12,16 +12,17 @@
   margin: 0px 80px
 }
 .card-container{
-  border-color: transparent;
+  border-color: black;
   border-style: solid;
-  border-radius: 15px;
+  border-radius: 5px;
   border-width: 1px;
-  height: 300px;
-  width: 300px;
+  height: 350px;
+  width: 450px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   overflow: hidden;
+  box-shadow: black 0px 2px 2px;
 }
 .card-info{
   display: flex;
@@ -31,7 +32,8 @@
 }
 .card-price{
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
+  border-top: 1px solid lightgray;
 }
 .card > img {
   object-fit: fill;
@@ -58,8 +60,8 @@
 }
 .footer{
   display: flex;
-  height: 50px;
-  justify-content: right;
-  align-content: flex-end;
+  height: 30px;
+  justify-content: center;
+  align-items: flex-end;
   border-top: 1px solid lightgray;
 }

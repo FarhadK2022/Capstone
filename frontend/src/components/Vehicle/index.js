@@ -68,8 +68,12 @@ function GetOneVehiclePage() {
           </div>
         </div>
         <footer className="footer">
-          <p>Developed By Farhad Koushan</p>
-        </footer>
+        <a href="https://www.linkedin.com/in/farhad-koushan-63b920167/" rel="noreferrer" target="_blank">
+          <i className="fa-brands fa-linkedin"/></a>{" "}
+          {" "}Developed By Farhad Koushan{" "}
+          {" "}<a href="https://github.com/FarhadK2022" rel="noreferrer" target="_blank">
+          <i className="fa-brands fa-github"/></a>
+      </footer>
       </>
     );
   } else if (sessionUser.id === vehicle.ownerId) {
@@ -123,8 +127,12 @@ function GetOneVehiclePage() {
           </div>
         </div>
         <footer className="footer">
-          <p>Developed By Farhad Koushan</p>
-        </footer>
+        <a href="https://www.linkedin.com/in/farhad-koushan-63b920167/" rel="noreferrer" target="_blank">
+          <i className="fa-brands fa-linkedin"/></a>{" "}
+          {" "}Developed By Farhad Koushan{" "}
+          {" "}<a href="https://github.com/FarhadK2022" rel="noreferrer" target="_blank">
+          <i className="fa-brands fa-github"/></a>
+      </footer>
       </>
     );
   } else if (sessionUser.id !== vehicle.ownerId) {
@@ -165,8 +173,12 @@ function GetOneVehiclePage() {
           </div>
         </div>
         <footer className="footer">
-          <p>Developed By Farhad Koushan</p>
-        </footer>
+        <a href="https://www.linkedin.com/in/farhad-koushan-63b920167/" rel="noreferrer" target="_blank">
+          <i className="fa-brands fa-linkedin"/></a>{" "}
+          {" "}Developed By Farhad Koushan{" "}
+          {" "}<a href="https://github.com/FarhadK2022" rel="noreferrer" target="_blank">
+          <i className="fa-brands fa-github"/></a>
+      </footer>
       </>
     );
   }

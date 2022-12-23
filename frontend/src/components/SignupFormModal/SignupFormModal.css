@@ -1,9 +1,8 @@
 .formModal {
-  height: auto;
-  width: 500px;
+  height: 100%;
+  width: 100%;
   padding: 20px;
   border-radius: 15px;
-
 }
 
 button.button {
@@ -19,4 +18,5 @@ button.button {
 .inputField {
   display: block;
   margin: 5px;
+  width: 250px
 }

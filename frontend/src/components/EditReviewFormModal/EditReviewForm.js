@@ -12,11 +12,10 @@ function EditReviewForm({ review, setShowModal }) {
   const [errors, setErrors] = useState([]);
   let reviewId = review.review.id;
   let vehicleId = currentCar.id
+
   useEffect(() => {
     dispatch(reviewActions.allReviewsThunk(vehicleId));
-  }
-  , [dispatch, vehicleId]
-  );
+  }, [dispatch, vehicleId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,6 +30,7 @@ function EditReviewForm({ review, setShowModal }) {
     )
     if (edittedReview) {
       setShowModal(false);
+      dispatch(reviewActions.allReviewsThunk(vehicleId))
     }
 
   };

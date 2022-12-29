@@ -4,7 +4,6 @@ import EditReviewFormModal from "../EditReviewFormModal";
 import "./ReviewCard.css";
 
 function ReviewCard({ review }) {
-  console.log(review)
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 

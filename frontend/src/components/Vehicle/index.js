@@ -19,7 +19,8 @@ function GetOneVehiclePage() {
 
   useEffect(() => {
     dispatch(reviewActions.allReviewsThunk(vehicleId));
-  }, [dispatch, vehicleId]);
+  },[dispatch, vehicleId]);
+
 
   const sessionUser = useSelector((state) => state.session.user);
   const vehicle = useSelector((state) => state.vehicle.singleVehicle);

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./homepage.css"
+import CatCarousel from "../Carousels/CategoryCarousel";
 
 function HomePage() {
   return (
@@ -22,6 +23,7 @@ function HomePage() {
         </div>
         <div className="categories">
           <h3>Search by Category</h3>
+          <CatCarousel/>
           <Link to="/comingsoon">Convertible</Link>{" "}
           <Link to="/comingsoon">Exotic</Link>{" "}
           <Link to="/comingsoon">Executive</Link>{" "}

@@ -84,8 +84,8 @@ function ProfileButton({ user, setLogin, setShowModal }) {
               <button className="button"
                 onClick={() => {
                   const demoUser = {
-                    credential: "demo-lition@testdrive.io",
-                    password: "helloworld",
+                    credential: "demo@user.io",
+                    password: "password",
                   };
                   return dispatch(sessionActions.login(demoUser));
                 }}

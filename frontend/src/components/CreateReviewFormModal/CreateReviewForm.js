@@ -31,13 +31,10 @@ function CreateReviewForm({ vehicle, setShowModal }) {
     });
     if (createdReview) {
       setShowModal(false);
-      dispatch(reviewActions.allReviewsThunk(vehicleId))
+      dispatch(reviewActions.allReviewsThunk(vehicleId));
     } else {
-      return setErrors([
-        " You already have a review for this vehicle!"
-      ]);
+      return setErrors([" You already have a review for this vehicle!"]);
     }
-
   };
 
   return (
@@ -69,7 +66,7 @@ function CreateReviewForm({ vehicle, setShowModal }) {
           onChange={(e) => setStars(e.target.value)}
           required
         >
-          <option value={0}>----</option>
+          <option disabled></option>
           <option value={5}>★★★★★</option>
           <option value={4}>★★★★</option>
           <option value={3}>★★★</option>

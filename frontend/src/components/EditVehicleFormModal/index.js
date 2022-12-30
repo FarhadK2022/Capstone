@@ -8,7 +8,9 @@ function EditVehicleFormModal({ vehicle }) {
 
   return (
     <>
-      <button className="button" onClick={() => setShowModal(true)}>Edit Vehicle</button>
+      <button className="button" onClick={() => setShowModal(true)}>
+        Edit Vehicle
+      </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditVehicleForm vehicle={vehicle} setShowModal={setShowModal} />

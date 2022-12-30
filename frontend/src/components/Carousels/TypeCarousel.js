@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "./carousel.css";
 
-const CatCarousel = () => {
+const TypeCarousel = () => {
   const [index, setIndex] = useState(0);
-  const length = 7;
+  const length = 5;
   const data = [
-    <Link to="/comingsoon">Convertible</Link>,
-    <Link to="/comingsoon">Exotic</Link>,
-    <Link to="/comingsoon">Executive</Link>,
-    <Link to="/comingsoon">Family Friendly</Link>,
-    <Link to="/comingsoon">Fast</Link>,
-    <Link to="/comingsoon">Hybrid/ Electric</Link>,
-    <Link to="/comingsoon">Offroad</Link>,
+    <Link to="/comingsoon">Cars</Link>,
+    <Link to="/comingsoon">Minivans</Link>,
+    <Link to="/comingsoon">SUVs</Link>,
+    <Link to="/comingsoon">Trucks</Link>,
+    <Link to="/comingsoon">Vans</Link>,
   ];
 
   const handlePrevious = () => {
@@ -37,4 +36,4 @@ const CatCarousel = () => {
   );
 };
 
-export default CatCarousel;
+export default TypeCarousel;

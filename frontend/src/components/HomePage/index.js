@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import "./homepage.css"
+import "./homepage.css";
 import CatCarousel from "../Carousels/CategoryCarousel";
-
+import TypeCarousel from "../Carousels/TypeCarousel";
 function HomePage() {
   return (
     <>
@@ -15,22 +15,11 @@ function HomePage() {
         </div>
         <div className="types">
           <h3>Search by Type</h3>
-          <Link to="/comingsoon">Cars</Link>{" "}
-          <Link to="/comingsoon">Minivans</Link>{" "}
-          <Link to="/comingsoon">SUVs</Link>{" "}
-          <Link to="/comingsoon">Trucks</Link>{" "}
-          <Link to="/comingsoon">Vans</Link>
+          <TypeCarousel />
         </div>
         <div className="categories">
           <h3>Search by Category</h3>
-          <CatCarousel/>
-          <Link to="/comingsoon">Convertible</Link>{" "}
-          <Link to="/comingsoon">Exotic</Link>{" "}
-          <Link to="/comingsoon">Executive</Link>{" "}
-          <Link to="/comingsoon">Family Friendly</Link>{" "}
-          <Link to="/comingsoon">Fast</Link>{" "}
-          <Link to="/comingsoon">Hybrid/ Electric</Link>{" "}
-          <Link to="/comingsoon">Offroad</Link>
+          <CatCarousel />
         </div>
         <footer className="footer">
           <a

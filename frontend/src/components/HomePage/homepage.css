@@ -31,3 +31,9 @@
   align-items: flex-end;
   border-top: 1px solid lightgray;
 }
+
+.carousel{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

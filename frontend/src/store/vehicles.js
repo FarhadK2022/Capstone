@@ -195,7 +195,7 @@ export const deleteVehicleThunk = (vehicleId) => async (dispatch) => {
 const initialState = {allVehicles:{}, singleVehicle:{}};
 
 const vehicleReducer = (state = initialState, action) => {
-  let newState = {};
+  // let newState = {};
   switch (action.type) {
     case GET_VEHICLES: {
       const newState = {allVehicles:{}, singleVehicle:{}};

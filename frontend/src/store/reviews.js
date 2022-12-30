@@ -101,7 +101,7 @@ export const deleteReviewThunk = (reviewId) => async (dispatch) => {
 const initialState = {allReviews:{}};
 
 const reviewReducer = (state = initialState, action) => {
-  let newState = {};
+  // let newState = {};
   switch (action.type) {
     case CLEAR_REVIEW: {
       const newState = {allReviews:{}};

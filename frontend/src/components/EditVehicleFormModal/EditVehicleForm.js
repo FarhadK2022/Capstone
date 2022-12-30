@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as vehicleActions from "../../store/vehicles";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import "./EditVehicleFormModal.css"
+import "./EditVehicleFormModal.css";
 
 function EditVehicleForm({ vehicle, setShowModal }) {
   const dispatch = useDispatch();
@@ -11,8 +11,8 @@ function EditVehicleForm({ vehicle, setShowModal }) {
   const [address, setAddress] = useState(vehicle.address);
   const [city, setCity] = useState(vehicle.city);
   const [state, setState] = useState(vehicle.state);
-  const [latitude, setLatitude] = useState(vehicle.latitude);
-  const [longitude, setLongitude] = useState(vehicle.longitude);
+  const [latitude] = useState(vehicle.latitude);
+  const [longitude] = useState(vehicle.longitude);
   const [type, setType] = useState(vehicle.type);
   const [category, setCategory] = useState(vehicle.category);
   const [make, setMake] = useState(vehicle.make);
@@ -27,7 +27,7 @@ function EditVehicleForm({ vehicle, setShowModal }) {
   const [petFriendly, setPetFriendly] = useState(vehicle.petFriendly);
   const [description, setDescription] = useState(vehicle.description);
   const [price, setPrice] = useState(vehicle.price);
-  const [errors, setErrors] = useState([]);
+  const [setErrors] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,7 +53,9 @@ function EditVehicleForm({ vehicle, setShowModal }) {
       description,
       price,
     };
-    const edittedVehicle = await dispatch(vehicleActions.editVehicleThunk(vehicleId, vehicle));
+    const edittedVehicle = await dispatch(
+      vehicleActions.editVehicleThunk(vehicleId, vehicle)
+    );
     if (edittedVehicle) setShowModal(false);
   };
 
@@ -91,24 +93,40 @@ function EditVehicleForm({ vehicle, setShowModal }) {
         />
       </label>
       <label>
-        Type
-        <input
+       Vehicle Type
+        <select
           className="inputField"
           type="text"
           value={type}
           onChange={(e) => setType(e.target.value)}
           required
-        />
+        >
+          <option disabled></option>
+          <option value={"car"}>Car</option>
+          <option value={"suv"}>SUV</option>
+          <option value={"truck"}>Truck</option>
+          <option value={"minivan"}>Minivan</option>
+          <option value={"van"}>Van</option>
+        </select>
       </label>
       <label>
         Category
-        <input
+        <select
           className="inputField"
           type="text"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
           required
-        />
+        >
+          <option disabled></option>
+          <option value={"convertible"}>Convertible</option>
+          <option value={"exotic"}>Exotic</option>
+          <option value={"executive"}>Executive</option>
+          <option value={"family friendly"}>Family Friendly</option>
+          <option value={"fast"}>Fast</option>
+          <option value={"hybrid/electric"}>Hybrid/Electric</option>
+          <option value={"offroad"}>Offroad</option>
+        </select>
       </label>
       <label>
         Make
@@ -162,13 +180,19 @@ function EditVehicleForm({ vehicle, setShowModal }) {
       </label>
       <label>
         Drivetrain
-        <input
+        <select
           className="inputField"
           type="text"
           value={drivetrain}
           onChange={(e) => setDrivetrain(e.target.value)}
           required
-        />
+        >
+          <option disabled></option>
+          <option value={"gas"}>Gas</option>
+          <option value={"diesel"}>Diesel</option>
+          <option value={"hybrid"}>Hybrid</option>
+          <option value={"electric"}>Electric</option>
+        </select>
       </label>
       <label>
         MPG
@@ -182,13 +206,17 @@ function EditVehicleForm({ vehicle, setShowModal }) {
       </label>
       <label>
         Transmission
-        <input
+        <select
           className="inputField"
           type="text"
           value={transmission}
           onChange={(e) => setTransmission(e.target.value)}
           required
-        />
+        >
+          <option disabled></option>
+          <option value={"automatic"}>Automatic</option>
+          <option value={"manual"}>Manual</option>
+        </select>
       </label>
       <label>
         Number of Seats
@@ -201,14 +229,18 @@ function EditVehicleForm({ vehicle, setShowModal }) {
         />
       </label>
       <label>
-        Pet Friendly?
-        <input
+         Pet Friendly?
+        <select
           className="inputField"
           type="text"
           value={petFriendly}
           onChange={(e) => setPetFriendly(e.target.value)}
           required
-        />
+        >
+          <option disabled></option>
+          <option value={0}>No</option>
+          <option value={1}>Yes</option>
+        </select>
       </label>
       <label>
         Description

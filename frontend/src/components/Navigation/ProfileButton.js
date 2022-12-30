@@ -31,10 +31,8 @@ function ProfileButton({ user, setLogin, setShowModal }) {
   return (
     <>
       <button className="user-menu" onClick={openMenu}>
-
-        <i className="fa-solid fa-bars fa"/>
+        <i className="fa-solid fa-bars fa" />
         <i className="fas fa-user-circle fa-xl" />
-
       </button>
 
       {showMenu &&
@@ -43,7 +41,8 @@ function ProfileButton({ user, setLogin, setShowModal }) {
             <li>
               <p>{user.username}</p>
               <p>{user.email}</p>
-              <button className="button"
+              <button
+                className="button"
                 onClick={() => {
                   setLogin(true);
                   setShowModal(true);
@@ -61,7 +60,8 @@ function ProfileButton({ user, setLogin, setShowModal }) {
         ) : (
           <ul className="profile-dropdown">
             <li>
-              <button className="button"
+              <button
+                className="button"
                 onClick={() => {
                   setLogin(true);
                   setShowModal(true);
@@ -71,7 +71,8 @@ function ProfileButton({ user, setLogin, setShowModal }) {
               </button>
             </li>
             <li>
-              <button className="button"
+              <button
+                className="button"
                 onClick={() => {
                   setLogin(false);
                   setShowModal(true);
@@ -81,11 +82,12 @@ function ProfileButton({ user, setLogin, setShowModal }) {
               </button>
             </li>
             <li>
-              <button className="button"
+              <button
+                className="button"
                 onClick={() => {
                   const demoUser = {
-                    credential: "demo-lition@testdrive.io",
-                    password: "helloworld",
+                    credential: "demo@user.io",
+                    password: "password",
                   };
                   return dispatch(sessionActions.login(demoUser));
                 }}

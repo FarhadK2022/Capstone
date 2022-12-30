@@ -8,8 +8,8 @@ function CreateVehicleForm({ setShowModal }) {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
-  const [latitude, setLatitude] = useState(45);
-  const [longitude, setLongitude] = useState(45);
+  const [latitude] = useState(45);
+  const [longitude] = useState(45);
   const [type, setType] = useState("");
   const [category, setCategory] = useState("");
   const [make, setMake] = useState("");
@@ -25,7 +25,7 @@ function CreateVehicleForm({ setShowModal }) {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [url, setURL] = useState("");
-  const [preview, setPreview] = useState(true);
+  const [preview] = useState(true);
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = async (e) => {
@@ -52,9 +52,11 @@ function CreateVehicleForm({ setShowModal }) {
       description,
       price,
       url,
-      preview
+      preview,
     };
-    const createdVehicle = await dispatch(vehicleActions.createVehicleThunk(vehicle))
+    const createdVehicle = await dispatch(
+      vehicleActions.createVehicleThunk(vehicle)
+    )
       .then(() => setShowModal(false))
       .catch(async (res) => {
         const data = await res.json();
@@ -64,7 +66,7 @@ function CreateVehicleForm({ setShowModal }) {
       setShowModal(false);
     } else {
       return setErrors([
-        "Oops! Looks like a mistake was made on the form. Please check your details and submit again.",
+        "Please check the form details and submit again.",
       ]);
     }
   };
@@ -120,7 +122,7 @@ function CreateVehicleForm({ setShowModal }) {
           required
         >
           <option disabled></option>
-         <option value={"car"}>Car</option>
+          <option value={"car"}>Car</option>
           <option value={"suv"}>SUV</option>
           <option value={"truck"}>Truck</option>
           <option value={"minivan"}>Minivan</option>
@@ -144,7 +146,6 @@ function CreateVehicleForm({ setShowModal }) {
           <option value={"fast"}>Fast</option>
           <option value={"hybrid/electric"}>Hybrid/Electric</option>
           <option value={"offroad"}>Offroad</option>
-
         </select>
       </label>
       <label>
@@ -154,6 +155,7 @@ function CreateVehicleForm({ setShowModal }) {
           type="text"
           value={make}
           onChange={(e) => setMake(e.target.value)}
+          placeholder='Manufacturer Name'
           required
         />
       </label>
@@ -163,6 +165,7 @@ function CreateVehicleForm({ setShowModal }) {
           className="inputField"
           type="text"
           value={model}
+          placeholder='Model Name'
           onChange={(e) => setModel(e.target.value)}
           required
         />
@@ -196,6 +199,7 @@ function CreateVehicleForm({ setShowModal }) {
           type="text"
           value={doors}
           onChange={(e) => setDoors(e.target.value)}
+          placeholder="2, 3, 4, 5? More? Less?"
           required
         />
       </label>
@@ -209,10 +213,10 @@ function CreateVehicleForm({ setShowModal }) {
           required
         >
           <option disabled></option>
-          <option value={'gas'}>Gas</option>
-          <option value={'diesel'}>Diesel</option>
-          <option value={'hybrid'}>Hybrid</option>
-          <option value={'electric'}>Electric</option>
+          <option value={"gas"}>Gas</option>
+          <option value={"diesel"}>Diesel</option>
+          <option value={"hybrid"}>Hybrid</option>
+          <option value={"electric"}>Electric</option>
         </select>
       </label>
       <label>
@@ -222,6 +226,7 @@ function CreateVehicleForm({ setShowModal }) {
           type="text"
           value={MPG}
           onChange={(e) => setMPG(e.target.value)}
+          placeholder='Miles Per Gallon'
           required
         />
       </label>
@@ -235,8 +240,8 @@ function CreateVehicleForm({ setShowModal }) {
           required
         >
           <option disabled></option>
-          <option value={'automatic'}>Automatic</option>
-          <option value={'manual'}>Manual</option>
+          <option value={"automatic"}>Automatic</option>
+          <option value={"manual"}>Manual</option>
         </select>
       </label>
       <label>
@@ -245,6 +250,7 @@ function CreateVehicleForm({ setShowModal }) {
           className="inputField"
           type="text"
           value={numSeats}
+          placeholder="How Many Humans can Safely sit in your Vehicle?"
           onChange={(e) => setNumSeats(e.target.value)}
           required
         />
@@ -297,7 +303,7 @@ function CreateVehicleForm({ setShowModal }) {
         />
       </label>
       <button className="button" type="submit">
-       New Vehicle
+        New Vehicle
       </button>
     </form>
   );

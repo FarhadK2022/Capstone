@@ -6,10 +6,16 @@ import "./EditReviewFormModal.css";
 function EditReviewForm({ review, setShowModal }) {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
+  const currentCar = useSelector((state) => state.vehicle.singleVehicle);
   const [ereview, setReview] = useState(review.review.review);
   const [estars, setStars] = useState(review.review.stars);
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
   let reviewId = review.review.id;
+  let vehicleId = currentCar.id;
+
+  useEffect(() => {
+    dispatch(reviewActions.allReviewsThunk(vehicleId));
+  }, [dispatch, vehicleId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,11 +27,11 @@ function EditReviewForm({ review, setShowModal }) {
 
     const edittedReview = await dispatch(
       reviewActions.editReviewThunk(editReview, reviewId, currentUser)
-    )
+    );
     if (edittedReview) {
       setShowModal(false);
+      return await dispatch(reviewActions.allReviewsThunk(vehicleId));
     }
-
   };
 
   return (
@@ -51,7 +57,7 @@ function EditReviewForm({ review, setShowModal }) {
           onChange={(e) => setStars(e.target.value)}
           required
         >
-          <option value={0}>----</option>
+          <option disabled></option>
           <option value={5}>★★★★★</option>
           <option value={4}>★★★★</option>
           <option value={3}>★★★</option>

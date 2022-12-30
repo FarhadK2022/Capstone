@@ -7,7 +7,7 @@ import SignupForm from "../SignupFormModal/SignupForm";
 import CreateVehicleForm from "../CreateVehicleFormModal/CreateVehicleForm";
 import { Modal } from "../../context/Modal";
 import "./Navigation.css";
-import image from "../../images/GetThere.png"
+import image from "../../images/GetThere.png";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -18,21 +18,23 @@ function Navigation({ isLoaded }) {
     <>
       <div className="navbar">
         <div className="navbar-left">
-          {sessionUser ? (<Link exact to="/">
-          <img
-              className="navbar-icon"
-              src= {image}
-              alt="GetThere logo"
-            ></img>
-          </Link>) : ( <Link exact to="/">
-          <img
-              className="navbar-icon"
-              src= {image}
-              alt="GetThere logo"
-            ></img>
-          </Link>)
-
-        }
+          {sessionUser ? (
+            <Link exact to="/">
+              <img
+                className="navbar-icon"
+                src={image}
+                alt="GetThere logo"
+              ></img>
+            </Link>
+          ) : (
+            <Link exact to="/">
+              <img
+                className="navbar-icon"
+                src={image}
+                alt="GetThere logo"
+              ></img>
+            </Link>
+          )}
         </div>
         <div className="navbar-right">
           <li>
@@ -60,7 +62,6 @@ function Navigation({ isLoaded }) {
           )}
         </div>
       </div>
-
     </>
   );
 }

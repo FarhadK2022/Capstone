@@ -3,7 +3,7 @@ import * as vehicleActions from "../../store/vehicles";
 import * as reviewActions from "../../store/reviews";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import ReviewCard from "../ReviewCard/index";
 import EditVehicleFormModal from "../EditVehicleFormModal/index";
 import CreateReviewFormModal from "../CreateReviewFormModal/index";
@@ -36,27 +36,38 @@ function GetOneVehiclePage() {
       <>
         <div className="one-spot-container">
           <div className="one-spot-info-section" key={vehicle.id}>
-            <div className="one-spot-title">
-              <h1>{vehicle.model}</h1>
-            </div>
-            <div className="one-spot-info">
-              <p>
-                ★ {vehicle.avgStarRating} • {vehicle.numReviews} trips • {vehicle.city}
-                , {vehicle.state} • ${vehicle.price}
-              </p>
-            </div>
-          </div>
-          <div className="one-spot-images-section">
             <div className="cardimage-one">
               <img src={vehicle.VehicleImages[0]?.url} alt={""} />
             </div>
+            <div className="one-spot-title">
+              <h1>
+                {vehicle.make} {vehicle.model} {vehicle.year}{" "}
+              </h1>{" "}
+              <h3> ${vehicle.price}</h3>
+            </div>
+            <div className="one-spot-info">
+              <p>
+                ★ {vehicle.avgStarRating} • ({vehicle.numReviews} trips)
+              </p>
+              <p>
+                <i className="fa-solid fa-gauge" />
+                {vehicle.MPG}MPG
+                <i className="fa-solid fa-gas-pump" />
+                {vehicle.drivetrain} premium
+                {vehicle.doors} Doors
+                {vehicle.numSeats} Seats
+              </p>
+            </div>
           </div>
+          <div className="one-spot-images-section"></div>
           <div className="one-spot-description-section">
+            <h4>Description</h4>
             <p>{vehicle.description}</p>
           </div>
           <div className="one-spot-review-title">
             <h2>
-              ★ {vehicle.avgStarRating} • {vehicle.numReviews} trips
+              Ratings and Reviews ★ {vehicle.avgStarRating} • (
+              {vehicle.numReviews} ratings)
             </h2>
           </div>
           <div className="reviews-section">
@@ -68,12 +79,22 @@ function GetOneVehiclePage() {
           </div>
         </div>
         <footer className="footer">
-        <a href="https://www.linkedin.com/in/farhad-koushan-63b920167/" rel="noreferrer" target="_blank">
-          <i className="fa-brands fa-linkedin"/></a>{" "}
-          {" "}Developed By Farhad Koushan{" "}
-          {" "}<a href="https://github.com/FarhadK2022" rel="noreferrer" target="_blank">
-          <i className="fa-brands fa-github"/></a>
-      </footer>
+          <a
+            href="https://www.linkedin.com/in/farhad-koushan-63b920167/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <i className="fa-brands fa-linkedin" />
+          </a>{" "}
+          Developed By Farhad Koushan{" "}
+          <a
+            href="https://github.com/FarhadK2022"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <i className="fa-brands fa-github" />
+          </a>
+        </footer>
       </>
     );
   } else if (sessionUser.id === vehicle.ownerId) {
@@ -81,21 +102,20 @@ function GetOneVehiclePage() {
       <>
         <div className="one-spot-container">
           <div className="one-spot-info-section" key={vehicle.id}>
+            <div className="cardimage-one">
+              <img src={vehicle.VehicleImages[0]?.url} alt={""} />
+            </div>
             <div className="one-spot-title">
               <h1>{vehicle.model}</h1>
             </div>
             <div className="one-spot-info">
               <p>
-                ★ {vehicle.avgStarRating} • {vehicle.numReviews} trips • {vehicle.city}
-                , {vehicle.state} • ${vehicle.price}
+                ★ {vehicle.avgStarRating} • {vehicle.numReviews} trips •{" "}
+                {vehicle.city}, {vehicle.state} • ${vehicle.price}
               </p>
             </div>
           </div>
-          <div className="one-spot-images-section">
-            <div className="cardimage-one">
-              <img src={vehicle.VehicleImages[0]?.url} alt={""} />
-            </div>
-          </div>
+          <div className="one-spot-images-section"></div>
           <div className="one-spot-description-section">
             <p>{vehicle.description}</p>
           </div>
@@ -112,27 +132,37 @@ function GetOneVehiclePage() {
             ))}
           </div>
           <div className="owners-tools">
-            <EditVehicleFormModal vehicle ={vehicle} />
-            <Link to={`/`}>
-              <button
-                className="button"
-                onClick={async () => {
-                  // event.stopPropagation();
-                  await dispatch(vehicleActions.deleteVehicleThunk(vehicle.id));
-                }}
-              >
-                Delete Vehicle
-              </button>
-            </Link>
+            <EditVehicleFormModal vehicle={vehicle} />
+            {/* <Link to={`/`}> */}
+            <button
+              className="button"
+              onClick={async () => {
+                // event.stopPropagation();
+                await dispatch(vehicleActions.deleteVehicleThunk(vehicle.id));
+              }}
+            >
+              Delete Vehicle
+            </button>
+            {/* </Link> */}
           </div>
         </div>
         <footer className="footer">
-        <a href="https://www.linkedin.com/in/farhad-koushan-63b920167/" rel="noreferrer" target="_blank">
-          <i className="fa-brands fa-linkedin"/></a>{" "}
-          {" "}Developed By Farhad Koushan{" "}
-          {" "}<a href="https://github.com/FarhadK2022" rel="noreferrer" target="_blank">
-          <i className="fa-brands fa-github"/></a>
-      </footer>
+          <a
+            href="https://www.linkedin.com/in/farhad-koushan-63b920167/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <i className="fa-brands fa-linkedin" />
+          </a>{" "}
+          Developed By Farhad Koushan{" "}
+          <a
+            href="https://github.com/FarhadK2022"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <i className="fa-brands fa-github" />
+          </a>
+        </footer>
       </>
     );
   } else if (sessionUser.id !== vehicle.ownerId) {
@@ -140,21 +170,20 @@ function GetOneVehiclePage() {
       <>
         <div className="one-spot-container">
           <div className="one-spot-info-section" key={vehicle.id}>
+            <div className="cardimage-one">
+              <img src={vehicle.VehicleImages[0]?.url} alt={""} />
+            </div>
             <div className="one-spot-title">
               <h1>{vehicle.model}</h1>
             </div>
             <div className="one-spot-info">
               <p>
-                ★ {vehicle.avgStarRating} • {vehicle.numReviews} trips • {vehicle.city}
-                , {vehicle.state} • ${vehicle.price}
+                ★ {vehicle.avgStarRating} • {vehicle.numReviews} trips •{" "}
+                {vehicle.city}, {vehicle.state} • ${vehicle.price}
               </p>
             </div>
           </div>
-          <div className="one-spot-images-section">
-            <div className="cardimage-one">
-              <img src={vehicle.VehicleImages[0]?.url} alt={""} />
-            </div>
-          </div>
+          <div className="one-spot-images-section"></div>
           <div className="one-spot-description-section">
             <p>{vehicle.description}</p>
           </div>
@@ -173,12 +202,22 @@ function GetOneVehiclePage() {
           </div>
         </div>
         <footer className="footer">
-        <a href="https://www.linkedin.com/in/farhad-koushan-63b920167/" rel="noreferrer" target="_blank">
-          <i className="fa-brands fa-linkedin"/></a>{" "}
-          {" "}Developed By Farhad Koushan{" "}
-          {" "}<a href="https://github.com/FarhadK2022" rel="noreferrer" target="_blank">
-          <i className="fa-brands fa-github"/></a>
-      </footer>
+          <a
+            href="https://www.linkedin.com/in/farhad-koushan-63b920167/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <i className="fa-brands fa-linkedin" />
+          </a>{" "}
+          Developed By Farhad Koushan{" "}
+          <a
+            href="https://github.com/FarhadK2022"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <i className="fa-brands fa-github" />
+          </a>
+        </footer>
       </>
     );
   }

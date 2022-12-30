@@ -31,18 +31,21 @@ function CreateReviewForm({ vehicle, setShowModal }) {
     });
     if (createdReview) {
       setShowModal(false);
+      dispatch(reviewActions.allReviewsThunk(vehicleId));
     } else {
-      return setErrors([
-        " You already have a review for this vehicle!"
-      ]);
+      return setErrors([" You already have a review for this vehicle!"]);
     }
-
   };
 
   return (
     <form className="formModal" onSubmit={handleSubmit}>
       <h1>Create Review</h1>
       <h2>Review Details</h2>
+      <ul>
+        {errors.map((error, idx) => (
+          <li key={idx}>{error}</li>
+        ))}
+      </ul>
       <label>
         Review
         <input
@@ -63,7 +66,7 @@ function CreateReviewForm({ vehicle, setShowModal }) {
           onChange={(e) => setStars(e.target.value)}
           required
         >
-          <option value={0}>----</option>
+          <option disabled></option>
           <option value={5}>★★★★★</option>
           <option value={4}>★★★★</option>
           <option value={3}>★★★</option>

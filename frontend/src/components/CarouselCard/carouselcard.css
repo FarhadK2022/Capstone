@@ -1,0 +1,7 @@
+.card {
+  object-fit: contain;
+  object-position: center;
+  max-width: 400px;
+  max-height: 400px;
+  width: 100%;
+}

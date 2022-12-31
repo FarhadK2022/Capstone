@@ -1,22 +1,58 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import CarouselCardAll from "../CarouselCard";
 
 const CatCarousel = () => {
   const [index, setIndex] = useState(0);
   const length = 7;
   const data = [
-    <Link to="/comingsoon">Convertible</Link>,
-    <Link to="/comingsoon">Exotic</Link>,
-    <Link to="/comingsoon">Executive</Link>,
-    <Link to="/comingsoon">Family Friendly</Link>,
-    <Link to="/comingsoon">Fast</Link>,
-    <Link to="/comingsoon">Hybrid/ Electric</Link>,
-    <Link to="/comingsoon">Offroad</Link>,
+    {
+      image: (
+        <img src="https://robbreport.com/wp-content/uploads/2021/10/amgsl09.jpg?w=1000" alt=" "></img>
+      ),
+      title: <Link to="/comingsoon">Convertible</Link>,
+    },
+    {
+      image: (
+        <img src="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/model_detail/few_off/sian-fkp-37/2022/06_20/gallery/sian_05_m.jpg" alt=" "></img>
+      ),
+      title: <Link to="/comingsoon">Exotic</Link>,
+    },
+    {
+      image: (
+        <img src="https://media.ed.edmunds-media.com/mercedes-benz/maybach/2022/oem/2022_mercedes-benz_maybach_sedan_s-580-4matic_fq_oem_1_1600.jpg" alt=" "></img>
+      ),
+      title: <Link to="/comingsoon">Executive</Link>,
+    },
+    {
+      image: (
+        <img src="https://di-uploads-pod12.dealerinspire.com/universitymitsubishi/uploads/2020/03/Mitsubishi-Outlander-2018-Gallery-Family-d.jpg" alt=" "></img>
+      ),
+      title: <Link to="/comingsoon">Family Friendly</Link>,
+    },
+    {
+      image: (
+        <img src="https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200" alt=" "></img>
+      ),
+      title: <Link to="/comingsoon">Fast</Link>,
+    },
+    {
+      image: (
+        <img src="https://secure.img1-fg.wfcdn.com/im/36694123/resize-h600-w600%5Ecompr-r85/1306/130620811/Kids+Cars+%26+Ride-On+Toys.jpg" alt=" "></img>
+      ),
+      title: <Link to="/comingsoon">Hybrid/ Electric</Link>,
+    },
+    {
+      image: (
+        <img src="https://cdn.monsterjam.com/styles/jumbotron_large/s3/2022-09/grave_digger.jpg?itok=-6qbPgQK" alt=" "></img>
+      ),
+      title: <Link to="/comingsoon">Offroad</Link>,
+    },
   ];
 
   const handlePrevious = () => {
-    const newIndex = index - 1;
-    setIndex(newIndex < 0 ? length - 1 : newIndex);
+    let newIndex = index - 1;
+    setIndex(newIndex < 0 ? (newIndex = length - 1 ) : newIndex);
   };
 
   const handleNext = () => {
@@ -29,7 +65,7 @@ const CatCarousel = () => {
       <button onClick={handlePrevious}>
         <i className="fa-solid fa-arrow-left"></i>
       </button>
-      <p>{data[index]}</p>
+      <CarouselCardAll data={data[index]} />
       <button onClick={handleNext}>
         <i className="fa-solid fa-arrow-right"></i>
       </button>

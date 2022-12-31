@@ -19,7 +19,7 @@ function Navigation({ isLoaded }) {
       <div className="navbar">
         <div className="navbar-left">
           {sessionUser ? (
-            <Link exact to="/">
+            <Link exact to="/home">
               <img
                 className="navbar-icon"
                 src={image}

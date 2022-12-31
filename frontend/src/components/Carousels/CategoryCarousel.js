@@ -4,7 +4,7 @@ import CarouselCardAll from "../CarouselCard";
 
 const CatCarousel = () => {
   const [index, setIndex] = useState(0);
-  const length = 7;
+  const length = 8;
   const data = [
     {
       image: (
@@ -40,7 +40,13 @@ const CatCarousel = () => {
       image: (
         <img src="https://secure.img1-fg.wfcdn.com/im/36694123/resize-h600-w600%5Ecompr-r85/1306/130620811/Kids+Cars+%26+Ride-On+Toys.jpg" alt=" "></img>
       ),
-      title: <Link to="/comingsoon">Hybrid/ Electric</Link>,
+      title: <Link to="/comingsoon">Hybrid</Link>,
+    },
+    {
+      image: (
+        <img src="https://secure.img1-fg.wfcdn.com/im/36694123/resize-h600-w600%5Ecompr-r85/1306/130620811/Kids+Cars+%26+Ride-On+Toys.jpg" alt=" "></img>
+      ),
+      title: <Link to="/comingsoon">Electric</Link>,
     },
     {
       image: (

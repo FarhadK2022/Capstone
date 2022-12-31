@@ -122,11 +122,11 @@ function CreateVehicleForm({ setShowModal }) {
           required
         >
           <option disabled></option>
-          <option value={"car"}>Car</option>
-          <option value={"suv"}>SUV</option>
-          <option value={"truck"}>Truck</option>
-          <option value={"minivan"}>Minivan</option>
-          <option value={"van"}>Van</option>
+          <option value={"Car"}>Car</option>
+          <option value={"Suv"}>SUV</option>
+          <option value={"Truck"}>Truck</option>
+          <option value={"Minivan"}>Minivan</option>
+          <option value={"Van"}>Van</option>
         </select>
       </label>
       <label>
@@ -139,25 +139,65 @@ function CreateVehicleForm({ setShowModal }) {
           required
         >
           <option disabled></option>
-          <option value={"convertible"}>Convertible</option>
-          <option value={"exotic"}>Exotic</option>
-          <option value={"executive"}>Executive</option>
-          <option value={"family friendly"}>Family Friendly</option>
-          <option value={"fast"}>Fast</option>
-          <option value={"hybrid/electric"}>Hybrid/Electric</option>
-          <option value={"offroad"}>Offroad</option>
+          <option value={"Convertible"}>Convertible</option>
+          <option value={"Exotic"}>Exotic</option>
+          <option value={"Executive"}>Executive</option>
+          <option value={"Family Friendly"}>Family Friendly</option>
+          <option value={"Fast"}>Fast</option>
+          <option value={"Hybrid/Electric"}>Hybrid/Electric</option>
+          <option value={"Offroad"}>Offroad</option>
         </select>
       </label>
       <label>
         Make
-        <input
+        <select
           className="inputField"
           type="text"
           value={make}
           onChange={(e) => setMake(e.target.value)}
-          placeholder='Manufacturer Name'
           required
-        />
+        >
+          <option disabled></option>
+          <option value={"Acura"}>Acura</option>
+          <option value={"Alfa Romeo"}>Alfa Romeo</option>
+          <option value={"Aston Martin"}>Aston Martin</option>
+          <option value={"Audi"}>Audi</option>
+          <option value={"Bentley"}>Bentley</option>
+          <option value={"BMW"}>BMW</option>
+          <option value={"Bugatti"}>Bugatti</option>
+          <option value={"Cadillac"}>Cadillac</option>
+          <option value={"Chevrolet"}>Chevrolet</option>
+          <option value={"Dodge"}>Dodge</option>
+          <option value={"Ferrari"}>Ferrari</option>
+          <option value={"Ford"}>Ford</option>
+          <option value={"Genesis"}>Genesis</option>
+          <option value={"Honda"}>Honda</option>
+          <option value={"Infinity"}>Infinity</option>
+          <option value={"Jaguar"}>Jaguar</option>
+          <option value={"Jeep"}>Jeep</option>
+          <option value={"Koenigsegg"}>Koenigsegg</option>
+          <option value={"Lamborghini"}>Lamborghini</option>
+          <option value={"Land Rover"}>Land Rover</option>
+          <option value={"Lexus"}>Lexus</option>
+          <option value={"Lotus"}>Lotus</option>
+          <option value={"Lucid"}>Lucid</option>
+          <option value={"Maserati"}>Maserati</option>
+          <option value={"Mazda"}>Mazda</option>
+          <option value={"McLaren"}>McLaren</option>
+          <option value={"Mercedes-Benz"}>Mercedes-Benz</option>
+          <option value={"Mitsubishi"}>Mitsubishi</option>
+          <option value={"Maybach"}>Maybach</option>
+          <option value={"Nissan"}>Nissan</option>
+          <option value={"Pagani"}>Pagani</option>
+          <option value={"Porsche"}>Porsche</option>
+          <option value={"Rivian"}>Rivian</option>
+          <option value={"Rolls Royce"}>Rolls Royce</option>
+          <option value={"Saleen"}>Saleen</option>
+          <option value={"Subaru"}>Subaru</option>
+          <option value={"Tesla"}>Tesla</option>
+          <option value={"Toyota"}>Toyota</option>
+          <option value={"Volkswagen"}>Volkswagen</option>
+        </select>
       </label>
       <label>
         Model
@@ -213,10 +253,10 @@ function CreateVehicleForm({ setShowModal }) {
           required
         >
           <option disabled></option>
-          <option value={"gas"}>Gas</option>
-          <option value={"diesel"}>Diesel</option>
-          <option value={"hybrid"}>Hybrid</option>
-          <option value={"electric"}>Electric</option>
+          <option value={"Gas"}>Gas</option>
+          <option value={"Diesel"}>Diesel</option>
+          <option value={"Hybrid"}>Hybrid</option>
+          <option value={"Electric"}>Electric</option>
         </select>
       </label>
       <label>
@@ -240,8 +280,8 @@ function CreateVehicleForm({ setShowModal }) {
           required
         >
           <option disabled></option>
-          <option value={"automatic"}>Automatic</option>
-          <option value={"manual"}>Manual</option>
+          <option value={"Automatic"}>Automatic</option>
+          <option value={"Manual"}>Manual</option>
         </select>
       </label>
       <label>

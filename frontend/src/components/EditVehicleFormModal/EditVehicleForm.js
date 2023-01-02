@@ -93,7 +93,7 @@ function EditVehicleForm({ vehicle, setShowModal }) {
         />
       </label>
       <label>
-       Vehicle Type
+        Vehicle Type
         <select
           className="inputField"
           type="text"
@@ -103,10 +103,8 @@ function EditVehicleForm({ vehicle, setShowModal }) {
         >
           <option disabled></option>
           <option value={"Car"}>Car</option>
-          <option value={"Suv"}>SUV</option>
           <option value={"Truck"}>Truck</option>
-          <option value={"Minivan"}>Minivan</option>
-          <option value={"Van"}>Van</option>
+          <option value={"Suv"}>SUV</option>
         </select>
       </label>
       <label>
@@ -120,16 +118,17 @@ function EditVehicleForm({ vehicle, setShowModal }) {
         >
           <option disabled></option>
           <option value={"Convertible"}>Convertible</option>
-          <option value={"Exotic"}>Exotic</option>
+          <option value={"Coupe"}>Coupe</option>
+          <option value={"Electric"}>Electric</option>
           <option value={"Executive"}>Executive</option>
-          <option value={"Family Friendly"}>Family Friendly</option>
-          <option value={"Fast"}>Fast</option>
-          <option value={"Hybrid/Electric"}>Hybrid/Electric</option>
+          <option value={"Exotic"}>Exotic</option>
+          <option value={"Hybrid"}>Hybrid</option>
           <option value={"Offroad"}>Offroad</option>
+          <option value={"Sedan"}>Sedan</option>
         </select>
       </label>
       <label>
-      Make
+        Make
         <select
           className="inputField"
           type="text"
@@ -229,10 +228,10 @@ function EditVehicleForm({ vehicle, setShowModal }) {
           required
         >
           <option disabled></option>
-          <option value={"Gas"}>Gas</option>
           <option value={"Diesel"}>Diesel</option>
-          <option value={"Hybrid"}>Hybrid</option>
           <option value={"Electric"}>Electric</option>
+          <option value={"Gas"}>Gas</option>
+          <option value={"Hybrid"}>Hybrid</option>
         </select>
       </label>
       <label>
@@ -270,7 +269,7 @@ function EditVehicleForm({ vehicle, setShowModal }) {
         />
       </label>
       <label>
-         Pet Friendly?
+        Pet Friendly?
         <select
           className="inputField"
           type="text"

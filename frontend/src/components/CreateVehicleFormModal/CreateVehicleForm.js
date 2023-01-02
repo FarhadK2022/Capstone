@@ -65,9 +65,7 @@ function CreateVehicleForm({ setShowModal }) {
     if (createdVehicle) {
       setShowModal(false);
     } else {
-      return setErrors([
-        "Please check the form details and submit again.",
-      ]);
+      return setErrors(["Please check the form details and submit again."]);
     }
   };
 
@@ -123,10 +121,8 @@ function CreateVehicleForm({ setShowModal }) {
         >
           <option disabled></option>
           <option value={"Car"}>Car</option>
-          <option value={"Suv"}>SUV</option>
           <option value={"Truck"}>Truck</option>
-          <option value={"Minivan"}>Minivan</option>
-          <option value={"Van"}>Van</option>
+          <option value={"Suv"}>SUV</option>
         </select>
       </label>
       <label>
@@ -140,12 +136,13 @@ function CreateVehicleForm({ setShowModal }) {
         >
           <option disabled></option>
           <option value={"Convertible"}>Convertible</option>
-          <option value={"Exotic"}>Exotic</option>
+          <option value={"Coupe"}>Coupe</option>
+          <option value={"Electric"}>Electric</option>
           <option value={"Executive"}>Executive</option>
-          <option value={"Family Friendly"}>Family Friendly</option>
-          <option value={"Fast"}>Fast</option>
-          <option value={"Hybrid/Electric"}>Hybrid/Electric</option>
+          <option value={"Exotic"}>Exotic</option>
+          <option value={"Hybrid"}>Hybrid</option>
           <option value={"Offroad"}>Offroad</option>
+          <option value={"Sedan"}>Sedan</option>
         </select>
       </label>
       <label>
@@ -205,7 +202,7 @@ function CreateVehicleForm({ setShowModal }) {
           className="inputField"
           type="text"
           value={model}
-          placeholder='Model Name'
+          placeholder="Model Name"
           onChange={(e) => setModel(e.target.value)}
           required
         />
@@ -253,10 +250,10 @@ function CreateVehicleForm({ setShowModal }) {
           required
         >
           <option disabled></option>
-          <option value={"Gas"}>Gas</option>
           <option value={"Diesel"}>Diesel</option>
-          <option value={"Hybrid"}>Hybrid</option>
           <option value={"Electric"}>Electric</option>
+          <option value={"Gas"}>Gas</option>
+          <option value={"Hybrid"}>Hybrid</option>
         </select>
       </label>
       <label>
@@ -266,7 +263,7 @@ function CreateVehicleForm({ setShowModal }) {
           type="text"
           value={MPG}
           onChange={(e) => setMPG(e.target.value)}
-          placeholder='Miles Per Gallon'
+          placeholder="Miles Per Gallon"
           required
         />
       </label>

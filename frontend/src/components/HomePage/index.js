@@ -2,16 +2,18 @@ import { Link } from "react-router-dom";
 import "./homepage.css";
 import CatCarousel from "../Carousels/CategoryCarousel";
 import TypeCarousel from "../Carousels/TypeCarousel";
+import MakeCarousel from "../Carousels/MakeCarousel";
 function HomePage() {
   return (
     <>
       <div className="home-container">
         <div className="title">
-          <h1>Find the Perfect Car</h1>
+          <h1>Find the Perfect Vehicle</h1>
         </div>
+          <Link to="/cars">All Vehicles</Link>
         <div className="makes">
           <h3>Search by Make</h3>
-          <Link to="/cars">All Vehicles</Link>
+          <MakeCarousel/>
         </div>
         <div className="types">
           <h3>Search by Type</h3>

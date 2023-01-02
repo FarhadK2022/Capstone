@@ -1,7 +1,21 @@
-.card {
-  object-fit: contain;
-  object-position: center;
-  max-width: 400px;
-  max-height: 400px;
+.carousel-card-container{
+  border-color: black;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 1px;
+  height: 200px;
+  width: 250px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  box-shadow: black 0px 2px 2px;
+}
+.carousel-card-image img{
+  height: 150px;
   width: 100%;
+  object-fit: scale-down;
+}
+.carousel-card-title{
+  display: flex;
+  justify-content: center;
 }

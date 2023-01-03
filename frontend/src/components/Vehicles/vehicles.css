@@ -1,15 +1,27 @@
-.spots-list{
+.cars-page-container{
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.cars-list{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-content: flex-start;
   align-items: flex-start;
-  column-gap: 35px;
-  row-gap: 40px;
+  column-gap: 20px;
+  row-gap: 30px;
   padding-top: 5%;
   padding-bottom: 5%;
-  margin: 0px 80px
+  margin: 0px;
+  width: 70%;
+}
+.google-maps-api{
+  
+  width: 40%;
+  border-left: 1px solid lightgray;
+
 }
 .card-container{
   border-color: black;
@@ -17,7 +29,7 @@
   border-radius: 5px;
   border-width: 1px;
   height: 350px;
-  width: 450px;
+  width: 420px;
   display: flex;
   align-items: flex-end;
   justify-content: center;

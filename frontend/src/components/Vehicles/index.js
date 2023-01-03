@@ -25,7 +25,8 @@ function GetAllVehiclesPage() {
 
   return (
     <>
-      <div className="spots-list">
+    <div className="cars-page-container">
+      <div className="cars-list">
         {vehiclesObj.map((vehicle) => (
           <Link to={`/cars/${vehicle.id}`}>
             <div className="card" key={vehicle.id} value={vehicle.id}>
@@ -34,6 +35,10 @@ function GetAllVehiclesPage() {
           </Link>
         ))}
       </div>
+      <div className="google-maps-api">
+          <span>Google Map coming soon</span>
+      </div>
+     </div>
       <footer className="footer">
         <a
           href="https://www.linkedin.com/in/farhad-koushan-63b920167/"

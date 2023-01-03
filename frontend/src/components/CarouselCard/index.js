@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./carouselcard.css"
 
 function CarouselCardAll(data) {
-  console.log(data);
+  // console.log(data);
   return (
     <>
       <div className="carousel-card-container">

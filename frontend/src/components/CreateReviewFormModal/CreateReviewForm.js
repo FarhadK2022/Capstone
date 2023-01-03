@@ -31,7 +31,7 @@ function CreateReviewForm({ vehicle, setShowModal }) {
     });
     if (createdReview) {
       setShowModal(false);
-      dispatch(reviewActions.allReviewsThunk(vehicleId));
+      await dispatch(reviewActions.allReviewsThunk(vehicleId));
     } else {
       return setErrors([" You already have a review for this vehicle!"]);
     }

@@ -6,9 +6,9 @@ function SplashPage() {
     <>
       <div className="container">
         <div className="title">
-          <h1 className="top">Welcome to GetThere</h1>
+          <h1 className="top">Find Your Gear</h1>
           <h2 className="top">
-            We are dedicated to getting you from A to B as quickly as possible.
+            Explore the Earth's Fastest Car Rental Marketplace.
           </h2>
         </div>
         <div className="page-contents">

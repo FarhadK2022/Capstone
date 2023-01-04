@@ -4,11 +4,19 @@ const GET_REVIEWS = "reviews/getAllReviews";
 const CREATE_REVIEW = "reviews/createReview";
 const DELETE_REVIEW = "reviews/deleteReview";
 const CLEAR_REVIEW = "reviews/clearReviews";
-const EDIT_REVIEW = "reviews/editReview"
+const EDIT_REVIEW = "reviews/editReview";
+const GET_CURRENT_REVIEWS = "reviews/getCurrentReviews"
 
 const getAllReviews = (revs) => {
   return {
     type: GET_REVIEWS,
+    revs,
+  };
+};
+
+const getCurrentReviews = (revs) => {
+  return {
+    type: GET_CURRENT_REVIEWS,
     revs,
   };
 };
@@ -50,6 +58,17 @@ export const allReviewsThunk = (vehicleId) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(getAllReviews(data.Reviews));
+    return response;
+  }
+};
+
+export const currentReviewsThunk = () => async (dispatch) => {
+  const response = await csrfFetch('/api/reviews/current', {
+    method: "GET",
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getCurrentReviews(data.Reviews));
     return response;
   }
 };
@@ -108,6 +127,11 @@ const reviewReducer = (state = initialState, action) => {
       return newState;
     }
     case GET_REVIEWS:{
+      const newState = {allReviews:{}};
+      action.revs.forEach((rev) => (newState.allReviews[rev.id] = rev));
+      return newState;
+    }
+    case GET_CURRENT_REVIEWS:{
       const newState = {allReviews:{}};
       action.revs.forEach((rev) => (newState.allReviews[rev.id] = rev));
       return newState;

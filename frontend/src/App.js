@@ -8,6 +8,7 @@ import GetOneVehiclePage from "./components/Vehicle"
 import SplashPage from "./components/SplashPage"
 import HomePage from "./components/HomePage";
 import UnderDevelopmentPage from "./components/ComingSoon/UnderDevelopmentPage";
+import UserPage from "./components/UserPageModal/UserPage";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route exact path="/home">
             <HomePage />
+          </Route>
+          <Route exact path="/profile">
+            <UserPage />
           </Route>
           <Route exact path="/cars">
             <GetAllVehiclesPage />

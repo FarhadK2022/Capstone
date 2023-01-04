@@ -27,11 +27,11 @@ function EditVehicleForm({ vehicle, setShowModal }) {
   const [petFriendly, setPetFriendly] = useState(vehicle.petFriendly);
   const [description, setDescription] = useState(vehicle.description);
   const [price, setPrice] = useState(vehicle.price);
-  const [setErrors] = useState([]);
+  // const [setErrors] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors([]);
+    // setErrors([]);
     const vehicle = {
       address,
       city,

@@ -53,7 +53,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 4,
           petFriendly: true,
-          description: "",
+          description:
+            "The Best version of the GTR yet, this car is an immediate legend. You owe it to yourself to drive it.",
           price: 150,
         },
         {
@@ -75,7 +76,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -97,7 +99,8 @@ module.exports = {
           transmission: "Manual",
           numSeats: 3,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -119,7 +122,8 @@ module.exports = {
           transmission: "Manual",
           numSeats: 3,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -141,7 +145,8 @@ module.exports = {
           transmission: "Manual",
           numSeats: 2,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -163,7 +168,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -185,7 +191,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -207,7 +214,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -229,7 +237,8 @@ module.exports = {
           transmission: "Manual",
           numSeats: 2,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -251,7 +260,8 @@ module.exports = {
           transmission: "Manual",
           numSeats: 2,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -273,7 +283,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -295,7 +306,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 2,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -317,7 +329,8 @@ module.exports = {
           transmission: "Manual",
           numSeats: 4,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -339,7 +352,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 2,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -361,7 +375,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 4,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -383,7 +398,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 2,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -405,7 +421,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 4,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -427,7 +444,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -449,7 +467,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -471,7 +490,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -493,7 +513,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -515,7 +536,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 2,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -537,7 +559,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -559,7 +582,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -581,7 +605,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 2,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -603,7 +628,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 2,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -625,7 +651,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 2,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -647,7 +674,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 2,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -669,7 +697,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 2,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -691,7 +720,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -713,7 +743,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -735,7 +766,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -757,7 +789,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 2,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -779,7 +812,8 @@ module.exports = {
           transmission: "Manual",
           numSeats: 2,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -801,7 +835,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -823,7 +858,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -845,7 +881,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -867,7 +904,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -889,7 +927,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -911,7 +950,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 2,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -933,7 +973,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -955,7 +996,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 2,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -977,7 +1019,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -999,7 +1042,8 @@ module.exports = {
           transmission: "Manual",
           numSeats: 2,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -1021,7 +1065,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -1043,7 +1088,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 2,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -1065,7 +1111,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 2,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -1087,7 +1134,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 2,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -1109,7 +1157,8 @@ module.exports = {
           transmission: "Manual",
           numSeats: 2,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -1131,7 +1180,8 @@ module.exports = {
           transmission: "Manual",
           numSeats: 5,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -1153,7 +1203,8 @@ module.exports = {
           transmission: "Automatic",
           numSeats: 5,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -1175,7 +1226,8 @@ module.exports = {
           transmission: "Manual",
           numSeats: 2,
           petFriendly: false,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
         {
@@ -1197,7 +1249,8 @@ module.exports = {
           transmission: "Manual",
           numSeats: 5,
           petFriendly: true,
-          description: "",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo.",
           price: 150,
         },
       ],

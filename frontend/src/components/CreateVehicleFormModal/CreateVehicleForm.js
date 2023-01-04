@@ -211,7 +211,7 @@ function CreateVehicleForm({ setShowModal }) {
         Year
         <input
           className="inputField"
-          type="text"
+          type="number"
           value={year}
           onChange={(e) => setYear(e.target.value)}
           placeholder="Model Year"
@@ -233,7 +233,7 @@ function CreateVehicleForm({ setShowModal }) {
         Number of Doors
         <input
           className="inputField"
-          type="text"
+          type="number"
           value={doors}
           onChange={(e) => setDoors(e.target.value)}
           placeholder="2, 3, 4, 5? More? Less?"
@@ -260,7 +260,7 @@ function CreateVehicleForm({ setShowModal }) {
         MPG
         <input
           className="inputField"
-          type="text"
+          type="number"
           value={MPG}
           onChange={(e) => setMPG(e.target.value)}
           placeholder="Miles Per Gallon"
@@ -285,9 +285,9 @@ function CreateVehicleForm({ setShowModal }) {
         Number of Seats
         <input
           className="inputField"
-          type="text"
+          type="number"
           value={numSeats}
-          placeholder="How Many Humans can Safely sit in your Vehicle?"
+          placeholder="How many can SAFELY sit in your vehicle"
           onChange={(e) => setNumSeats(e.target.value)}
           required
         />

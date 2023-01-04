@@ -4,7 +4,7 @@
   border-radius: 10px;
   border-width: 1px;
   height: 220px;
-  width: 350px;
+  width: 400px;
   display: flex;
   /* align-items: center; */
   justify-content: flex-start;
@@ -20,7 +20,7 @@
   /* align-items: flex-start; */
   font-size: medium;
   max-height: 220px;
-  max-width: 330px;
+  max-width: 380px;
   margin-left: 5px;
   margin-top: 4px;
   overflow-wrap: break-word;

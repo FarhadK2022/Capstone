@@ -192,7 +192,7 @@ function EditVehicleForm({ vehicle, setShowModal }) {
         Year
         <input
           className="inputField"
-          type="text"
+          type="number"
           value={year}
           onChange={(e) => setYear(e.target.value)}
           required
@@ -212,7 +212,7 @@ function EditVehicleForm({ vehicle, setShowModal }) {
         Number of Doors
         <input
           className="inputField"
-          type="text"
+          type="number"
           value={doors}
           onChange={(e) => setDoors(e.target.value)}
           required
@@ -238,7 +238,7 @@ function EditVehicleForm({ vehicle, setShowModal }) {
         MPG
         <input
           className="inputField"
-          type="text"
+          type="number"
           value={MPG}
           onChange={(e) => setMPG(e.target.value)}
           required
@@ -262,7 +262,7 @@ function EditVehicleForm({ vehicle, setShowModal }) {
         Number of Seats
         <input
           className="inputField"
-          type="text"
+          type="number"
           value={numSeats}
           onChange={(e) => setNumSeats(e.target.value)}
           required

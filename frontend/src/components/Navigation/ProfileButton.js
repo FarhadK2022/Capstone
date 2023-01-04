@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import UserPage from "../UserPageModal/UserPage";
 
 function ProfileButton({ user, setLogin, setShowModal }) {
   const dispatch = useDispatch();
@@ -39,8 +41,20 @@ function ProfileButton({ user, setLogin, setShowModal }) {
         (user ? (
           <ul className="profile-dropdown">
             <li>
+              <p>Logged in as:</p>
               <p>{user.username}</p>
-              <p>{user.email}</p>
+              <Link exact to='/profile'>
+              <button
+                className="button"
+                onClick={() => {
+
+                }}
+              >
+                My Profile
+              </button>
+              </Link>
+            </li>
+            <li>
               <button
                 className="button"
                 onClick={() => {

@@ -340,7 +340,7 @@ function CreateVehicleForm({ setShowModal }) {
         />
       </label>
       <button className="button" type="submit">
-        New Vehicle
+      Create Vehicle
       </button>
     </form>
   );

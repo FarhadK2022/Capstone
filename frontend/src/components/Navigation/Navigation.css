@@ -41,7 +41,7 @@
   cursor: pointer;
 }
 .user-menu:hover{
-  box-shadow: 0px 2px 3px blueviolet;
+  box-shadow: 0px 2px 3px red;
   /* color: lightgray; */
 }
 .profile-dropdown{

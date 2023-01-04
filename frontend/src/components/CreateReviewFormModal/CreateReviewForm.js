@@ -17,24 +17,28 @@ function CreateReviewForm({ vehicle, setShowModal }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (review.length > 10){
 
-    const newReview = {
-      review,
-      stars,
-    };
+      const newReview = {
+        review,
+        stars,
+      };
 
-    const createdReview = await dispatch(
-      reviewActions.createReviewThunk(newReview, vehicleId, currentUser)
-    ).catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
-    });
-    if (createdReview) {
-      setShowModal(false);
-      await dispatch(reviewActions.allReviewsThunk(vehicleId));
-    } else {
-      return setErrors([" You already have a review for this vehicle!"]);
-    }
+      const createdReview = await dispatch(
+        reviewActions.createReviewThunk(newReview, vehicleId, currentUser)
+        ).catch(async (res) => {
+          const data = await res.json();
+          if (data && data.errors) setErrors(data.errors);
+        });
+        if (createdReview) {
+          setShowModal(false);
+          await dispatch(reviewActions.allReviewsThunk(vehicleId));
+        } else {
+          return setErrors([" You already have a review for this vehicle!"]);
+        }
+      }else {
+        return setErrors(["Review needs to be at least 10 characters!"])
+      }
   };
 
   return (

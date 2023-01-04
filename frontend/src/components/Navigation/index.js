@@ -5,7 +5,6 @@ import ProfileButton from "./ProfileButton";
 import LoginForm from "../LoginFormModal/LoginForm";
 import SignupForm from "../SignupFormModal/SignupForm";
 import CreateVehicleForm from "../CreateVehicleFormModal/CreateVehicleForm";
-import UserPage from "../UserPageModal/UserPage"
 import { Modal } from "../../context/Modal";
 import "./Navigation.css";
 import image from "../../images/GetThere.png";

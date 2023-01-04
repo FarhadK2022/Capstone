@@ -6,16 +6,19 @@
   height: 200px;
   width: 250px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   box-shadow: black 0px 2px 2px;
+  background-color: white;
 }
 .carousel-card-image img{
   height: 150px;
   width: 100%;
-  object-fit: scale-down;
 }
 .carousel-card-title{
   display: flex;
   justify-content: center;
+}
+.carousel{
+  align-items: center;
 }

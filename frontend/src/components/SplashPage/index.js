@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./splashpage.css";
-import image from "../../images/splash.jpeg";
+
 function SplashPage() {
   return (
     <>
@@ -13,11 +13,11 @@ function SplashPage() {
         </div>
         <div className="page-contents">
           <Link to="/home">
-            <i className="fa-solid fa-eye" /> Find a Vehicle{" "}
-            <i className="fa-solid fa-eye" />
+            <i className="fa-solid fa-eye" color="red" />
+            Find a Vehicle
+            <i className="fa-solid fa-eye" color="red"/>
           </Link>
         </div>
-        <img className="image" src={image} alt={'Winding Road through Romania'}/>
         <footer className="footer">
           <a
             href="https://www.linkedin.com/in/farhad-koushan-63b920167/"

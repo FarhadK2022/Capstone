@@ -10,7 +10,11 @@ function HomePage() {
         <div className="title">
           <h1>Find the Perfect Vehicle</h1>
         </div>
-          <Link to="/cars">All Vehicles</Link>
+          <Link to="/cars">
+            <h2 className="all-vehicles-link">
+              All Vehicles
+              </h2>
+              </Link>
         <div className="makes">
           <h3>Search by Make</h3>
           <MakeCarousel/>

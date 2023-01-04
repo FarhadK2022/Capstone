@@ -3,7 +3,7 @@ import * as vehicleActions from "../../store/vehicles";
 import * as reviewActions from "../../store/reviews";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { useParams} from "react-router-dom";
+import { useParams, Link} from "react-router-dom";
 import ReviewCard from "../ReviewCard/index";
 import EditVehicleFormModal from "../EditVehicleFormModal/index";
 import CreateReviewFormModal from "../CreateReviewFormModal/index";
@@ -145,7 +145,7 @@ function GetOneVehiclePage() {
           </div>
           <div className="owners-tools">
             <EditVehicleFormModal vehicle={vehicle} />
-            {/* <Link to={`/`}> */}
+            <Link to={`/home`}>
             <button
               className="button"
               onClick={async () => {
@@ -155,7 +155,7 @@ function GetOneVehiclePage() {
             >
               Delete Vehicle
             </button>
-            {/* </Link> */}
+            </Link>
           </div>
         </div>
         <footer className="footer">

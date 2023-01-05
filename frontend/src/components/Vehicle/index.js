@@ -12,6 +12,10 @@ import "./vehicle.css";
 function GetOneVehiclePage() {
   const dispatch = useDispatch();
   const { vehicleId } = useParams();
+  
+  useEffect(() => {
+    dispatch(reviewActions.clearReviewsThunk());
+  },[]);
 
   useEffect(() => {
     dispatch(vehicleActions.vehicleThunk(vehicleId));
@@ -30,6 +34,7 @@ function GetOneVehiclePage() {
   if (!vehicle.VehicleImages) {
     return null;
   }
+
 
   if (sessionUser === null || sessionUser === undefined) {
     return (

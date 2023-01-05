@@ -29,11 +29,9 @@ function UserPage(){
     <h2>Your Listings:</h2>
     <div className="cars-list">
         {vehiclesObj.map((vehicle) => (
-          <Link to={`/cars/${vehicle.id}`}>
             <div className="card" key={vehicle.id} value={vehicle.id}>
               <VehicleCardUser vehicle={vehicle} />
             </div>
-          </Link>
         ))}
       </div>
     <h2>Your Reviews:</h2>

@@ -18,9 +18,10 @@
   width: 70%;
 }
 .google-maps-api{
-  
-  width: 40%;
-  border-left: 1px solid lightgray;
+  position: fixed;
+  top: 65px;
+  right: 4px;
+  /* width: 40%; */
 
 }
 .card-container{

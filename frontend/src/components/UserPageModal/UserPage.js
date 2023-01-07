@@ -3,7 +3,6 @@ import * as vehicleActions from "../../store/vehicles";
 import * as reviewActions from "../../store/reviews";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import ReviewCard from "../ReviewCard";
 import VehicleCardUser from "../VehicleCard/UserPageCards";
 

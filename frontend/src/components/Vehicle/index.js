@@ -12,10 +12,10 @@ import "./vehicle.css";
 function GetOneVehiclePage() {
   const dispatch = useDispatch();
   const { vehicleId } = useParams();
-  
+
   useEffect(() => {
     dispatch(reviewActions.clearReviewsThunk());
-  },[]);
+  },[dispatch]);
 
   useEffect(() => {
     dispatch(vehicleActions.vehicleThunk(vehicleId));

@@ -3,23 +3,27 @@ import * as vehicleActions from "../../store/vehicles";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
+import "./maps.css"
 
 function MyMap() {
   const dispatch = useDispatch();
   const currentVehicles = useSelector((state) => state.vehicle.allVehicles);
   const vehiclesObj = Object.values(currentVehicles);
-  console.log(vehiclesObj);
 
   const containerStyle = {
     width: "560px",
     height: "730px",
   };
 
-  const center = {
+  const homeBase = {
     lat: 34.06220174258613,
     lng: -118.36138455990302,
   };
+
+  const  homeBaseImage = <image className="fa-solid fa-location-dot"/>
+
+  const positionImage = <image className="fa-solid fa-location-pin"/>
 
   const position = {
     lat: 34.06220174258613,
@@ -40,17 +44,18 @@ function MyMap() {
   return (
     <LoadScript googleMapsApiKey="AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY">
       <GoogleMap
+        className='maps'
         mapContainerStyle={containerStyle}
-        center={center}
+        center={homeBase}
         zoom={10}
         clickableIcons={true}
       >
         <Marker
           onLoad={onLoad}
-          position={position}
+          position={homeBase}
           visible={true}
-          icon={<i className="fa-solid fa-location-dot"></i>}
-          // clickable={true}
+          icon={homeBaseImage}
+          clickable={true}
         />
         {/* <div className="card"> */}
         {vehiclesObj.map((vehicle) => (
@@ -59,9 +64,9 @@ function MyMap() {
               onLoad={onLoad}
               position={{ lat: vehicle.latitude, lng: vehicle.longitude }}
               vehicle={vehicle}
-              icon={<i className="fa-solid fa-location-pin"/>}
+              icon={positionImage}
               clickable = {true}
-              onClick={onClick}
+              onClick={() => {onClick(vehicle)}}
             />
           // </Link>
         ))}

@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 1000px;
   background: url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/mulholland-drive-california-1585669652.jpg?crop=0.9936530324400564xw:1xh;center,top&resize=1500:*) no-repeat;
 }
 .makes{
@@ -13,7 +13,9 @@
   align-items: center;
   height: 100%;
   padding-top: 1vh;
-  color: red;
+  color: white;
+  font-size: larger;
+  font-weight: bolder;
 }
 .types{
   display: flex;
@@ -21,7 +23,9 @@
   justify-content: center;
   align-items: center;
   padding-top: 1vh;
-  color: red;
+  color: white;
+  font-size: larger;
+  font-weight: bolder;
 }
 .categories{
   display: flex;
@@ -29,14 +33,18 @@
   justify-content: center;
   align-items: center;
   padding-top: 1vh;
-  color: red;
+  color: white;
+  font-size: larger;
+  font-weight: bolder;
 }
 .footer{
+  /* position:fixed;
+  bottom: 0px; */
   display: flex;
   justify-content: center;
   align-items: flex-end;
   margin-top: 5vh;
-  border-top: 1px solid lightgray;
+  /* border-top: 1px solid lightgray; */
 
 }
 .carousel{
@@ -44,7 +52,10 @@
   flex-direction: row;
   justify-content: space-between;
 }
-
-.all-vehicles-link:hover{
-  color: red;
+button.all-cars-button{
+  width: 110px;
+  height: 150px;
+  margin: 0px 5px 0px 5px;
+  background-color: white;
+  color: white;
 }

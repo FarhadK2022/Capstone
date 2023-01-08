@@ -10,7 +10,7 @@ function HomePage() {
         <div className="title">
           <h1>Find the Perfect Vehicle</h1>
         </div>
-        <button className="button">
+        <button className="all-cars-button">
           <Link to="/cars">
             All Vehicles
           </Link>

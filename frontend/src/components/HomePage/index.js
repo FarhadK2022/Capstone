@@ -10,11 +10,11 @@ function HomePage() {
         <div className="title">
           <h1>Find the Perfect Vehicle</h1>
         </div>
-        <button className="all-cars-button">
           <Link to="/cars">
+        <button className="button">
             All Vehicles
-          </Link>
         </button>
+          </Link>
         <div className="makes">
           <h3>Search by Make</h3>
           <MakeCarousel/>

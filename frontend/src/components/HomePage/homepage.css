@@ -52,4 +52,7 @@
   flex-direction: row;
   justify-content: space-between;
 }
-
+button {
+  border: none;
+  /* box-shadow: 0px 2px 10px rgb(89 60 251) */
+}

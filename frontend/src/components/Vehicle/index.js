@@ -7,6 +7,7 @@ import { useParams, Link} from "react-router-dom";
 import ReviewCard from "../ReviewCard/index";
 import EditVehicleFormModal from "../EditVehicleFormModal/index";
 import CreateReviewFormModal from "../CreateReviewFormModal/index";
+import MyMap from "../GoogleMap/MapComponent"
 import "./vehicle.css";
 
 function GetOneVehiclePage() {

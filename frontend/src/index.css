@@ -12,9 +12,10 @@ button.button{
   height: 40px;
   color: white;
   background-color: black;
+  border: none;
 }
 button:hover{
-  box-shadow: 0px 2px 10px gray;
+  box-shadow: 0px 2px 10px rgb(89 60 251)
 }
 li{
   list-style-type: none;
@@ -22,4 +23,12 @@ li{
 
 div{
 font-family: Montserrat;
+}
+
+.inputField {
+  border: 1px solid lightgrey;
+  height: 35px;
+}
+.inputField:focus{
+  box-shadow: 0px 2px 10px rgb(89 60 251)
 }

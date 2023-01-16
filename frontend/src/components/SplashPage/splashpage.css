@@ -1,10 +1,10 @@
 .container{
-  background: url(https://s.inyourpocket.com/img/text/romania/bucharest/transfagarasan-highway-in-romania-c-andrei-seritan.jpg) repeat-x;
+  background: url(https://s.inyourpocket.com/img/text/romania/bucharest/transfagarasan-highway-in-romania-c-andrei-seritan.jpg) fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 1000px;
+  min-height: 100vh;
 
 }
 .title{
@@ -14,15 +14,18 @@
   align-content: center;
   align-items: center;
   color: white;
-  font-size: 30px;
+  font-size: 35px;
+  height: 100vh;
 }
 .page-contents{
-  padding-top: 20px;
-  height: 100%;
-  color: white;
+  padding-top: 5px;
+  height: 50vh;
+  color: rgb(89 60 251);
+  font-size: 23px;
 }
 .page-contents :hover{
-  color: rgb(89 60 251);
+  background-color: rgb(89 60 251);
+  color: black;
 }
 .top{
   margin-top: 5px;
@@ -30,12 +33,12 @@
   color: white;
 }
 .splash-footer{
-  /* position:fixed;
-  bottom: 0px; */
+  position:fixed;
+  bottom: 0px;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  margin-top: 2vh;
+  align-items: center;
+  margin-top: 3vh;
   color: white;
-  /* border-top: 1px solid lightgray; */
+  height: 10vh;
 }

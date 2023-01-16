@@ -40,7 +40,7 @@ function GetAllVehiclesPage() {
          <MyMap/>
       </div>
      </div>
-      <footer className="footer">
+      <footer className="footer" color="black">
         <a
           href="https://www.linkedin.com/in/farhad-koushan-63b920167/"
           rel="noreferrer"

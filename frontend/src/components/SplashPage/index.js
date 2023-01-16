@@ -12,11 +12,11 @@ function SplashPage() {
           </h2>
         </div>
         <div className="page-contents" color="white">
+            <button className="button">
           <Link className="page-contents" to="/home">
-            <i className="fa-solid fa-power-off" color="white" />
-            Find a Vehicle
-            <i className="fa-solid fa-power-off" color="white"/>
+            Let's Go!
           </Link>
+            </button>
         </div>
         <footer className="splash-footer">
           <a

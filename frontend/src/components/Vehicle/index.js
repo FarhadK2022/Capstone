@@ -1,6 +1,7 @@
 import React from "react";
 import * as vehicleActions from "../../store/vehicles";
 import * as reviewActions from "../../store/reviews";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams, Link} from "react-router-dom";
@@ -84,6 +85,7 @@ function GetOneVehiclePage() {
             ))}
           </div>
         </div>
+        
         <footer className="footer">
           <a
             href="https://www.linkedin.com/in/farhad-koushan-63b920167/"

@@ -3,21 +3,28 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 1000px;
-  background: url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/mulholland-drive-california-1585669652.jpg?crop=0.9936530324400564xw:1xh;center,top&resize=1500:*) no-repeat;
+  min-height: 100vh;
+  background: url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/mulholland-drive-california-1585669652.jpg?crop=0.9936530324400564xw:1xh;center,top&resize=1500:*) no-repeat fixed;
+}
+.title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
 }
 .makes{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 40vh;
   padding-top: 1vh;
   color: white;
   font-size: larger;
   font-weight: bolder;
 }
 .types{
+  height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,24 +35,25 @@
   font-weight: bolder;
 }
 .categories{
+  height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-top: 1vh;
+  padding-bottom: 10vh;
   color: white;
   font-size: larger;
   font-weight: bolder;
 }
 .footer{
-  /* position:fixed;
-  bottom: 0px; */
+  position:fixed;
+  bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-top: 5vh;
-  /* border-top: 1px solid lightgray; */
-
+  color: white;
+  border: none;
 }
 .carousel{
   display: flex;
@@ -54,5 +62,5 @@
 }
 button {
   border: none;
-  /* box-shadow: 0px 2px 10px rgb(89 60 251) */
+  font-size: 15px;
 }

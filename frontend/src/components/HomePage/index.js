@@ -33,7 +33,7 @@ function HomePage() {
             rel="noreferrer"
             target="_blank"
           >
-            <i className="fa-brands fa-linkedin" />
+            <i className="fa-brands fa-linkedin" color="white"/>
           </a>{" "}
           Developed By Farhad Koushan{" "}
           <a
@@ -41,7 +41,7 @@ function HomePage() {
             rel="noreferrer"
             target="_blank"
           >
-            <i className="fa-brands fa-github" />
+            <i className="fa-brands fa-github" color="white"/>
           </a>
         </footer>
       </div>

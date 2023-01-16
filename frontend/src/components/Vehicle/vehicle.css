@@ -103,9 +103,10 @@ width: 50%;
 }
 
 .footer{
+  position: fixed;
+  bottom: 0px;
   display: flex;
-  height: 30px;
   justify-content: center;
-  align-content: flex-end;
-  border-top: 1px solid lightgray;
+  align-items: center;
+  color: black;
 }

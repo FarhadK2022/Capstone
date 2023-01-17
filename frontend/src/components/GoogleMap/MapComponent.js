@@ -16,11 +16,6 @@ function MyMap() {
     height: "730px",
   };
 
-  const homeBase = {
-    lat: 34.06220174258613,
-    lng: -118.36138455990302,
-  };
-
   const  homeBaseImage = <image className="fa-solid fa-location-dot"/>
 
   const positionImage = <image className="fa-solid fa-location-pin"/>
@@ -46,20 +41,19 @@ function MyMap() {
       <GoogleMap
         className='maps'
         mapContainerStyle={containerStyle}
-        center={homeBase}
+        center={position}
         zoom={10}
         clickableIcons={true}
       >
         <Marker
           onLoad={onLoad}
-          position={homeBase}
+          position={position}
           visible={true}
           icon={homeBaseImage}
           clickable={true}
         />
-        {/* <div className="card"> */}
+
         {vehiclesObj.map((vehicle) => (
-          // <Link to={`/cars/${vehicle.id}`}>
             <Marker
               onLoad={onLoad}
               position={{ lat: vehicle.latitude, lng: vehicle.longitude }}
@@ -68,9 +62,7 @@ function MyMap() {
               clickable = {true}
               onClick={() => {onClick(vehicle)}}
             />
-          // </Link>
         ))}
-        {/* // </div> */}
       </GoogleMap>
     </LoadScript>
   );

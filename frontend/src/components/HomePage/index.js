@@ -8,7 +8,7 @@ function HomePage() {
     <>
       <div className="home-container">
         <div className="title">
-          <h1>Find the Perfect Vehicle</h1>
+          <h1>The Vehicle of Your Dreams Awaits</h1>
         </div>
           <Link to="/cars">
         <button className="button">

@@ -5,12 +5,14 @@
   align-items: center;
   min-height: 100vh;
   background: url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/mulholland-drive-california-1585669652.jpg?crop=0.9936530324400564xw:1xh;center,top&resize=1500:*) no-repeat fixed;
+  background-position: center;
+  background-size: cover;
 }
 .title{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh;
+  height: 100vh;
 }
 .makes{
   display: flex;
@@ -60,7 +62,6 @@
   flex-direction: row;
   justify-content: space-between;
 }
-button {
+button.button {
   border: none;
-  font-size: 15px;
 }

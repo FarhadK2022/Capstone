@@ -1,20 +1,17 @@
 import React from "react";
 import * as vehicleActions from "../../store/vehicles";
 import * as reviewActions from "../../store/reviews";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams, Link} from "react-router-dom";
 import ReviewCard from "../ReviewCard/index";
 import EditVehicleFormModal from "../EditVehicleFormModal/index";
 import CreateReviewFormModal from "../CreateReviewFormModal/index";
-import MyMap from "../GoogleMap/MapComponent"
 import "./vehicle.css";
 
 function GetOneVehiclePage() {
   const dispatch = useDispatch();
   const { vehicleId } = useParams();
-
   useEffect(() => {
     dispatch(reviewActions.clearReviewsThunk());
   },[dispatch]);
@@ -85,7 +82,6 @@ function GetOneVehiclePage() {
             ))}
           </div>
         </div>
-        
         <footer className="footer">
           <a
             href="https://www.linkedin.com/in/farhad-koushan-63b920167/"

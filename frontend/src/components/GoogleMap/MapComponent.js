@@ -1,67 +1,111 @@
-import React from "react";
-import * as vehicleActions from "../../store/vehicles";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./maps.css"
+import {
+  GoogleMap,
+  LoadScript,
+  Marker,
+  InfoWindow,
+  Autocomplete,
+} from "@react-google-maps/api";
+import * as vehicleActions from "../../store/vehicles";
+import VehicleCardAll from "../VehicleCard/index";
+import "./maps.css";
 
 function MyMap() {
   const dispatch = useDispatch();
   const currentVehicles = useSelector((state) => state.vehicle.allVehicles);
   const vehiclesObj = Object.values(currentVehicles);
+  const [activeMarker, setActiveMarker] = useState(null);
+
+  useEffect(() => {
+    dispatch(vehicleActions.allVehiclesThunk());
+  }, [dispatch]);
+
+  const handleActiveMarker = (marker) => {
+    if (marker === activeMarker) {
+      return;
+    }
+    setActiveMarker(marker);
+  };
 
   const containerStyle = {
     width: "560px",
     height: "730px",
   };
 
-  const  homeBaseImage = <image className="fa-solid fa-location-dot"/>
-
-  const positionImage = <image className="fa-solid fa-location-pin"/>
+  const image = '<img className="fa-solid fa-location-pin" />';
 
   const position = {
     lat: 34.06220174258613,
     lng: -118.36138455990302,
   };
 
-  const onLoad = (marker) => {
-    console.log("marker: ", marker);
+  const divStyle = {
+    background: `white`,
+    border: `1px solid #ccc`,
+    padding: 15,
   };
-  useEffect(() => {
-    dispatch(vehicleActions.allVehiclesThunk());
-  }, [dispatch]);
-
-  const onClick = (vehicle) => {
-    <Link to={`/cars/${vehicle.id}`} />
-  }
 
   return (
-    <LoadScript googleMapsApiKey="AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY">
+    <LoadScript
+      googleMapsApiKey="AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY"
+      libraries={["places"]}
+    >
       <GoogleMap
-        className='maps'
+        className="maps"
         mapContainerStyle={containerStyle}
         center={position}
-        zoom={10}
+        zoom={8}
         clickableIcons={true}
+        onClick={() => setActiveMarker(null)}
       >
-        <Marker
-          onLoad={onLoad}
-          position={position}
-          visible={true}
-          icon={homeBaseImage}
-          clickable={true}
-        />
+        <Autocomplete>
+          <input
+            type="text"
+            placeholder="Search..."
+            style={{
+              boxSizing: `border-box`,
+              border: `1px solid transparent`,
+              width: `320px`,
+              height: `32px`,
+              padding: `0 12px`,
+              borderRadius: `15px`,
+              boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+              fontSize: `14px`,
+              outline: `none`,
+              textOverflow: `ellipses`,
+              position: "absolute",
+              left: "50%",
+              marginLeft: "-120px",
+            }}
+          />
+        </Autocomplete>
 
         {vehiclesObj.map((vehicle) => (
-            <Marker
-              onLoad={onLoad}
-              position={{ lat: vehicle.latitude, lng: vehicle.longitude }}
-              vehicle={vehicle}
-              icon={positionImage}
-              clickable = {true}
-              onClick={() => {onClick(vehicle)}}
-            />
+          <Marker
+            key={vehicle.id}
+            value={vehicle.id}
+            setLabel={vehicle.id}
+            position={{ lat: vehicle.latitude, lng: vehicle.longitude }}
+            vehicle={vehicle}
+            setIcon={image}
+            clickable={true}
+            animation={"DROP"}
+            onClick={() => handleActiveMarker(vehicle.id)}
+          >
+            {activeMarker === vehicle.id ? (
+              <InfoWindow onCloseClick={() => setActiveMarker(null)}>
+                <div style={divStyle}>
+                  <Link to={`/cars/${vehicle.id}`}>
+                    <div className="card" key={vehicle.id} value={vehicle.id}>
+                      <VehicleCardAll vehicle={vehicle} />
+                    </div>
+                  </Link>
+                </div>
+              </InfoWindow>
+            ) : null}
+          </Marker>
         ))}
       </GoogleMap>
     </LoadScript>

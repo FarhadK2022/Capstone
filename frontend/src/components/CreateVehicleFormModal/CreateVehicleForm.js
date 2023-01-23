@@ -257,13 +257,13 @@ function CreateVehicleForm({ setShowModal }) {
         </select>
       </label>
       <label>
-        MPG
+        Miles Per Gallon
         <input
           className="inputField"
           type="number"
           value={MPG}
           onChange={(e) => setMPG(e.target.value)}
-          placeholder="Miles Per Gallon"
+          placeholder="Please round to nearest whole number"
           required
         />
       </label>

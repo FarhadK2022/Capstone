@@ -8,13 +8,13 @@ function HomePage() {
     <>
       <div className="home-container">
         <div className="title">
-          <h1>Find the Perfect Vehicle</h1>
+          <h1>The Vehicle of Your Dreams Awaits</h1>
         </div>
           <Link to="/cars">
-            <h2 className="all-vehicles-link">
-              All Vehicles
-              </h2>
-              </Link>
+        <button className="button">
+            All Vehicles
+        </button>
+          </Link>
         <div className="makes">
           <h3>Search by Make</h3>
           <MakeCarousel/>
@@ -33,7 +33,7 @@ function HomePage() {
             rel="noreferrer"
             target="_blank"
           >
-            <i className="fa-brands fa-linkedin" />
+            <i className="fa-brands fa-linkedin" color="white"/>
           </a>{" "}
           Developed By Farhad Koushan{" "}
           <a
@@ -41,7 +41,7 @@ function HomePage() {
             rel="noreferrer"
             target="_blank"
           >
-            <i className="fa-brands fa-github" />
+            <i className="fa-brands fa-github" color="white"/>
           </a>
         </footer>
       </div>

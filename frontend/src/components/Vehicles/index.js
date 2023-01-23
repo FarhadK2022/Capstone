@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import VehicleCardAll from "../VehicleCard";
+import MyMap from "../GoogleMap/MapComponent";
 import "./vehicles.css";
 
 function GetAllVehiclesPage() {
@@ -36,10 +37,10 @@ function GetAllVehiclesPage() {
         ))}
       </div>
       <div className="google-maps-api">
-          <span>Google Map coming soon</span>
+         <MyMap/>
       </div>
      </div>
-      <footer className="footer">
+      <footer className="footer" color="black">
         <a
           href="https://www.linkedin.com/in/farhad-koushan-63b920167/"
           rel="noreferrer"

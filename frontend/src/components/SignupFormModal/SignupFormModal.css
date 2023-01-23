@@ -1,15 +1,16 @@
 .formModal {
-  height: 100%;
-  width: 100%;
-  padding: 20px;
   border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-button.button {
+.button {
   width: 120px;
   height: 30px;
-  color: black;
-  background-color:red;
+  color: white;
+  background-color:black;
   margin-top: 15px;
   border-radius: 15px;
   display: block
@@ -18,5 +19,7 @@ button.button {
 .inputField {
   display: block;
   margin: 5px;
-  width: 250px
+  width: 350px;
+  height: 35px;
+  border-radius: 10px;
 }

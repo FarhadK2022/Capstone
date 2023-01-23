@@ -1,19 +1,26 @@
 .formModal {
-  height: auto;
-  width: 500px;
-  padding: 25px;
-  overflow-y: scroll;
+  width: auto;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .button {
-  width: 100px;
-  height: 50px;
+  width: 120px;
+  height: 30px;
   color: white;
-  background-color: #ff385c;
+  background-color:black;
   margin-top: 15px;
+  border-radius: 15px;
+  display: block
 }
 
 .inputField {
   display: block;
-  margin: 10px;
+  margin: 5px;
+  width: 350px;
+  height: 25px;
+  border-radius: 10px;
 }

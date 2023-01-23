@@ -249,11 +249,13 @@ const MakeCarousel = () => {
   return (
     <div className="carousel">
       <button onClick={handlePrevious}>
-        <i className="fa-solid fa-arrow-left"></i>
+        {/* <i className="fa-solid fa-arrow-left"></i> */}
+        <i className="fa-solid fa-angle-left"></i>
       </button>
       <CarouselCardAll data={data[index]} />
       <button onClick={handleNext}>
-        <i className="fa-solid fa-arrow-right"></i>
+        {/* <i className="fa-solid fa-arrow-right"></i> */}
+        <i className="fa-solid fa-angle-right"></i>
       </button>
     </div>
   );

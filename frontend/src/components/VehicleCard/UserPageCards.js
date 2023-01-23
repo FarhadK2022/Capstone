@@ -1,15 +1,18 @@
 import "./VehicleCardAll.css";
-import EditVehicleFormModal from "../EditVehicleFormModal";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import * as vehicleActions from "../../store/vehicles"
+import EditVehicleFormModal from "../EditVehicleFormModal";
 
-function VehicleCardUser({ vehicle }) {
+function VehicleCardUser({ vehicle, setShowModal }) {
   const dispatch = useDispatch()
   return (
     <>
       <div className="card-container">
         <div className="card">
+          <Link className="card" to={`/cars/${vehicle.id}`}>
           <img src={vehicle.previewImage} alt={""} />
+          </Link>
           <div className="card-info">
             <h2>
               {vehicle.make} {vehicle.model} {vehicle.year}
@@ -17,7 +20,7 @@ function VehicleCardUser({ vehicle }) {
             <h3>{vehicle.avgRating} ★</h3>
           </div>
           <div className="card-price">
-          <EditVehicleFormModal vehicle={vehicle} />
+          <EditVehicleFormModal setShowModal={setShowModal} vehicle={vehicle} />
           <button
               className="button"
               onClick={async () => {

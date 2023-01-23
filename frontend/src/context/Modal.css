@@ -20,9 +20,14 @@
 
 #modal-content {
   position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   background-color:white;
   border-radius: 5px;
-  height:70%;
+  max-height: 700px;
   width: auto;
   overflow-y: scroll;
 }

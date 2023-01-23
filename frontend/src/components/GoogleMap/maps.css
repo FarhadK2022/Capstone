@@ -1,0 +1,18 @@
+.maps{
+  text-decoration: none;
+  z-index: 0;
+  border-radius: 0px;
+}
+.gm-style-mtc > button{
+  width: 90px;
+  border-radius: 0px;
+  text-decoration: none;
+}
+.map-card{
+  display: flex;
+  justify-content:space-evenly;
+  align-items: flex-end;
+  width: 380px;
+  height: 350px;
+  color: black;
+}

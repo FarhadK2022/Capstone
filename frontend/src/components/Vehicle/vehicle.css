@@ -6,6 +6,7 @@
   align-content: center;
   box-sizing: border-box;
   padding: 0px 40px;
+  background-color: lightgray;
 }
 
 .one-spot-info-section{
@@ -103,9 +104,10 @@ width: 50%;
 }
 
 .footer{
+  position: fixed;
+  bottom: 0px;
   display: flex;
-  height: 30px;
-  justify-content: right;
-  align-content: flex-end;
-  border-top: 1px solid lightgray;
+  justify-content: center;
+  align-items: center;
+  color: black;
 }

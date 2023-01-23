@@ -12,6 +12,9 @@ import "./vehicle.css";
 function GetOneVehiclePage() {
   const dispatch = useDispatch();
   const { vehicleId } = useParams();
+  useEffect(() => {
+    dispatch(reviewActions.clearReviewsThunk());
+  },[dispatch]);
 
   useEffect(() => {
     dispatch(vehicleActions.vehicleThunk(vehicleId));
@@ -30,6 +33,7 @@ function GetOneVehiclePage() {
   if (!vehicle.VehicleImages) {
     return null;
   }
+
 
   if (sessionUser === null || sessionUser === undefined) {
     return (
@@ -77,6 +81,8 @@ function GetOneVehiclePage() {
               </div>
             ))}
           </div>
+          <iframe width="1400" height="650" style={{border:0, paddingBottom: 0}} loading="lazy" allowfullscreen
+src="https://www.google.com/maps/embed/v1/search?q=San+Francisco,+CA,+USA&key=AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY"></iframe>
         </div>
         <footer className="footer">
           <a
@@ -157,6 +163,8 @@ function GetOneVehiclePage() {
             </button>
             </Link>
           </div>
+          <iframe width="1400" height="650" style={{border:0, paddingBottom: 0}} loading="lazy" allowfullscreen
+src="https://www.google.com/maps/embed/v1/search?q=San+Francisco,+CA,+USA&key=AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY"></iframe>
         </div>
         <footer className="footer">
           <a
@@ -224,6 +232,8 @@ function GetOneVehiclePage() {
               </div>
             ))}
           </div>
+          <iframe width="1400" height="650" style={{border:0, paddingBottom: 0}} loading="lazy" allowfullscreen
+src="https://www.google.com/maps/embed/v1/search?q=San+Francisco,+CA,+USA&key=AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY"></iframe>
         </div>
         <footer className="footer">
           <a

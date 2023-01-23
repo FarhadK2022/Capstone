@@ -18,6 +18,7 @@ function MyMap() {
   const vehiclesObj = Object.values(currentVehicles);
   const [activeMarker, setActiveMarker] = useState(null);
 
+
   useEffect(() => {
     dispatch(vehicleActions.allVehiclesThunk());
   }, [dispatch]);
@@ -36,14 +37,18 @@ function MyMap() {
 
   const image = '<img className="fa-solid fa-location-pin" />';
 
-  const position = {
+  let position = {
     lat: 34.06220174258613,
     lng: -118.36138455990302,
   };
+  const handleNewPlace = (autocomplete) => {
+    console.log(autocomplete)
+    return position = autocomplete
+  }
 
   const divStyle = {
     background: `white`,
-    border: `1px solid #ccc`,
+
     padding: 15,
   };
 
@@ -59,15 +64,17 @@ function MyMap() {
         zoom={8}
         clickableIcons={true}
         onClick={() => setActiveMarker(null)}
+
       >
         <Autocomplete>
           <input
             type="text"
             placeholder="Search..."
+            onSubmit={(e) => handleNewPlace(e.target.value)}
             style={{
               boxSizing: `border-box`,
               border: `1px solid transparent`,
-              width: `320px`,
+              width: `280px`,
               height: `32px`,
               padding: `0 12px`,
               borderRadius: `15px`,
@@ -76,8 +83,9 @@ function MyMap() {
               outline: `none`,
               textOverflow: `ellipses`,
               position: "absolute",
-              left: "50%",
+              left: "59%",
               marginLeft: "-120px",
+              top:"10px"
             }}
           />
         </Autocomplete>
@@ -98,7 +106,7 @@ function MyMap() {
               <InfoWindow onCloseClick={() => setActiveMarker(null)}>
                 <div style={divStyle}>
                   <Link to={`/cars/${vehicle.id}`}>
-                    <div className="card" key={vehicle.id} value={vehicle.id}>
+                    <div className="map-card" key={vehicle.id} value={vehicle.id}>
                       <VehicleCardAll vehicle={vehicle} />
                     </div>
                   </Link>

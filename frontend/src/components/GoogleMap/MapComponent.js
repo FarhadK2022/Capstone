@@ -41,10 +41,6 @@ function MyMap() {
     lat: 34.06220174258613,
     lng: -118.36138455990302,
   };
-  const handleNewPlace = (autocomplete) => {
-    console.log(autocomplete)
-    return position = autocomplete
-  }
 
   const divStyle = {
     background: `white`,
@@ -70,7 +66,6 @@ function MyMap() {
           <input
             type="text"
             placeholder="Search..."
-            onSubmit={(e) => handleNewPlace(e.target.value)}
             style={{
               boxSizing: `border-box`,
               border: `1px solid transparent`,

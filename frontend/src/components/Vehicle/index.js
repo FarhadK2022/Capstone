@@ -3,18 +3,21 @@ import * as vehicleActions from "../../store/vehicles";
 import * as reviewActions from "../../store/reviews";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { useParams, Link} from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import ReviewCard from "../ReviewCard/index";
 import EditVehicleFormModal from "../EditVehicleFormModal/index";
 import CreateReviewFormModal from "../CreateReviewFormModal/index";
 import "./vehicle.css";
+import {
+  Marker,
+} from "@react-google-maps/api";
 
 function GetOneVehiclePage() {
   const dispatch = useDispatch();
   const { vehicleId } = useParams();
   useEffect(() => {
     dispatch(reviewActions.clearReviewsThunk());
-  },[dispatch]);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(vehicleActions.vehicleThunk(vehicleId));
@@ -34,7 +37,6 @@ function GetOneVehiclePage() {
     return null;
   }
 
-
   if (sessionUser === null || sessionUser === undefined) {
     return (
       <>
@@ -51,14 +53,13 @@ function GetOneVehiclePage() {
             </div>
             <div className="one-spot-info">
               <p>
-              {vehicle.avgStarRating} ★ • ({vehicle.numReviews} trips)
+                {vehicle.avgStarRating} ★ • ({vehicle.numReviews} trips)
               </p>
               <p>
                 <i className="fa-solid fa-gauge" />
                 {vehicle.MPG} MPG •
                 <i className="fa-solid fa-gas-pump" />
-                {vehicle.drivetrain} premium •
-                {vehicle.doors} Doors •
+                {vehicle.drivetrain} premium •{vehicle.doors} Doors •
                 {vehicle.numSeats} Seats
               </p>
             </div>
@@ -81,8 +82,15 @@ function GetOneVehiclePage() {
               </div>
             ))}
           </div>
-          <iframe width="1400" height="650" style={{border:0, paddingBottom: 0}} loading="lazy" allowfullscreen
-src="https://www.google.com/maps/embed/v1/search?q=San+Francisco,+CA,+USA&key=AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY"></iframe>
+          <h2>Pick Up Location:</h2>
+          <iframe
+            width="1400"
+            height="750"
+            style={{ border: 0, paddingBottom: 0}}
+            loading="lazy"
+            allowfullscreen
+            src={`https://www.google.com/maps/embed/v1/search?q=near+${vehicle.latitude},+${vehicle.longitude}&center=${vehicle.latitude},+${vehicle.longitude}&zoom=12&key=AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY`}
+          ></iframe>
         </div>
         <footer className="footer">
           <a
@@ -106,7 +114,7 @@ src="https://www.google.com/maps/embed/v1/search?q=San+Francisco,+CA,+USA&key=AI
   } else if (sessionUser.id === vehicle.ownerId) {
     return (
       <>
-         <div className="one-spot-container">
+        <div className="one-spot-container">
           <div className="one-spot-info-section" key={vehicle.id}>
             <div className="cardimage-one">
               <img src={vehicle.VehicleImages[0]?.url} alt={""} />
@@ -119,14 +127,13 @@ src="https://www.google.com/maps/embed/v1/search?q=San+Francisco,+CA,+USA&key=AI
             </div>
             <div className="one-spot-info">
               <p>
-              {vehicle.avgStarRating} ★ • ({vehicle.numReviews} trips)
+                {vehicle.avgStarRating} ★ • ({vehicle.numReviews} trips)
               </p>
               <p>
                 <i className="fa-solid fa-gauge" />
                 {vehicle.MPG} MPG •
                 <i className="fa-solid fa-gas-pump" />
-                {vehicle.drivetrain} premium •
-                {vehicle.doors} Doors •
+                {vehicle.drivetrain} premium •{vehicle.doors} Doors •
                 {vehicle.numSeats} Seats
               </p>
             </div>
@@ -152,19 +159,26 @@ src="https://www.google.com/maps/embed/v1/search?q=San+Francisco,+CA,+USA&key=AI
           <div className="owners-tools">
             <EditVehicleFormModal vehicle={vehicle} />
             <Link to={`/home`}>
-            <button
-              className="button"
-              onClick={async () => {
-                // event.stopPropagation();
-                await dispatch(vehicleActions.deleteVehicleThunk(vehicle.id));
-              }}
-            >
-              Delete Vehicle
-            </button>
+              <button
+                className="button"
+                onClick={async () => {
+                  // event.stopPropagation();
+                  await dispatch(vehicleActions.deleteVehicleThunk(vehicle.id));
+                }}
+              >
+                Delete Vehicle
+              </button>
             </Link>
           </div>
-          <iframe width="1400" height="650" style={{border:0, paddingBottom: 0}} loading="lazy" allowfullscreen
-src="https://www.google.com/maps/embed/v1/search?q=San+Francisco,+CA,+USA&key=AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY"></iframe>
+          <h2>Pick Up Location:</h2>
+          <iframe
+            width="1400"
+            height="750"
+            style={{ border: 0, paddingBottom: 0 }}
+            loading="lazy"
+            allowfullscreen
+            src={`https://www.google.com/maps/embed/v1/search?q=near+${vehicle.latitude},+${vehicle.longitude}&center=${vehicle.latitude},+${vehicle.longitude}&zoom=12&key=AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY`}
+          ></iframe>
         </div>
         <footer className="footer">
           <a
@@ -188,7 +202,7 @@ src="https://www.google.com/maps/embed/v1/search?q=San+Francisco,+CA,+USA&key=AI
   } else if (sessionUser.id !== vehicle.ownerId) {
     return (
       <>
-         <div className="one-spot-container">
+        <div className="one-spot-container">
           <div className="one-spot-info-section" key={vehicle.id}>
             <div className="cardimage-one">
               <img src={vehicle.VehicleImages[0]?.url} alt={""} />
@@ -201,14 +215,13 @@ src="https://www.google.com/maps/embed/v1/search?q=San+Francisco,+CA,+USA&key=AI
             </div>
             <div className="one-spot-info">
               <p>
-              {vehicle.avgStarRating} ★ • ({vehicle.numReviews} trips)
+                {vehicle.avgStarRating} ★ • ({vehicle.numReviews} trips)
               </p>
               <p>
                 <i className="fa-solid fa-gauge" />
                 {vehicle.MPG} MPG •
                 <i className="fa-solid fa-gas-pump" />
-                {vehicle.drivetrain} premium •
-                {vehicle.doors} Doors •
+                {vehicle.drivetrain} premium •{vehicle.doors} Doors •
                 {vehicle.numSeats} Seats
               </p>
             </div>
@@ -232,8 +245,15 @@ src="https://www.google.com/maps/embed/v1/search?q=San+Francisco,+CA,+USA&key=AI
               </div>
             ))}
           </div>
-          <iframe width="1400" height="650" style={{border:0, paddingBottom: 0}} loading="lazy" allowfullscreen
-src="https://www.google.com/maps/embed/v1/search?q=San+Francisco,+CA,+USA&key=AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY"></iframe>
+          <h2>Pick Up Location:</h2>
+          <iframe
+            width="1400"
+            height="750"
+            style={{ border: 0, paddingBottom: 0 }}
+            loading="lazy"
+            allowfullscreen
+            src={`https://www.google.com/maps/embed/v1/search?q=near+${vehicle.latitude},+${vehicle.longitude}&center=${vehicle.latitude},+${vehicle.longitude}&zoom=12&key=AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY`}
+          ></iframe>
         </div>
         <footer className="footer">
           <a

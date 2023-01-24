@@ -33,9 +33,10 @@ function MyMap() {
   const containerStyle = {
     width: "560px",
     height: "730px",
+    postion: "fixed",
   };
 
-  const image = '<img className="fa-solid fa-location-pin" />';
+  const image = '<img className="fa-solid fa-location-dot" />';
 
   let position = {
     lat: 34.06220174258613,
@@ -44,7 +45,6 @@ function MyMap() {
 
   const divStyle = {
     background: `white`,
-
     padding: 15,
   };
 

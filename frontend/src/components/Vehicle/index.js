@@ -48,7 +48,7 @@ function GetOneVehiclePage() {
               </h1>{" "}
               <h3> ${vehicle.price} / day </h3>
             </div>
-            <h2>{vehicle.trim}</h2>
+            <h3>{vehicle.trim}</h3>
             <div className="one-spot-info">
               <li>
                 {vehicle.avgStarRating} ★ • ({vehicle.numReviews} trips)
@@ -73,15 +73,15 @@ function GetOneVehiclePage() {
           </div>
           {/* <div className="one-spot-images-section"></div> */}
           <div className="one-spot-description-section">
-            <h3>Description</h3>
+            <h2>Description</h2>
             <p>{vehicle.description}</p>
           </div>
           <div className="one-spot-review-title">
             <h2>Ratings and Reviews</h2>
-            <h2>
+            <h3>
               {vehicle.avgStarRating} ★ • (
               {vehicle.numReviews} ratings)
-            </h2>
+            </h3>
           </div>
           <div className="reviews-section">
             {reviewsArr.map((review) => (
@@ -134,7 +134,7 @@ function GetOneVehiclePage() {
               </h1>{" "}
               <h3> ${vehicle.price} / day </h3>
             </div>
-            <h2>{vehicle.trim}</h2>
+            <h3>{vehicle.trim}</h3>
             <div className="one-spot-info">
             <li>
                 {vehicle.avgStarRating} ★ • ({vehicle.numReviews} trips)
@@ -159,15 +159,15 @@ function GetOneVehiclePage() {
           </div>
           {/* <div className="one-spot-images-section"></div> */}
           <div className="one-spot-description-section">
-            <h3>Description</h3>
+            <h2>Description</h2>
             <p>{vehicle.description}</p>
           </div>
           <div className="one-spot-review-title">
             <h2>Ratings and Reviews</h2>
-            <h2>
+            <h3>
               {vehicle.avgStarRating} ★ • (
               {vehicle.numReviews} ratings)
-            </h2>
+            </h3>
           </div>
           <div className="reviews-section">
             {reviewsArr.map((review) => (
@@ -234,7 +234,7 @@ function GetOneVehiclePage() {
               </h1>{" "}
               <h3> ${vehicle.price} / day </h3>
             </div>
-            <h2>{vehicle.trim}</h2>
+            <h3>{vehicle.trim}</h3>
             <div className="one-spot-info">
             <li>
                 {vehicle.avgStarRating} ★ • ({vehicle.numReviews} trips)
@@ -260,15 +260,15 @@ function GetOneVehiclePage() {
           {/* <div className="one-spot-images-section"></div> */}
 
           <div className="one-spot-description-section">
-            <h3>Description</h3>
+            <h2>Description</h2>
             <p>{vehicle.description}</p>
           </div>
           <div className="one-spot-review-title">
             <h2>Ratings and Reviews</h2>
-            <h2>
+            <h3>
               {vehicle.avgStarRating} ★ • (
               {vehicle.numReviews} ratings)
-            </h2>
+            </h3>
             <CreateReviewFormModal vehicle={vehicle} />
           </div>
           <div className="reviews-section">

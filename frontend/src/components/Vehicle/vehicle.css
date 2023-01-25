@@ -4,12 +4,11 @@
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-  /* align-items: center; */
   box-sizing: border-box;
-  padding-top: 40px 40px 40px 0px;
+  padding: 40px 40px 0px 40px;
   background-color: lightgray;
-  /* height: 100%;
-  width: 100%; */
+
+
 }
 
 .one-spot-info-section{

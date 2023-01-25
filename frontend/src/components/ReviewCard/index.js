@@ -12,7 +12,7 @@ function ReviewCard({ review }) {
       <div className="reviewcard">
         <div className="reviewinfo">
           <p>
-          <i className="fas fa-user-circle fa-xl" />
+          <i className="fas fa-user-circle fa-xl" />{" "}
             {review.User.firstName}
           </p>
           <p>{review.review}</p>
@@ -26,7 +26,7 @@ function ReviewCard({ review }) {
         <div className="reviewinfo">
           <div className="top-line">
             <p>
-            <i className="fas fa-user-circle fa-xl" />
+            <i className="fas fa-user-circle fa-xl" />{" "}
               {review.User.firstName}
             </p>
           </div>
@@ -54,7 +54,7 @@ function ReviewCard({ review }) {
       <div className="reviewcard">
         <div className="reviewinfo">
           <p>
-          <i className="fas fa-user-circle fa-xl" /> 
+          <i className="fas fa-user-circle fa-xl" />{" "}
             {review.User.firstName}
           </p>
           <p>{review.review}</p>

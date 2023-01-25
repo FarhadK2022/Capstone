@@ -59,6 +59,9 @@ function CreateReviewForm({ vehicle, setShowModal }) {
           value={review}
           onChange={(e) => setReview(e.target.value)}
           required
+          minLength={50}
+          maxLength={200}
+         
         />
       </label>
       <label>

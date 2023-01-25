@@ -263,7 +263,7 @@ function CreateVehicleForm({ setShowModal }) {
           type="number"
           value={MPG}
           onChange={(e) => setMPG(e.target.value)}
-          placeholder="Please round to nearest whole number"
+          placeholder="No Decimals"
           required
         />
       </label>

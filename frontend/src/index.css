@@ -8,11 +8,10 @@ a {
 }
 button {
   border: none;
-  /* padding-top: 0; */
 }
 button.button{
   cursor: pointer;
-  width: 150px;
+  width: 155px;
   height: 40px;
   color: white;
   background-color: black;
@@ -26,22 +25,25 @@ button:hover{
 li{
   list-style-type: none;
 }
-
 div{
 font-family: Montserrat;
 }
-
 .inputField {
   border: 1px solid lightgrey;
   height: 35px;
+  width: 400px;
 }
 .inputField:focus{
   box-shadow: 0px 2px 10px rgb(89 60 251);
-  background-color: lightgray;
-}
-.inputField:invalid {
-  border: 2px solid red;
 }
 .inputField:hover{
   background-color: rgb(242, 237, 237);
+}
+.inputField:valid {
+  background-color: white;
+}
+.inputField::placeholder {
+  font-weight: bold;
+  opacity: 0.5;
+
 }

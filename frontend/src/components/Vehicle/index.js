@@ -8,9 +8,6 @@ import ReviewCard from "../ReviewCard/index";
 import EditVehicleFormModal from "../EditVehicleFormModal/index";
 import CreateReviewFormModal from "../CreateReviewFormModal/index";
 import "./vehicle.css";
-import {
-  Marker,
-} from "@react-google-maps/api";
 
 function GetOneVehiclePage() {
   const dispatch = useDispatch();
@@ -84,9 +81,10 @@ function GetOneVehiclePage() {
           </div>
           <h2>Pick Up Location:</h2>
           <iframe
+            title="Pick Up Location"
             width="1400"
             height="750"
-            style={{ border: 0, paddingBottom: 0}}
+            style={{ border: 0, paddingBottom: 0 }}
             loading="lazy"
             allowfullscreen
             src={`https://www.google.com/maps/embed/v1/search?q=near+${vehicle.latitude},+${vehicle.longitude}&center=${vehicle.latitude},+${vehicle.longitude}&zoom=12&key=AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY`}
@@ -172,6 +170,7 @@ function GetOneVehiclePage() {
           </div>
           <h2>Pick Up Location:</h2>
           <iframe
+            title="Pick up Location"
             width="1400"
             height="750"
             style={{ border: 0, paddingBottom: 0 }}
@@ -247,6 +246,7 @@ function GetOneVehiclePage() {
           </div>
           <h2>Pick Up Location:</h2>
           <iframe
+            title="Pick up location"
             width="1400"
             height="750"
             style={{ border: 0, paddingBottom: 0 }}

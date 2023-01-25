@@ -86,7 +86,7 @@ function GetOneVehiclePage() {
             height="750"
             style={{ border: 0, paddingBottom: 0 }}
             loading="lazy"
-            allowfullscreen
+            allowFullScreen
             src={`https://www.google.com/maps/embed/v1/search?q=near+${vehicle.latitude},+${vehicle.longitude}&center=${vehicle.latitude},+${vehicle.longitude}&zoom=12&key=AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY`}
           ></iframe>
         </div>
@@ -175,7 +175,7 @@ function GetOneVehiclePage() {
             height="750"
             style={{ border: 0, paddingBottom: 0 }}
             loading="lazy"
-            allowfullscreen
+            allowFullScreen
             src={`https://www.google.com/maps/embed/v1/search?q=near+${vehicle.latitude},+${vehicle.longitude}&center=${vehicle.latitude},+${vehicle.longitude}&zoom=12&key=AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY`}
           ></iframe>
         </div>
@@ -251,7 +251,7 @@ function GetOneVehiclePage() {
             height="750"
             style={{ border: 0, paddingBottom: 0 }}
             loading="lazy"
-            allowfullscreen
+            allowFullScreen
             src={`https://www.google.com/maps/embed/v1/search?q=near+${vehicle.latitude},+${vehicle.longitude}&center=${vehicle.latitude},+${vehicle.longitude}&zoom=12&key=AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY`}
           ></iframe>
         </div>

@@ -59,8 +59,9 @@
 }
 .card-price{
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   border-top: 1px solid lightgray;
+  align-items: center;
 }
 .card > img {
   object-fit:fill;

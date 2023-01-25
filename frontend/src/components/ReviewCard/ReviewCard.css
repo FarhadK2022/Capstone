@@ -1,22 +1,25 @@
 .reviewcard{
-  border-color: lightgray;
-  border-style: solid;
-  border-radius: 10px;
-  border-width: 1px;
+  /* border-color: black;
+  border-style: solid; */
+  /* border-radius: 10px; */
+  /* border-width: 1px; */
+  border-bottom: 1px solid black;
   height: 220px;
   width: 500px;
   display: flex;
   /* align-items: center; */
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 .reviewinfo{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+
   /* flex-wrap: wrap; */
-  justify-content: center;
-  justify-items: flex-start;
-  /* align-content: flex-start; */
+  justify-content: space-between;
+  /* justify-items: flex-start; */
+  align-content: flex-start;
   align-items: flex-start;
   font-size: medium;
   max-height: 220px;
@@ -27,6 +30,7 @@
 }
 .top-line{
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-content: flex-start;
   align-items: flex-start;
@@ -37,6 +41,12 @@
   align-content: flex-end;
   align-items: flex-end;
   /* padding-bottom: 2px; */
+}
+.middle-line{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .delete{

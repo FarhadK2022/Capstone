@@ -55,7 +55,7 @@ function CreateReviewForm({ vehicle, setShowModal }) {
         <input
           className="inputField"
           type="text"
-          placeholder="Review"
+          placeholder="So... How was it?"
           value={review}
           onChange={(e) => setReview(e.target.value)}
           required

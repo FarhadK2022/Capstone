@@ -12,11 +12,11 @@ function ReviewCard({ review }) {
       <div className="reviewcard">
         <div className="reviewinfo">
           <p>
-          <i className="fas fa-user-circle fa-xl" />{" "}
+          <i className="fas fa-user-circle fa-3x" />{" "}
             {review.User.firstName}
           </p>
-          <p>{review.review}</p>
           <p>{review.stars} ★</p>
+          <p>{review.review}</p>
         </div>
       </div>
     );
@@ -26,15 +26,15 @@ function ReviewCard({ review }) {
         <div className="reviewinfo">
           <div className="top-line">
             <p>
-            <i className="fas fa-user-circle fa-xl" />{" "}
+            <i className="fas fa-user-circle fa-3x" />{" "}
               {review.User.firstName}
             </p>
           </div>
-          <div className="middle-line">
-            <p>{review.review}</p>
-          </div>
           <div className="bottom-line">
             <p>{review.stars} ★</p>
+            </div>
+          <div className="middle-line">
+            <p>{review.review}</p>
             <EditReviewFormModal review={review} />
             <button
               className="button"
@@ -43,9 +43,10 @@ function ReviewCard({ review }) {
                 dispatch(reviewActions.deleteReviewThunk(review.id));
               }}
             >
-              Delete Review
+              Delete
             </button>
           </div>
+
         </div>
       </div>
     );
@@ -54,11 +55,11 @@ function ReviewCard({ review }) {
       <div className="reviewcard">
         <div className="reviewinfo">
           <p>
-          <i className="fas fa-user-circle fa-xl" />{" "}
+          <i className="fas fa-user-circle fa-3x" />{" "}
             {review.User.firstName}
           </p>
-          <p>{review.review}</p>
           <p>{review.stars} ★</p>
+          <p>{review.review}</p>
         </div>
       </div>
     );

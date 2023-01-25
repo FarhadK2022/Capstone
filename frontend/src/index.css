@@ -8,15 +8,17 @@ a {
 }
 button {
   border: none;
+  /* padding-top: 0; */
 }
 button.button{
   cursor: pointer;
-  width: 120px;
+  width: 150px;
   height: 40px;
   color: white;
   background-color: black;
   border: none;
-  font-size: large;
+  font-size:medium;
+  margin-top: 0;
 }
 button:hover{
   box-shadow: 0px 2px 10px rgb(89 60 251)

@@ -39,7 +39,7 @@ function GetOneVehiclePage() {
       <>
         <div className="one-spot-container">
           <div className="cardimage-one">
-            <img src={vehicle.VehicleImages[0]?.url} alt={""} />
+            <img className="cardimage-one" src={vehicle.VehicleImages[0]?.url} alt={""} />
           </div>
           <div className="one-spot-info-section" key={vehicle.id}>
             <div className="one-spot-title">
@@ -269,7 +269,7 @@ function GetOneVehiclePage() {
               {vehicle.avgStarRating} ★ • (
               {vehicle.numReviews} ratings)
             </h3>
-            <CreateReviewFormModal vehicle={vehicle} />
+
           </div>
           <div className="reviews-section">
             {reviewsArr.map((review) => (
@@ -277,6 +277,9 @@ function GetOneVehiclePage() {
                 <ReviewCard review={review} />
               </div>
             ))}
+          </div>
+          <div className="owners-tools">
+          <CreateReviewFormModal vehicle={vehicle} />
           </div>
           <h2>Pick Up Location</h2>
           <iframe

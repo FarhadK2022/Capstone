@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  GoogleMap,
-  LoadScript,
-  Marker,
-  InfoWindow,
-  Autocomplete,
-} from "@react-google-maps/api";
+import { GoogleMap, Marker, InfoWindow } from "@react-google-maps/api";
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from "react-places-autocomplete";
 import * as vehicleActions from "../../store/vehicles";
 import VehicleCardAll from "../VehicleCard/index";
 import "./maps.css";
@@ -17,7 +15,11 @@ function MyMap() {
   const currentVehicles = useSelector((state) => state.vehicle.allVehicles);
   const vehiclesObj = Object.values(currentVehicles);
   const [activeMarker, setActiveMarker] = useState(null);
-
+  const [position, setPosition] = useState({
+    lat: 34.06220174258613,
+    lng: -118.36138455990302,
+  });
+  const [address, setAddress] = useState("");
 
   useEffect(() => {
     dispatch(vehicleActions.allVehiclesThunk());
@@ -30,88 +32,123 @@ function MyMap() {
     setActiveMarker(marker);
   };
 
+  const handleChange = (address) => {
+    setAddress(address);
+  };
+
+  const handleSelect = (address) => {
+    geocodeByAddress(`${address}`)
+      .then((results) => getLatLng(results[0]))
+      .then((latLng) => setPosition(latLng))
+      // .then((latLng) => console.log("Success", latLng))
+      .catch((error) => console.error("Error", error));
+  };
+
   const containerStyle = {
     width: "560px",
     height: "730px",
-  };
-
-  const image = '<img className="fa-solid fa-location-pin" />';
-
-  let position = {
-    lat: 34.06220174258613,
-    lng: -118.36138455990302,
+    postion: "fixed",
   };
 
   const divStyle = {
     background: `white`,
-
     padding: 15,
   };
 
   return (
-    <LoadScript
-      googleMapsApiKey="AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY"
-      libraries={["places"]}
+    <GoogleMap
+      className="maps"
+      mapContainerStyle={containerStyle}
+      center={position}
+      zoom={9}
+      clickableIcons={true}
+      onClick={() => setActiveMarker(null)}
     >
-      <GoogleMap
-        className="maps"
-        mapContainerStyle={containerStyle}
-        center={position}
-        zoom={8}
-        clickableIcons={true}
-        onClick={() => setActiveMarker(null)}
-
+      <PlacesAutocomplete
+        value={address}
+        onChange={handleChange}
+        onSelect={handleSelect}
       >
-        <Autocomplete>
-          <input
-            type="text"
-            placeholder="Search..."
-            style={{
-              boxSizing: `border-box`,
-              border: `1px solid transparent`,
-              width: `280px`,
-              height: `32px`,
-              padding: `0 12px`,
-              borderRadius: `15px`,
-              boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-              fontSize: `14px`,
-              outline: `none`,
-              textOverflow: `ellipses`,
-              position: "absolute",
-              left: "59%",
-              marginLeft: "-120px",
-              top:"10px"
-            }}
-          />
-        </Autocomplete>
+        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+          <div>
+            <input
+              {...getInputProps({
+                type: "search",
+                placeholder: "Search...",
+                // role: "combobox",
+                style: {
+                  boxSizing: `border-box`,
+                  border: `1px solid transparent`,
+                  width: `300px`,
+                  height: `32px`,
+                  padding: `0 12px`,
+                  borderRadius: `15px`,
+                  boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+                  fontSize: `14px`,
+                  outline: `none`,
+                  textOverflow: `ellipses`,
+                  position: "absolute",
+                  left: "57%",
+                  marginLeft: "-120px",
+                  top: "10px",
+                },
+                className: "location-search-input",
+              })}
+            />
+            <div className="autocomplete-dropdown-container">
+              {loading && <div style={{backgroundColor: "white"}}>Loading...</div>}
+              {suggestions.map((suggestion) => {
+                const className = suggestion.active
+                  ? "suggestion-item--active"
+                  : "suggestion-item";
+                // inline style for demonstration purpose
+                const style = suggestion.active
+                  ? { backgroundColor: "#fafafa", cursor: "pointer" }
+                  : { backgroundColor: "#ffffff", cursor: "pointer" };
+                return (
+                  <div
+                    {...getSuggestionItemProps(suggestion, {
+                      className,
+                      style,
+                    })}
+                  >
+                    <span>{suggestion.description}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </PlacesAutocomplete>
 
-        {vehiclesObj.map((vehicle) => (
-          <Marker
-            key={vehicle.id}
-            value={vehicle.id}
-            setLabel={vehicle.id}
-            position={{ lat: vehicle.latitude, lng: vehicle.longitude }}
-            vehicle={vehicle}
-            setIcon={image}
-            clickable={true}
-            animation={"DROP"}
-            onClick={() => handleActiveMarker(vehicle.id)}
-          >
-            {activeMarker === vehicle.id ? (
-              <InfoWindow onCloseClick={() => setActiveMarker(null)}>
-                <div style={divStyle}>
-                  <Link to={`/cars/${vehicle.id}`}>
-                    <div className="map-card" key={vehicle.id} value={vehicle.id}>
-                      <VehicleCardAll vehicle={vehicle} />
-                    </div>
-                  </Link>
-                </div>
-              </InfoWindow>
-            ) : null}
-          </Marker>
-        ))}
-      </GoogleMap>
-    </LoadScript>
+      {vehiclesObj.map((vehicle) => (
+        <Marker
+        className='marker'
+          key={vehicle.id}
+          value={vehicle.id}
+          setLabel={vehicle.id}
+          position={{ lat: vehicle.latitude, lng: vehicle.longitude }}
+          vehicle={vehicle}
+          icon={{url: "http://maps.google.com/mapfiles/ms/icons/purple-dot.png"}}
+          clickable={true}
+          onClick={() => handleActiveMarker(vehicle.id)}
+
+        >
+          {activeMarker === vehicle.id ? (
+            <InfoWindow onCloseClick={() => setActiveMarker(null)}>
+              <div style={divStyle}>
+                <Link to={`/cars/${vehicle.id}`}>
+                  <div className="map-card" key={vehicle.id} value={vehicle.id}>
+                    <VehicleCardAll vehicle={vehicle} />
+                  </div>
+                </Link>
+              </div>
+            </InfoWindow>
+          ) : null}
+        </Marker>
+      ))}
+    </GoogleMap>
+    // </LoadScript>
   );
 }
 

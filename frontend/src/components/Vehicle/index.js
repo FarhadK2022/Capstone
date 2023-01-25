@@ -8,9 +8,6 @@ import ReviewCard from "../ReviewCard/index";
 import EditVehicleFormModal from "../EditVehicleFormModal/index";
 import CreateReviewFormModal from "../CreateReviewFormModal/index";
 import "./vehicle.css";
-import {
-  Marker,
-} from "@react-google-maps/api";
 
 function GetOneVehiclePage() {
   const dispatch = useDispatch();
@@ -41,37 +38,48 @@ function GetOneVehiclePage() {
     return (
       <>
         <div className="one-spot-container">
+          <div className="cardimage-one">
+            <img src={vehicle.VehicleImages[0]?.url} alt={""} />
+          </div>
           <div className="one-spot-info-section" key={vehicle.id}>
-            <div className="cardimage-one">
-              <img src={vehicle.VehicleImages[0]?.url} alt={""} />
-            </div>
             <div className="one-spot-title">
               <h1>
-                {vehicle.make} {vehicle.model} {vehicle.trim} {vehicle.year}{" "}
+                {vehicle.make} {vehicle.model} {vehicle.year}{" "}
               </h1>{" "}
-              <h3> ${vehicle.price}</h3>
+              <h3> ${vehicle.price} / day </h3>
             </div>
+            <h2>{vehicle.trim}</h2>
             <div className="one-spot-info">
-              <p>
+              <li>
                 {vehicle.avgStarRating} ★ • ({vehicle.numReviews} trips)
-              </p>
-              <p>
-                <i className="fa-solid fa-gauge" />
-                {vehicle.MPG} MPG •
-                <i className="fa-solid fa-gas-pump" />
-                {vehicle.drivetrain} premium •{vehicle.doors} Doors •
+              </li>|
+              <li>
+                <i className="fa-solid fa-gauge" />{" "}
+                {vehicle.MPG} MPG
+              </li>|
+              <li>
+                <i className="fa-solid fa-gas-pump" />{" "}
+                {vehicle.drivetrain} (Premium)
+              </li>|
+              <li>
+              <i className="fa-solid fa-door-closed"/>{" "}
+              {vehicle.doors} Doors
+              </li>|
+              <li>
+              <i className="fa-solid fa-chair"/>{" "}
                 {vehicle.numSeats} Seats
-              </p>
+              </li>
             </div>
           </div>
-          <div className="one-spot-images-section"></div>
+          {/* <div className="one-spot-images-section"></div> */}
           <div className="one-spot-description-section">
-            <h4>Description</h4>
+            <h3>Description</h3>
             <p>{vehicle.description}</p>
           </div>
           <div className="one-spot-review-title">
+            <h2>Ratings and Reviews</h2>
             <h2>
-              Ratings and Reviews {vehicle.avgStarRating} ★ • (
+              {vehicle.avgStarRating} ★ • (
               {vehicle.numReviews} ratings)
             </h2>
           </div>
@@ -82,13 +90,14 @@ function GetOneVehiclePage() {
               </div>
             ))}
           </div>
-          <h2>Pick Up Location:</h2>
+          <h2>Pick Up Location</h2>
           <iframe
+            title="Pick Up Location"
             width="1400"
             height="750"
-            style={{ border: 0, paddingBottom: 0}}
+            style={{ border: 0, paddingBottom: 0 }}
             loading="lazy"
-            allowfullscreen
+            allowFullScreen
             src={`https://www.google.com/maps/embed/v1/search?q=near+${vehicle.latitude},+${vehicle.longitude}&center=${vehicle.latitude},+${vehicle.longitude}&zoom=12&key=AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY`}
           ></iframe>
         </div>
@@ -115,38 +124,49 @@ function GetOneVehiclePage() {
     return (
       <>
         <div className="one-spot-container">
+          <div className="cardimage-one">
+            <img src={vehicle.VehicleImages[0]?.url} alt={""} />
+          </div>
           <div className="one-spot-info-section" key={vehicle.id}>
-            <div className="cardimage-one">
-              <img src={vehicle.VehicleImages[0]?.url} alt={""} />
-            </div>
             <div className="one-spot-title">
               <h1>
-                {vehicle.make} {vehicle.model} {vehicle.trim} {vehicle.year}{" "}
+                {vehicle.make} {vehicle.model} {vehicle.year}{" "}
               </h1>{" "}
-              <h3> ${vehicle.price}</h3>
+              <h3> ${vehicle.price} / day </h3>
             </div>
+            <h2>{vehicle.trim}</h2>
             <div className="one-spot-info">
-              <p>
+            <li>
                 {vehicle.avgStarRating} ★ • ({vehicle.numReviews} trips)
-              </p>
-              <p>
-                <i className="fa-solid fa-gauge" />
-                {vehicle.MPG} MPG •
-                <i className="fa-solid fa-gas-pump" />
-                {vehicle.drivetrain} premium •{vehicle.doors} Doors •
+              </li>|
+              <li>
+                <i className="fa-solid fa-gauge" />{" "}
+                {vehicle.MPG} MPG
+              </li>|
+              <li>
+                <i className="fa-solid fa-gas-pump" />{" "}
+                {vehicle.drivetrain} (Premium)
+              </li>|
+              <li>
+              <i className="fa-solid fa-door-closed"/>{" "}
+              {vehicle.doors} Doors
+              </li>|
+              <li>
+              <i className="fa-solid fa-chair"/>{" "}
                 {vehicle.numSeats} Seats
-              </p>
+              </li>
             </div>
           </div>
-          <div className="one-spot-images-section"></div>
+          {/* <div className="one-spot-images-section"></div> */}
           <div className="one-spot-description-section">
-            <h4>Description</h4>
+            <h3>Description</h3>
             <p>{vehicle.description}</p>
           </div>
           <div className="one-spot-review-title">
+            <h2>Ratings and Reviews</h2>
             <h2>
-              Ratings and Reviews {vehicle.avgStarRating} ★ • (
-              {vehicle.numReviews} trips)
+              {vehicle.avgStarRating} ★ • (
+              {vehicle.numReviews} ratings)
             </h2>
           </div>
           <div className="reviews-section">
@@ -170,13 +190,14 @@ function GetOneVehiclePage() {
               </button>
             </Link>
           </div>
-          <h2>Pick Up Location:</h2>
+          <h2>Pick Up Location</h2>
           <iframe
+            title="Pick up Location"
             width="1400"
             height="750"
             style={{ border: 0, paddingBottom: 0 }}
             loading="lazy"
-            allowfullscreen
+            allowFullScreen
             src={`https://www.google.com/maps/embed/v1/search?q=near+${vehicle.latitude},+${vehicle.longitude}&center=${vehicle.latitude},+${vehicle.longitude}&zoom=12&key=AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY`}
           ></iframe>
         </div>
@@ -203,37 +224,49 @@ function GetOneVehiclePage() {
     return (
       <>
         <div className="one-spot-container">
+          <div className="cardimage-one">
+            <img src={vehicle.VehicleImages[0]?.url} alt={""} />
+          </div>
           <div className="one-spot-info-section" key={vehicle.id}>
-            <div className="cardimage-one">
-              <img src={vehicle.VehicleImages[0]?.url} alt={""} />
-            </div>
             <div className="one-spot-title">
               <h1>
-                {vehicle.make} {vehicle.model} {vehicle.trim} {vehicle.year}{" "}
+                {vehicle.make} {vehicle.model} {vehicle.year}{" "}
               </h1>{" "}
-              <h3> ${vehicle.price}</h3>
+              <h3> ${vehicle.price} / day </h3>
             </div>
+            <h2>{vehicle.trim}</h2>
             <div className="one-spot-info">
-              <p>
+            <li>
                 {vehicle.avgStarRating} ★ • ({vehicle.numReviews} trips)
-              </p>
-              <p>
-                <i className="fa-solid fa-gauge" />
-                {vehicle.MPG} MPG •
-                <i className="fa-solid fa-gas-pump" />
-                {vehicle.drivetrain} premium •{vehicle.doors} Doors •
+              </li>|
+              <li>
+                <i className="fa-solid fa-gauge" />{" "}
+                {vehicle.MPG} MPG
+              </li>|
+              <li>
+                <i className="fa-solid fa-gas-pump" />{" "}
+                {vehicle.drivetrain} (Premium)
+              </li>|
+              <li>
+              <i className="fa-solid fa-door-closed"/>{" "}
+              {vehicle.doors} Doors
+              </li>|
+              <li>
+              <i className="fa-solid fa-chair"/>{" "}
                 {vehicle.numSeats} Seats
-              </p>
+              </li>
             </div>
           </div>
-          <div className="one-spot-images-section"></div>
+          {/* <div className="one-spot-images-section"></div> */}
+
           <div className="one-spot-description-section">
-            <h4>Description</h4>
+            <h3>Description</h3>
             <p>{vehicle.description}</p>
           </div>
           <div className="one-spot-review-title">
+            <h2>Ratings and Reviews</h2>
             <h2>
-              Ratings and Reviews {vehicle.avgStarRating} ★ • (
+              {vehicle.avgStarRating} ★ • (
               {vehicle.numReviews} ratings)
             </h2>
             <CreateReviewFormModal vehicle={vehicle} />
@@ -245,13 +278,14 @@ function GetOneVehiclePage() {
               </div>
             ))}
           </div>
-          <h2>Pick Up Location:</h2>
+          <h2>Pick Up Location</h2>
           <iframe
+            title="Pick up location"
             width="1400"
             height="750"
             style={{ border: 0, paddingBottom: 0 }}
             loading="lazy"
-            allowfullscreen
+            allowFullScreen
             src={`https://www.google.com/maps/embed/v1/search?q=near+${vehicle.latitude},+${vehicle.longitude}&center=${vehicle.latitude},+${vehicle.longitude}&zoom=12&key=AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY`}
           ></iframe>
         </div>

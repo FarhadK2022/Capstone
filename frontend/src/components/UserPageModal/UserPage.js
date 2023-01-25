@@ -24,7 +24,8 @@ function UserPage(){
 
   return (
     <>
-    <h1>GT Cockpit</h1>
+    <div style={{backgroundColor: 'lightgray'}}>
+    <h1 style={{paddingTop: 30}}>GT Cockpit</h1>
     <h2>Your Listings:</h2>
     <div className="cars-list">
         {vehiclesObj.map((vehicle) => (
@@ -40,6 +41,7 @@ function UserPage(){
                 <ReviewCard review={review} />
               </div>
             ))}
+          </div>
           </div>
     </>
   )

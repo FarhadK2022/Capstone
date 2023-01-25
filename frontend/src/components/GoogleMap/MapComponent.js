@@ -96,7 +96,7 @@ function MyMap() {
               })}
             />
             <div className="autocomplete-dropdown-container">
-              {loading && <div>Loading...</div>}
+              {loading && <div style={{backgroundColor: "white"}}>Loading...</div>}
               {suggestions.map((suggestion) => {
                 const className = suggestion.active
                   ? "suggestion-item--active"

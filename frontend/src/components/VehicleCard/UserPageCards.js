@@ -1,4 +1,5 @@
 import "./VehicleCardAll.css";
+import "../Vehicles/vehicles.css"
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import * as vehicleActions from "../../store/vehicles"
@@ -20,6 +21,7 @@ function VehicleCardUser({ vehicle, setShowModal }) {
             <h3>{vehicle.avgRating} ★</h3>
           </div>
           <div className="card-price">
+          <h2>${vehicle.price} / day</h2>
           <EditVehicleFormModal setShowModal={setShowModal} vehicle={vehicle} />
           <button
               className="button"
@@ -28,9 +30,8 @@ function VehicleCardUser({ vehicle, setShowModal }) {
                 await dispatch(vehicleActions.deleteVehicleThunk(vehicle.id));
               }}
             >
-              Delete Vehicle
+              Delete
             </button>
-            <h2>${vehicle.price} /day</h2>
           </div>
         </div>
       </div>

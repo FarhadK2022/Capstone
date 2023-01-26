@@ -13,7 +13,7 @@ function VehicleCardAll({ vehicle }) {
             <h3>{vehicle.avgRating} ★ </h3>
           </div>
           <div className="card-price">
-            <h2>${vehicle.price} /day</h2>
+            <h2>${vehicle.price} / day</h2>
           </div>
         </div>
       </div>

@@ -125,7 +125,7 @@ function GetOneVehiclePage() {
       <>
         <div className="one-spot-container">
           <div className="cardimage-one">
-            <img src={vehicle.VehicleImages[0]?.url} alt={""} />
+            <img className="cardimage-one" src={vehicle.VehicleImages[0]?.url} alt={""} />
           </div>
           <div className="one-spot-info-section" key={vehicle.id}>
             <div className="one-spot-title">
@@ -225,7 +225,7 @@ function GetOneVehiclePage() {
       <>
         <div className="one-spot-container">
           <div className="cardimage-one">
-            <img src={vehicle.VehicleImages[0]?.url} alt={""} />
+            <img className="cardimage-one" src={vehicle.VehicleImages[0]?.url} alt={""} />
           </div>
           <div className="one-spot-info-section" key={vehicle.id}>
             <div className="one-spot-title">

@@ -418,7 +418,7 @@ router.put("/:vehicleId", restoreUser, requireAuth, async (req, res) => {
     price,
   } = req.body;
   const vehicle = await Vehicle.findByPk(req.params.vehicleId);
- 
+
   if (vehicle.ownerId === req.user.id) {
     await vehicle.update({
       ownerId: req.user.id,
@@ -600,20 +600,20 @@ router.post(
     }
     const date1 = Date.parse(startDate);
     const date2 = Date.parse(endDate);
-    if (date1 > date2) {
+    if (date1 >= date2) {
       res.status(400);
       return res.json({
         message: "Validation error",
         statusCode: 400,
         errors: {
-          endDate: "endDate cannot be on or before startDate",
+          endDate: "End Date cannot be on or before Start Date",
         },
       });
     }
     const oldBooking = await Booking.findOne({
       where: {
-        userId: req.user.id,
-        vehcileId: req.params.vehicleId,
+        // userId: req.user.id,
+        vehicleId: req.params.vehicleId,
         startDate: startDate,
         endDate: endDate,
       },

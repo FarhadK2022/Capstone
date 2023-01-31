@@ -8,6 +8,7 @@ import ReviewCard from "../ReviewCard/index";
 import EditVehicleFormModal from "../EditVehicleFormModal/index";
 import CreateReviewFormModal from "../CreateReviewFormModal/index";
 import "./vehicle.css";
+import CreateBookingFormModal from "../CreateBookingFormModal";
 
 function GetOneVehiclePage() {
   const dispatch = useDispatch();
@@ -83,6 +84,7 @@ function GetOneVehiclePage() {
               {vehicle.numReviews} ratings)
             </h3>
           </div>
+
           <div className="reviews-section">
             {reviewsArr.map((review) => (
               <div className="reviewcard" key={review.id} value={review.id}>
@@ -161,6 +163,7 @@ function GetOneVehiclePage() {
           <div className="one-spot-description-section">
             <h2>Description</h2>
             <p>{vehicle.description}</p>
+
           </div>
           <div className="one-spot-review-title">
             <h2>Ratings and Reviews</h2>
@@ -258,11 +261,11 @@ function GetOneVehiclePage() {
             </div>
           </div>
           {/* <div className="one-spot-images-section"></div> */}
-
           <div className="one-spot-description-section">
             <h2>Description</h2>
             <p>{vehicle.description}</p>
           </div>
+          <CreateBookingFormModal vehicle={vehicle}/>
           <div className="one-spot-review-title">
             <h2>Ratings and Reviews</h2>
             <h3>

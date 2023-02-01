@@ -284,12 +284,15 @@ function EditVehicleForm({ vehicle, setShowModal }) {
       </label>
       <label>
         Description
-        <input
+        <textarea
           className="inputField"
           type="text"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
+          minLength={50}
+          maxLength={200}
+          rows={10}
         />
       </label>
       <label>

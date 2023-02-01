@@ -5,25 +5,23 @@
   /* border-width: 1px; */
   border-bottom: 1px solid black;
   height: 220px;
-  width: 500px;
+  width: 750px;
   display: flex;
   /* align-items: center; */
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 .reviewinfo{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-
-  /* flex-wrap: wrap; */
   justify-content: space-between;
   /* justify-items: flex-start; */
   align-content: flex-start;
   align-items: flex-start;
   font-size: medium;
   max-height: 220px;
-  max-width: 480px;
+  max-width: 630px;
   margin-left: 5px;
   margin-top: 4px;
   overflow-wrap: break-word;

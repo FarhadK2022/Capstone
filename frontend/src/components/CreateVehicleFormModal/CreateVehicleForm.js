@@ -308,13 +308,16 @@ function CreateVehicleForm({ setShowModal }) {
       </label>
       <label>
         Description
-        <input
+        <textarea
           className="inputField"
           type="text"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Tell us about your sweet ride!"
           required
+          minLength={50}
+          maxLength={200}
+          rows={10}
         />
       </label>
       <label>

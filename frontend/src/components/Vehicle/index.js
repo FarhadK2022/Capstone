@@ -265,7 +265,6 @@ function GetOneVehiclePage() {
             <h2>Description</h2>
             <p>{vehicle.description}</p>
           </div>
-          <CreateBookingFormModal vehicle={vehicle}/>
           <div className="one-spot-review-title">
             <h2>Ratings and Reviews</h2>
             <h3>
@@ -282,6 +281,7 @@ function GetOneVehiclePage() {
             ))}
           </div>
           <div className="owners-tools">
+            <CreateBookingFormModal vehicle={vehicle}/>
           <CreateReviewFormModal vehicle={vehicle} />
           </div>
           <h2>Pick Up Location</h2>

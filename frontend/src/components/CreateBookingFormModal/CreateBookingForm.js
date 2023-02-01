@@ -28,7 +28,7 @@ function CreateBookingForm({ vehicle, setShowModal }) {
     ).catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
-      console.log(data.errors);
+      console.log(data);
     });
     if (createdBooking) {
       setShowModal(false);
@@ -44,9 +44,9 @@ function CreateBookingForm({ vehicle, setShowModal }) {
         <li color="red">{errors.endDate}</li>
       </ul>
       <label>
-        Start Date
+        Trip Start
         <input
-          type={"date"}
+          type="date"
           className="inputField"
           value={startDate}
           onChange={(e) => setStartDate(e.target.value)}
@@ -54,9 +54,9 @@ function CreateBookingForm({ vehicle, setShowModal }) {
         />
       </label>
       <label>
-        End Date
+        Trip End
         <input
-          type={"date"}
+          type="date"
           className="inputField"
           value={endDate}
           onChange={(e) => setEndDate(e.target.value)}

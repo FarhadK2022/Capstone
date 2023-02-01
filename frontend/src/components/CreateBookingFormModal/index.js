@@ -9,7 +9,7 @@ function CreateBookingFormModal(vehicle) {
   return (
     <>
       <button className="button" onClick={() => setShowModal(true)}>
-        Create Booking
+      Book Vehicle
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

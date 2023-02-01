@@ -618,6 +618,7 @@ router.post(
         endDate: endDate,
       },
     });
+
     if (oldBooking) {
       res.status(403);
       return res.json({

@@ -37,7 +37,7 @@ function EditReviewForm({ review, setShowModal }) {
   return (
     <form className="formModal" onSubmit={handleSubmit}>
       <h1>Edit Review</h1>
-      <h2>Review Details</h2>
+      {/* <h2>Review Details</h2> */}
       <label>
         Review
         <input
@@ -46,13 +46,15 @@ function EditReviewForm({ review, setShowModal }) {
           value={ereview}
           onChange={(e) => setReview(e.target.value)}
           required
+          minLength={50}
+          maxLength={200}
         />
       </label>
       <label>
         Stars
         <select
           className="inputField"
-          type="text"
+          // type="text"
           value={estars}
           onChange={(e) => setStars(e.target.value)}
           required

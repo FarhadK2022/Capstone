@@ -90,8 +90,8 @@ export const createBookingThunk = (newBooking, vehicleId, user) => async (dispat
   }
 };
 
-export const editBookingThunk = (editReview, bookingId, user ) => async (dispatch) => {
-  const { estartDate, eendDate } = editReview;
+export const editBookingThunk = (editBookings, bookingId, user ) => async (dispatch) => {
+  const { estartDate, eendDate } = editBookings;
   const response = await csrfFetch(`/api/bookings/${bookingId}`,{
     method: "PUT",
     body: JSON.stringify({
@@ -149,7 +149,7 @@ const bookingReducer = (state = initialState, action) => {
     }
     case DELETE_BOOKING:{
       const newState = {...state, allBookings:{...state.allBookings}}
-      delete newState.allReviews[action.bookingId];
+      delete newState.allBookings[action.bookingId];
       return newState;
     }
     default:

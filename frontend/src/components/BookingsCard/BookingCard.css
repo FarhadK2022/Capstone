@@ -1,0 +1,58 @@
+.bookingcard{
+  /* border-color: black;
+  border-style: solid; */
+  /* border-radius: 10px; */
+  /* border-width: 1px; */
+  border-bottom: 1px solid black;
+  height: 220px;
+  width: 450px;
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-around;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+.bookinginfo{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  /* justify-items: flex-start; */
+  align-content: flex-start;
+  align-items: flex-start;
+  font-size: medium;
+  max-height: 220px;
+  max-width: 630px;
+  margin-left: 5px;
+  margin-top: 4px;
+  overflow-wrap: break-word;
+}
+.top-line{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+.bottom-line{
+  display: flex;
+  justify-content: space-between;
+  align-content: flex-end;
+  align-items: flex-end;
+  /* padding-bottom: 2px; */
+}
+.middle-line{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.delete{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 200px;
+}

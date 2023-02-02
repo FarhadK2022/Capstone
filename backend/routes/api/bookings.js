@@ -63,7 +63,7 @@ router.get("/current", restoreUser, async (req, res) => {
 
 //Edit a booking
 router.put("/:bookingId", restoreUser, requireAuth, async (req, res) => {
-  const { startDate, endDate } = req.body;
+  const { estartDate, eendDate } = req.body;
   const booking = await Booking.findByPk(req.params.bookingId);
 
   if (!booking) {
@@ -73,8 +73,8 @@ router.put("/:bookingId", restoreUser, requireAuth, async (req, res) => {
       statusCode: 404,
     });
   }
-  const date1 = Date.parse(startDate);
-  const date2 = Date.parse(endDate);
+  const date1 = Date.parse(estartDate);
+  const date2 = Date.parse(eendDate);
   if (date1 > date2) {
     res.status(400);
     return res.json({
@@ -95,8 +95,8 @@ router.put("/:bookingId", restoreUser, requireAuth, async (req, res) => {
   if (booking.userId === req.user.id) {
     const oldBooking = await Booking.findOne({
       where: {
-        startDate: startDate,
-        endDate: endDate,
+        startDate: estartDate,
+        endDate: eendDate,
       },
     });
     if (oldBooking) {
@@ -112,8 +112,8 @@ router.put("/:bookingId", restoreUser, requireAuth, async (req, res) => {
     }
 
     await booking.update({
-      startDate: startDate,
-      endDate: endDate,
+      startDate: estartDate,
+      endDate: eendDate,
     });
     res.status(200);
     return res.json(booking);
@@ -147,9 +147,9 @@ router.delete("/:bookingId", restoreUser, requireAuth, async (req, res) => {
       statusCode: 403,
     });
   }
-  const vehicle = await SpotImage.findAll();
-  if (booking.userId === req.user.id && vehicle.ownerId === req.user.id) {
-  }
+  // const vehicle = await SpotImage.findAll();
+  // if (booking.userId === req.user.id && vehicle.ownerId === req.user.id) {
+  // }
   if (booking.userId === req.user.id) {
     await booking.destroy();
     res.status(200);

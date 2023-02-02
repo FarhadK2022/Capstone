@@ -1,0 +1,12 @@
+.formModal {
+  height: auto;
+  width: 400px;
+  padding: 25px;
+}
+
+
+.inputField {
+  display: block;
+  margin: 10px;
+  height: 40px;
+}

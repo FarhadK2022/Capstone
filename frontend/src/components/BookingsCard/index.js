@@ -5,7 +5,6 @@ import EditBookingFormModal from "../EditBookingFormModal/index";
 import "./BookingCard.css";
 
 function BookingCard({ booking }) {
-  // console.log(booking)
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -17,8 +16,8 @@ function BookingCard({ booking }) {
             <img src={booking.Vehicle?.previewImage} alt={""} />
           </Link>
           <div className="card-info">
-            <h3>Start: {booking.startDate}</h3>
-            <h3>End: {booking.endDate}</h3>
+            <h3>Start:{" "} {booking.startDate}</h3>
+            <h3>End:{" "} {booking.endDate}</h3>
           </div>
           <div className="card-price">
             <EditBookingFormModal booking={booking} />

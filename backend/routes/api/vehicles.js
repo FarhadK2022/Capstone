@@ -7,12 +7,15 @@ const {
   User,
   Booking,
   sequelize,
+  Sequelize,
 } = require("../../db/models");
 const {
   setTokenCookie,
   restoreUser,
   requireAuth,
 } = require("../../utils/auth");
+
+const Op = Sequelize.Op
 
 //Get all vehicles
 router.get("/", async (req, res) => {
@@ -603,16 +606,19 @@ router.post(
     if (date1 >= date2) {
       res.status(400);
       return res.json({
-        message: "Validation error",
+        message: "End Date cannot be on or before Start Date",
         statusCode: 400,
-        errors: {
-          endDate: "End Date cannot be on or before Start Date",
-        },
+      });
+    }
+    if (date1 <= Date.now()) {
+      res.status(403);
+      return res.json({
+        message: "Bookings can't be for the past",
+        statusCode: 403,
       });
     }
     const oldBooking = await Booking.findOne({
       where: {
-        // userId: req.user.id,
         vehicleId: req.params.vehicleId,
         startDate: startDate,
         endDate: endDate,
@@ -622,15 +628,39 @@ router.post(
     if (oldBooking) {
       res.status(403);
       return res.json({
-        message:
-          "Sorry, this vehicle is already booked for the specified dates",
+        message: "Sorry this vehicle is already booked for the specified dates",
         statusCode: 403,
-        errors: {
-          startDate: "Start date conflicts with an existing booking",
-          endDate: "End date conflicts with an existing booking",
-        },
       });
     }
+
+    const oldBookings = await Booking.findAll({
+      where: {
+        vehicleId: req.params.vehicleId,
+        startDate: {
+          [Op.or]: {
+            [Op.between]: [date1, date2],
+            [Op.lte]: date2,
+          }
+
+        },
+        endDate:{
+          [Op.or]: {
+            [Op.between]: [date1, date2],
+            [Op.gte]: date1,
+          }
+        }
+      },
+    });
+
+    console.log(oldBookings);
+    if (oldBookings.length !== 0) {
+      res.status(403);
+      return res.json({
+        message: "Sorry this vehicle is already booked for the specified dates",
+        statusCode: 403,
+      });
+    }
+
     const newBooking = await Booking.create({
       userId: req.user.id,
       vehicleId: req.params.vehicleId,

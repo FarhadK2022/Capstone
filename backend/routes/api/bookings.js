@@ -5,8 +5,8 @@ const {
   restoreUser,
   requireAuth,
 } = require("../../utils/auth");
-const { Booking, Vehicle, VehicleImage } = require("../../db/models");
-
+const { Booking, Vehicle, VehicleImage, Sequelize } = require("../../db/models");
+const Op = Sequelize.Op
 //Get all of the Current User's Bookings
 router.get("/current", restoreUser, async (req, res) => {
   const Bookings = await Booking.findAll({
@@ -73,9 +73,16 @@ router.put("/:bookingId", restoreUser, requireAuth, async (req, res) => {
       statusCode: 404,
     });
   }
+  if (Date.parse(booking.startDate) <= Date.now() || Date.parse(booking.endDate) <= Date.now()) {
+    res.status(403);
+    return res.json({
+      message: "Past bookings can't be modified",
+      statusCode: 403,
+    });
+  }
   const date1 = Date.parse(estartDate);
   const date2 = Date.parse(eendDate);
-  if (date1 > date2) {
+  if (date1 >= date2) {
     res.status(400);
     return res.json({
       message: "Validation error",
@@ -85,16 +92,17 @@ router.put("/:bookingId", restoreUser, requireAuth, async (req, res) => {
       },
     });
   }
-  if (date2 < Date.now()) {
+  if (date1 <= Date.now() || date2 <= Date.now()) {
     res.status(403);
     return res.json({
       message: "Past bookings can't be modified",
       statusCode: 403,
     });
   }
-  if (booking.userId === req.user.id) {
+
     const oldBooking = await Booking.findOne({
       where: {
+        vehicleId: booking.vehicleId,
         startDate: estartDate,
         endDate: eendDate,
       },
@@ -104,26 +112,52 @@ router.put("/:bookingId", restoreUser, requireAuth, async (req, res) => {
       return res.json({
         message: "Sorry, this vehicle is already booked for the specified dates",
         statusCode: 403,
-        errors: {
-          startDate: "Start date conflicts with an existing booking",
-          endDate: "End date conflicts with an existing booking",
-        },
       });
     }
 
+    const oldBookings = await Booking.findAll({
+      where: {
+        id: {
+          [Op.not]: booking.id
+        },
+        vehicleId: booking.vehicleId,
+        startDate: {
+          [Op.or]: {
+            [Op.between]: [date1, date2],
+            [Op.lte]: date2,
+          }
+
+        },
+        endDate:{
+          [Op.or]: {
+            [Op.between]: [date1, date2],
+            [Op.gte]: date1,
+          }
+        }
+      },
+    });
+
+    console.log(oldBookings);
+    if (oldBookings.length !== 0) {
+      res.status(403);
+      return res.json({
+        message: "Sorry this vehicle is already booked for the specified dates",
+        statusCode: 403,
+      });
+    }
     await booking.update({
       startDate: estartDate,
       endDate: eendDate,
     });
     res.status(200);
     return res.json(booking);
-  } else {
-    res.status(403);
-    return res.json({
-      message: "Forbidden",
-      statusCode: 403,
-    });
-  }
+  // else {
+  //   res.status(403);
+  //   return res.json({
+  //     message: "Forbidden",
+  //     statusCode: 403,
+  //   });
+  // }
 });
 
 //Delete a booking
@@ -147,9 +181,6 @@ router.delete("/:bookingId", restoreUser, requireAuth, async (req, res) => {
       statusCode: 403,
     });
   }
-  // const vehicle = await SpotImage.findAll();
-  // if (booking.userId === req.user.id && vehicle.ownerId === req.user.id) {
-  // }
   if (booking.userId === req.user.id) {
     await booking.destroy();
     res.status(200);

@@ -74,7 +74,7 @@ function MyMap() {
             <input
               {...getInputProps({
                 type: "search",
-                placeholder: "Search...",
+                placeholder: "Search Locations...",
                 // role: "combobox",
                 style: {
                   boxSizing: `border-box`,

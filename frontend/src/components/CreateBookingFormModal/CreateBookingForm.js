@@ -27,7 +27,7 @@ function CreateBookingForm({ vehicle, setShowModal }) {
       bookingActions.createBookingThunk(newBooking, vehicleId, currentUser)
     ).catch(async (res) => {
       const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
+      if (data && data.message) setErrors(data.message);
       console.log(data);
     });
     if (createdBooking) {
@@ -40,8 +40,7 @@ function CreateBookingForm({ vehicle, setShowModal }) {
     <form className="formModal" onSubmit={handleSubmit}>
       <h1>Create Booking</h1>
       <ul>
-        <li color="red">{errors.startDate}</li>
-        <li color="red">{errors.endDate}</li>
+        <li color="red">{errors}</li>
       </ul>
       <label>
         Trip Start

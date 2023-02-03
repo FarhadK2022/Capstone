@@ -28,7 +28,7 @@ function CreateBookingForm({ vehicle, setShowModal }) {
     ).catch(async (res) => {
       const data = await res.json();
       if (data && data.message) setErrors(data.message);
-      console.log(data);
+    
     });
     if (createdBooking) {
       setShowModal(false);

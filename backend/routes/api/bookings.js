@@ -85,11 +85,8 @@ router.put("/:bookingId", restoreUser, requireAuth, async (req, res) => {
   if (date1 >= date2) {
     res.status(400);
     return res.json({
-      message: "Validation error",
+      message: "End Date cannot be on or before Start Date",
       statusCode: 400,
-      errors: {
-        endDate: "End date cannot be on or before Start date",
-      },
     });
   }
   if (date1 <= Date.now() || date2 <= Date.now()) {
@@ -137,7 +134,6 @@ router.put("/:bookingId", restoreUser, requireAuth, async (req, res) => {
       },
     });
 
-    console.log(oldBookings);
     if (oldBookings.length !== 0) {
       res.status(403);
       return res.json({
@@ -151,13 +147,6 @@ router.put("/:bookingId", restoreUser, requireAuth, async (req, res) => {
     });
     res.status(200);
     return res.json(booking);
-  // else {
-  //   res.status(403);
-  //   return res.json({
-  //     message: "Forbidden",
-  //     statusCode: 403,
-  //   });
-  // }
 });
 
 //Delete a booking

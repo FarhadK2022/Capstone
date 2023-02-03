@@ -652,7 +652,6 @@ router.post(
       },
     });
 
-    console.log(oldBookings);
     if (oldBookings.length !== 0) {
       res.status(403);
       return res.json({

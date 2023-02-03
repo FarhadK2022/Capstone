@@ -306,7 +306,7 @@ function EditVehicleForm({ vehicle, setShowModal }) {
         />
       </label>
       <button className="button" type="submit">
-        Edit Vehicle
+        Submit Changes
       </button>
     </form>
   );

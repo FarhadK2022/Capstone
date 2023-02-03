@@ -69,7 +69,7 @@ function EditReviewForm({ review, setShowModal }) {
       </label>
 
       <button className="button" type="submit">
-        Edit Review
+        Submit Changes
       </button>
     </form>
   );

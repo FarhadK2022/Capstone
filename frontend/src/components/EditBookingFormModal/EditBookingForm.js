@@ -27,7 +27,7 @@ function EditBookingForm({ booking, setShowModal }) {
       bookingActions.editBookingThunk(editBookings, bookingId, currentUser)
     ).catch(async (res) => {
       const data = await res.json();
-      if (data && data.message) setErrors(data.errors);
+      if (data && data.message) setErrors(data.message);
     });
     if (edittedBooking) {
       setShowModal(false);
@@ -63,7 +63,7 @@ function EditBookingForm({ booking, setShowModal }) {
       </label>
 
       <button className="button" type="submit">
-        Submit Booking
+        Submit Changes
       </button>
     </form>
   );

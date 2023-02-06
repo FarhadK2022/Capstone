@@ -59,6 +59,17 @@ export const allVehiclesThunk = () => async (dispatch) => {
   return response;
 };
 
+export const allVehiclesSearchThunk = (searchInput) => async (dispatch) => {
+  const response = await csrfFetch(`/api/vehicles/search?=${searchInput}`, {
+    method: "GET",
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getAllVehicles(data));
+  }
+  return response;
+};
+
 export const currentVehiclesThunk = () => async (dispatch) => {
   const response = await csrfFetch("/api/vehicles/current", {
     method: "GET",

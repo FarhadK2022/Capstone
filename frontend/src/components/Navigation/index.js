@@ -8,6 +8,8 @@ import CreateVehicleForm from "../CreateVehicleFormModal/CreateVehicleForm";
 import { Modal } from "../../context/Modal";
 import "./Navigation.css";
 import image from "../../images/GetThere.png";
+import SearchFiltersModal from "../Filters";
+
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -36,6 +38,7 @@ function Navigation({ isLoaded }) {
             </Link>
           )}
         </div>
+<SearchFiltersModal/>
         <div className="navbar-right">
           <li>
             {isLoaded && (

@@ -671,4 +671,38 @@ router.post(
   }
 );
 
+//Get filtered vehicles
+router.get("/search", async (req, res) => {
+  let { page, size, searchInput} = req.query;
+console.log(searchInput)
+  page = parseInt(page);
+  size = parseInt(size);
+
+  if (Number.isNaN(page)) page = 1;
+  if (Number.isNaN(size)) size = 20;
+
+  const Vehicles = await Vehicle.findAll();
+
+  for (let vehicle of Vehicles) {
+    let reviews = await Review.sum("stars", {
+      where: { vehicleId: vehicle.id },
+    });
+    let count = await Review.count({ where: { vehicleId: vehicle.id } });
+    let images = await VehicleImage.findOne({
+      where: { vehicleId: vehicle.id },
+    });
+
+    let averageStars = reviews / count;
+    vehicle.dataValues.avgRating = averageStars;
+
+    if (images.preview === true) {
+      vehicle.dataValues.previewImage = images.url;
+    } else {
+      vehicle.dataValues.previewImage = null;
+    }
+  }
+  res.status(200);
+  res.json({ Vehicles, page, size });
+});
+
 module.exports = router;

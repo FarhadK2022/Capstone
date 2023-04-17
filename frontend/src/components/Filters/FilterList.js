@@ -35,12 +35,13 @@ const SearchFilters = ({ setShowModal }) => {
     };
 
     const searchResults = await dispatch(
-      vehicleActions.allVehiclesSearchThunk(searchInput)
+      vehicleActions.allVehiclesSearchThunk(searchInput),
+      console.log(searchInput)
     );
 
     if (searchResults) {
       setShowModal(false);
-      return history.push(`/cars/?filter=${searchInput}`);
+      return history.push(`/cars/search`);
     }
   };
 

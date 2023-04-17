@@ -6,6 +6,7 @@ const CREATE_VEHICLE = "vehicles/createVehicle";
 const EDIT_VEHICLE = "vehicles/editVehicle";
 const DELETE_VEHICLE = "vehicles/deleteVehicle";
 const GET_CURRENT_VEHICLES = "vehicles/getCurrentVehicles"
+const SEARCH_VEHICLES = "vehicles/getSearchVehicles"
 
 const getAllVehicles = (data) => {
   return {
@@ -14,6 +15,12 @@ const getAllVehicles = (data) => {
   };
 };
 const getCurrentVehicles = (data) => {
+  return {
+    type: GET_VEHICLES,
+    data,
+  };
+};
+const getSearchVehicles = (data) => {
   return {
     type: GET_VEHICLES,
     data,
@@ -60,12 +67,14 @@ export const allVehiclesThunk = () => async (dispatch) => {
 };
 
 export const allVehiclesSearchThunk = (searchInput) => async (dispatch) => {
-  const response = await csrfFetch(`/api/vehicles/search?=${searchInput}`, {
+  const {type, category, make, doors, drivetrain, transmission, numSeats, petFriendly, price} = searchInput
+  const response = await csrfFetch(`/api/vehicles/make/${make}/doors/${doors}`, {
     method: "GET",
+
   });
   if (response.ok) {
     const data = await response.json();
-    dispatch(getAllVehicles(data));
+    dispatch(getSearchVehicles(data));
   }
   return response;
 };
@@ -227,6 +236,16 @@ const vehicleReducer = (state = initialState, action) => {
   // let newState = {};
   switch (action.type) {
     case GET_VEHICLES: {
+      const newState = {allVehicles:{}, singleVehicle:{}};
+      action.data.Vehicles.forEach((vehicle) => (newState.allVehicles[vehicle.id] = vehicle));
+      return newState;
+    }
+     case GET_VEHICLES: {
+      const newState = {allVehicles:{}, singleVehicle:{}};
+      action.data.Vehicles.forEach((vehicle) => (newState.allVehicles[vehicle.id] = vehicle));
+      return newState;
+    }
+     case SEARCH_VEHICLES: {
       const newState = {allVehicles:{}, singleVehicle:{}};
       action.data.Vehicles.forEach((vehicle) => (newState.allVehicles[vehicle.id] = vehicle));
       return newState;

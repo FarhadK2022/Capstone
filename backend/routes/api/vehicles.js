@@ -672,16 +672,18 @@ router.post(
 );
 
 //Get filtered vehicles
-router.get("/search", async (req, res) => {
-  let { page, size, searchInput} = req.query;
-console.log(searchInput)
+router.get('/make/:make?/doors/:doors?', async (req, res) => {
+  let { page, size} = req.query;
+  const {make, doors} = req.params
+
+// console.log(searchParams)
   page = parseInt(page);
   size = parseInt(size);
 
   if (Number.isNaN(page)) page = 1;
   if (Number.isNaN(size)) size = 20;
 
-  const Vehicles = await Vehicle.findAll();
+  const Vehicles = await Vehicle.findAll({where: {make: make, doors: doors}});
 
   for (let vehicle of Vehicles) {
     let reviews = await Review.sum("stars", {

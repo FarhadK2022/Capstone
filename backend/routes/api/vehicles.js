@@ -7,12 +7,15 @@ const {
   User,
   Booking,
   sequelize,
+  Sequelize,
 } = require("../../db/models");
 const {
   setTokenCookie,
   restoreUser,
   requireAuth,
 } = require("../../utils/auth");
+
+const Op = Sequelize.Op
 
 //Get all vehicles
 router.get("/", async (req, res) => {
@@ -418,7 +421,7 @@ router.put("/:vehicleId", restoreUser, requireAuth, async (req, res) => {
     price,
   } = req.body;
   const vehicle = await Vehicle.findByPk(req.params.vehicleId);
- 
+
   if (vehicle.ownerId === req.user.id) {
     await vehicle.update({
       ownerId: req.user.id,
@@ -600,36 +603,63 @@ router.post(
     }
     const date1 = Date.parse(startDate);
     const date2 = Date.parse(endDate);
-    if (date1 > date2) {
+    if (date1 >= date2) {
       res.status(400);
       return res.json({
-        message: "Validation error",
+        message: "End Date cannot be on or before Start Date",
         statusCode: 400,
-        errors: {
-          endDate: "endDate cannot be on or before startDate",
-        },
+      });
+    }
+    if (date1 <= Date.now()) {
+      res.status(403);
+      return res.json({
+        message: "Bookings can't be for the past",
+        statusCode: 403,
       });
     }
     const oldBooking = await Booking.findOne({
       where: {
-        userId: req.user.id,
-        vehcileId: req.params.vehicleId,
+        vehicleId: req.params.vehicleId,
         startDate: startDate,
         endDate: endDate,
       },
     });
+
     if (oldBooking) {
       res.status(403);
       return res.json({
-        message:
-          "Sorry, this vehicle is already booked for the specified dates",
+        message: "Sorry this vehicle is already booked for the specified dates",
         statusCode: 403,
-        errors: {
-          startDate: "Start date conflicts with an existing booking",
-          endDate: "End date conflicts with an existing booking",
-        },
       });
     }
+
+    const oldBookings = await Booking.findAll({
+      where: {
+        vehicleId: req.params.vehicleId,
+        startDate: {
+          [Op.or]: {
+            [Op.between]: [date1, date2],
+            [Op.lte]: date2,
+          }
+
+        },
+        endDate:{
+          [Op.or]: {
+            [Op.between]: [date1, date2],
+            [Op.gte]: date1,
+          }
+        }
+      },
+    });
+
+    if (oldBookings.length !== 0) {
+      res.status(403);
+      return res.json({
+        message: "Sorry this vehicle is already booked for the specified dates",
+        statusCode: 403,
+      });
+    }
+
     const newBooking = await Booking.create({
       userId: req.user.id,
       vehicleId: req.params.vehicleId,
@@ -640,5 +670,41 @@ router.post(
     return res.json(newBooking);
   }
 );
+
+//Get filtered vehicles
+router.get('/make/:make?/doors/:doors?', async (req, res) => {
+  let { page, size} = req.query;
+  const {make, doors} = req.params
+
+// console.log(searchParams)
+  page = parseInt(page);
+  size = parseInt(size);
+
+  if (Number.isNaN(page)) page = 1;
+  if (Number.isNaN(size)) size = 20;
+
+  const Vehicles = await Vehicle.findAll({where: {make: make, doors: doors}});
+
+  for (let vehicle of Vehicles) {
+    let reviews = await Review.sum("stars", {
+      where: { vehicleId: vehicle.id },
+    });
+    let count = await Review.count({ where: { vehicleId: vehicle.id } });
+    let images = await VehicleImage.findOne({
+      where: { vehicleId: vehicle.id },
+    });
+
+    let averageStars = reviews / count;
+    vehicle.dataValues.avgRating = averageStars;
+
+    if (images.preview === true) {
+      vehicle.dataValues.previewImage = images.url;
+    } else {
+      vehicle.dataValues.previewImage = null;
+    }
+  }
+  res.status(200);
+  res.json({ Vehicles, page, size });
+});
 
 module.exports = router;

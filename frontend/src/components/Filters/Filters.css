@@ -1,0 +1,19 @@
+.formModal {
+  height: auto;
+  width: auto;
+  padding: 25px;
+}
+
+.button {
+  width: 100px;
+  height: 50px;
+  color: white;
+  background-color: black;
+
+  margin-top: 15px;
+}
+
+.inputField {
+  display: block;
+  margin: 10px;
+}

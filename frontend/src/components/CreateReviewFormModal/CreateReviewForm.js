@@ -17,7 +17,7 @@ function CreateReviewForm({ vehicle, setShowModal }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (review.length > 10){
+    if (review.length >= 50){
 
       const newReview = {
         review,
@@ -37,14 +37,14 @@ function CreateReviewForm({ vehicle, setShowModal }) {
           return setErrors([" You already have a review for this vehicle!"]);
         }
       }else {
-        return setErrors(["Review needs to be at least 10 characters!"])
+        return setErrors(["Review needs to be at least 50 characters!"])
       }
   };
 
   return (
     <form className="formModal" onSubmit={handleSubmit}>
       <h1>Create Review</h1>
-      <h2>Review Details</h2>
+      {/* <h2>Review Details</h2> */}
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
@@ -52,7 +52,7 @@ function CreateReviewForm({ vehicle, setShowModal }) {
       </ul>
       <label>
         Review
-        <input
+        <textarea
           className="inputField"
           type="text"
           placeholder="So... How was it?"
@@ -61,14 +61,14 @@ function CreateReviewForm({ vehicle, setShowModal }) {
           required
           minLength={50}
           maxLength={200}
-         
+          rows={10}
         />
       </label>
       <label>
         Stars
         <select
           className="inputField"
-          type="text"
+          // type="text"
           value={stars}
           onChange={(e) => setStars(e.target.value)}
           required

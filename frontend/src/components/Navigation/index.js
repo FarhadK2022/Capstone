@@ -38,7 +38,7 @@ function Navigation({ isLoaded }) {
             </Link>
           )}
         </div>
-<SearchFiltersModal/>
+{/* <SearchFiltersModal/> */}
         <div className="navbar-right">
           <li>
             {isLoaded && (

@@ -2,7 +2,7 @@
   height: auto;
   width: 500px;
   padding: 25px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .button {

@@ -36,7 +36,7 @@ const SearchFilters = ({ setShowModal }) => {
 
     const searchResults = await dispatch(
       vehicleActions.allVehiclesSearchThunk(searchInput),
-      console.log(searchInput)
+      // console.log(searchInput)
     );
 
     if (searchResults) {

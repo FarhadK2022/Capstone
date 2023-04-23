@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { GoogleMap, Marker, InfoWindow, LoadScript } from "@react-google-maps/api";
+import { GoogleMap, Marker, InfoWindow, useJsApiLoader} from "@react-google-maps/api";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
@@ -11,6 +11,10 @@ import VehicleCardAll from "../VehicleCard/index";
 import "./maps.css";
 
 function MyMap() {
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: "AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY"
+  })
   const dispatch = useDispatch();
   const currentVehicles = useSelector((state) => state.vehicle.allVehicles);
   const vehiclesObj = Object.values(currentVehicles);
@@ -54,7 +58,8 @@ function MyMap() {
     padding: 15,
   };
 
-  return (
+  return isLoaded ? (
+
     <GoogleMap
       className="maps"
       mapContainerStyle={containerStyle}
@@ -147,8 +152,8 @@ function MyMap() {
         </Marker>
       ))}
     </GoogleMap>
-
-  );
+  )
+  : <></>
 }
 
 export default MyMap;

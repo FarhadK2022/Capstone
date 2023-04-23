@@ -126,7 +126,7 @@ function MyMap() {
           key={vehicle.id}
           value={vehicle.id}
           setLabel={vehicle.id}
-          position={{ lat: vehicle.latitude, lng: vehicle.longitude }}
+          position={{ lat: parseFloat(vehicle.latitude), lng: parseFloat(vehicle.longitude) }}
           vehicle={vehicle}
           icon={{url: "http://maps.google.com/mapfiles/ms/icons/purple-dot.png"}}
           clickable={true}

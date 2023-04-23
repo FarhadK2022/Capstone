@@ -11,10 +11,7 @@ import VehicleCardAll from "../VehicleCard/index";
 import "./maps.css";
 
 function MyMap() {
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyCRSvlDSkCRnK_ceW4Vscl0-6QKmIRXSZY"
-  })
+  
   const dispatch = useDispatch();
   const currentVehicles = useSelector((state) => state.vehicle.allVehicles);
   const vehiclesObj = Object.values(currentVehicles);
@@ -58,7 +55,7 @@ function MyMap() {
     padding: 15,
   };
 
-  return isLoaded ? (
+  return  (
 
     <GoogleMap
       className="maps"
@@ -153,7 +150,7 @@ function MyMap() {
       ))}
     </GoogleMap>
   )
-  : <></>
+
 }
 
 export default MyMap;

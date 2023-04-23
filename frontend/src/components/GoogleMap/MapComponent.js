@@ -132,7 +132,7 @@ function MyMap() {
           clickable={true}
           onClick={() => handleActiveMarker(vehicle.id)}
 
-        >{console.log(vehicle.latitude)}
+        >
           {activeMarker === vehicle.id ? (
             <InfoWindow onCloseClick={() => setActiveMarker(null)}>
               <div style={divStyle}>

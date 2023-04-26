@@ -11,7 +11,7 @@ import VehicleCardAll from "../VehicleCard/index";
 import "./maps.css";
 
 function MyMap() {
-  
+
   const dispatch = useDispatch();
   const currentVehicles = useSelector((state) => state.vehicle.allVehicles);
   const vehiclesObj = Object.values(currentVehicles);
@@ -130,7 +130,7 @@ function MyMap() {
           setLabel={vehicle.id}
           position={{ lat: parseFloat(vehicle.latitude), lng: parseFloat(vehicle.longitude) }}
           vehicle={vehicle}
-          icon={{url: "http://maps.google.com/mapfiles/ms/icons/purple-dot.png"}}
+          icon={{url: "https://maps.google.com/mapfiles/ms/icons/purple-dot.png"}}
           clickable={true}
           onClick={() => handleActiveMarker(vehicle.id)}
 

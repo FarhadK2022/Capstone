@@ -8,7 +8,7 @@ import CreateVehicleForm from "../CreateVehicleFormModal/CreateVehicleForm";
 import { Modal } from "../../context/Modal";
 import "./Navigation.css";
 import image from "../../images/GetThere.png";
-import SearchFiltersModal from "../Filters";
+// import SearchFiltersModal from "../Filters";
 
 
 function Navigation({ isLoaded }) {
@@ -21,7 +21,7 @@ function Navigation({ isLoaded }) {
       <div className="navbar">
         <div className="navbar-left">
           {sessionUser ? (
-            <Link exact to="/home">
+            <Link exact to="/cars">
               <img
                 className="navbar-icon"
                 src={image}
@@ -29,7 +29,7 @@ function Navigation({ isLoaded }) {
               ></img>
             </Link>
           ) : (
-            <Link exact to="/">
+            <Link exact to="/cars">
               <img
                 className="navbar-icon"
                 src={image}

@@ -41,7 +41,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
         (user ? (
           <ul className="profile-dropdown">
             <li>
-              <p>Logged in as: {user.username}</p>
+              <p>Hello, {user.username}! </p>
               {/* <p>{user.username}</p> */}
               <Link exact to='/profile'>
               <button

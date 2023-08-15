@@ -39,9 +39,7 @@ function GetOneVehiclePage() {
     return (
       <>
         <div className="one-spot-container">
-          <div className="cardimage-one">
-            <img className="cardimage-one" src={vehicle.VehicleImages[0]?.url} alt={""} />
-          </div>
+
           <div className="one-spot-info-section" key={vehicle.id}>
             <div className="one-spot-title">
               <h1>
@@ -71,6 +69,9 @@ function GetOneVehiclePage() {
                 {vehicle.numSeats} Seats
               </li>
             </div>
+          <div className="cardimage-one">
+            <img className="cardimage-one" src={vehicle.VehicleImages[0]?.url} alt={""} />
+          </div>
           </div>
           {/* <div className="one-spot-images-section"></div> */}
           <div className="one-spot-description-section">
@@ -126,9 +127,7 @@ function GetOneVehiclePage() {
     return (
       <>
         <div className="one-spot-container">
-          <div className="cardimage-one">
-            <img className="cardimage-one" src={vehicle.VehicleImages[0]?.url} alt={""} />
-          </div>
+
           <div className="one-spot-info-section" key={vehicle.id}>
             <div className="one-spot-title">
               <h1>
@@ -158,6 +157,9 @@ function GetOneVehiclePage() {
                 {vehicle.numSeats} Seats
               </li>
             </div>
+          <div className="cardimage-one">
+            <img className="cardimage-one" src={vehicle.VehicleImages[0]?.url} alt={""} />
+          </div>
           </div>
           {/* <div className="one-spot-images-section"></div> */}
           <div className="one-spot-description-section">
@@ -227,9 +229,7 @@ function GetOneVehiclePage() {
     return (
       <>
         <div className="one-spot-container">
-          <div className="cardimage-one">
-            <img className="cardimage-one" src={vehicle.VehicleImages[0]?.url} alt={""} />
-          </div>
+
           <div className="one-spot-info-section" key={vehicle.id}>
             <div className="one-spot-title">
               <h1>
@@ -259,6 +259,9 @@ function GetOneVehiclePage() {
                 {vehicle.numSeats} Seats
               </li>
             </div>
+          <div className="cardimage-one">
+            <img className="cardimage-one" src={vehicle.VehicleImages[0]?.url} alt={""} />
+          </div>
           </div>
           {/* <div className="one-spot-images-section"></div> */}
           <div className="one-spot-description-section">

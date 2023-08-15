@@ -181,7 +181,7 @@ function GetOneVehiclePage() {
           </div>
           <div className="owners-tools">
             <EditVehicleFormModal vehicle={vehicle} />
-            <Link to={`/home`}>
+            <Link to={`/cars`}>
               <button
                 className="button"
                 onClick={async () => {

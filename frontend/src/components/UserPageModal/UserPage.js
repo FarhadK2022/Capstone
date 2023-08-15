@@ -32,7 +32,7 @@ function UserPage() {
   return (
     <>
       <div style={{ backgroundColor: "lightgray" }}>
-        <h1 style={{ paddingTop: 30 }}>GT Cockpit</h1>
+        <h1 style={{ paddingTop: 55 }}>GT Cockpit</h1>
         <h2>Your Listings:</h2>
         <div className="cars-list">
           {vehiclesObj.map((vehicle) => (

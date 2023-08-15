@@ -41,11 +41,11 @@ function ProfileButton({ user, setLogin, setShowModal }) {
         (user ? (
           <ul className="profile-dropdown">
             <li>
-              <p>Logged in as:</p>
-              <p>{user.username}</p>
+              <p>Logged in as: {user.username}</p>
+              {/* <p>{user.username}</p> */}
               <Link exact to='/profile'>
               <button
-                className="button"
+                className="profile-button"
                 onClick={() => {
 
                 }}
@@ -56,7 +56,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
             </li>
             <li>
               <button
-                className="button"
+                className="profile-button"
                 onClick={() => {
                   setLogin(true);
                   setShowModal(true);
@@ -66,7 +66,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
               </button>
             </li>
             <li>
-              <button className="button" onClick={logout}>
+              <button className="profile-button" onClick={logout}>
                 Log Out
               </button>
             </li>
@@ -75,7 +75,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
           <ul className="profile-dropdown">
             <li>
               <button
-                className="button"
+                className="profile-button"
                 onClick={() => {
                   setLogin(true);
                   setShowModal(true);
@@ -86,7 +86,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
             </li>
             <li>
               <button
-                className="button"
+                className="profile-button"
                 onClick={() => {
                   setLogin(false);
                   setShowModal(true);
@@ -97,7 +97,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
             </li>
             <li>
               <button
-                className="button"
+                className="profile-button"
                 onClick={() => {
                   const demoUser = {
                     credential: "demo@user.io",

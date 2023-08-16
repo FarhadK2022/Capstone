@@ -26,7 +26,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
   }, [showMenu]);
 
   const logout = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     dispatch(sessionActions.logout());
   };
 
@@ -41,11 +41,11 @@ function ProfileButton({ user, setLogin, setShowModal }) {
         (user ? (
           <ul className="profile-dropdown">
             <li>
-              <p>Logged in as:</p>
-              <p>{user.username}</p>
+              <p>Hello, {user.username}! </p>
+              {/* <p>{user.username}</p> */}
               <Link exact to='/profile'>
               <button
-                className="button"
+                className="profile-button"
                 onClick={() => {
 
                 }}
@@ -56,7 +56,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
             </li>
             <li>
               <button
-                className="button"
+                className="profile-button"
                 onClick={() => {
                   setLogin(true);
                   setShowModal(true);
@@ -66,16 +66,19 @@ function ProfileButton({ user, setLogin, setShowModal }) {
               </button>
             </li>
             <li>
-              <button className="button" onClick={logout}>
+              <Link exact to='/cars'>
+
+              <button className="profile-button" onClick={logout}>
                 Log Out
               </button>
+              </Link>
             </li>
           </ul>
         ) : (
           <ul className="profile-dropdown">
             <li>
               <button
-                className="button"
+                className="profile-button"
                 onClick={() => {
                   setLogin(true);
                   setShowModal(true);
@@ -86,7 +89,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
             </li>
             <li>
               <button
-                className="button"
+                className="profile-button"
                 onClick={() => {
                   setLogin(false);
                   setShowModal(true);
@@ -97,7 +100,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
             </li>
             <li>
               <button
-                className="button"
+                className="profile-button"
                 onClick={() => {
                   const demoUser = {
                     credential: "demo@user.io",

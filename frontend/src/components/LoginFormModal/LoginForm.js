@@ -11,7 +11,7 @@ function LoginForm({ setShowModal }) {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/home" />;
+  if (sessionUser) return <Redirect to="/cars" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();

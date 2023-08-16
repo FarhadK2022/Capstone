@@ -39,17 +39,15 @@ function GetOneVehiclePage() {
     return (
       <>
         <div className="one-spot-container">
-          <div className="cardimage-one">
-            <img className="cardimage-one" src={vehicle.VehicleImages[0]?.url} alt={""} />
-          </div>
+
           <div className="one-spot-info-section" key={vehicle.id}>
             <div className="one-spot-title">
               <h1>
-                {vehicle.make} {vehicle.model} {vehicle.year}{" "}
+              {vehicle.year} {vehicle.make} {vehicle.model} {vehicle.trim} {" "}
               </h1>{" "}
-              <h3> ${vehicle.price} / day </h3>
+              <h2> ${vehicle.price} / day </h2>
             </div>
-            <h3>{vehicle.trim}</h3>
+            {/* <h3>{vehicle.trim}</h3> */}
             <div className="one-spot-info">
               <li>
                 {vehicle.avgStarRating} ★ • ({vehicle.numReviews} trips)
@@ -71,6 +69,9 @@ function GetOneVehiclePage() {
                 {vehicle.numSeats} Seats
               </li>
             </div>
+          <div className="cardimage-one">
+            <img className="cardimage-one" src={vehicle.VehicleImages[0]?.url} alt={""} />
+          </div>
           </div>
           {/* <div className="one-spot-images-section"></div> */}
           <div className="one-spot-description-section">
@@ -95,7 +96,7 @@ function GetOneVehiclePage() {
           <h2>Pick Up Location</h2>
           <iframe
             title="Pick Up Location"
-            width="1400"
+            width="1424"
             height="750"
             style={{ border: 0, paddingBottom: 0 }}
             loading="lazy"
@@ -126,17 +127,15 @@ function GetOneVehiclePage() {
     return (
       <>
         <div className="one-spot-container">
-          <div className="cardimage-one">
-            <img className="cardimage-one" src={vehicle.VehicleImages[0]?.url} alt={""} />
-          </div>
+
           <div className="one-spot-info-section" key={vehicle.id}>
             <div className="one-spot-title">
-              <h1>
-                {vehicle.make} {vehicle.model} {vehicle.year}{" "}
+            <h1>
+              {vehicle.year} {vehicle.make} {vehicle.model} {vehicle.trim} {" "}
               </h1>{" "}
-              <h3> ${vehicle.price} / day </h3>
+              <h2> ${vehicle.price} / day </h2>
             </div>
-            <h3>{vehicle.trim}</h3>
+            {/* <h3>{vehicle.trim}</h3> */}
             <div className="one-spot-info">
             <li>
                 {vehicle.avgStarRating} ★ • ({vehicle.numReviews} trips)
@@ -158,6 +157,9 @@ function GetOneVehiclePage() {
                 {vehicle.numSeats} Seats
               </li>
             </div>
+          <div className="cardimage-one">
+            <img className="cardimage-one" src={vehicle.VehicleImages[0]?.url} alt={""} />
+          </div>
           </div>
           {/* <div className="one-spot-images-section"></div> */}
           <div className="one-spot-description-section">
@@ -181,7 +183,7 @@ function GetOneVehiclePage() {
           </div>
           <div className="owners-tools">
             <EditVehicleFormModal vehicle={vehicle} />
-            <Link to={`/home`}>
+            <Link to={`/cars`}>
               <button
                 className="button"
                 onClick={async () => {
@@ -196,7 +198,7 @@ function GetOneVehiclePage() {
           <h2>Pick Up Location</h2>
           <iframe
             title="Pick up Location"
-            width="1400"
+            width="1424"
             height="750"
             style={{ border: 0, paddingBottom: 0 }}
             loading="lazy"
@@ -227,17 +229,15 @@ function GetOneVehiclePage() {
     return (
       <>
         <div className="one-spot-container">
-          <div className="cardimage-one">
-            <img className="cardimage-one" src={vehicle.VehicleImages[0]?.url} alt={""} />
-          </div>
+
           <div className="one-spot-info-section" key={vehicle.id}>
             <div className="one-spot-title">
-              <h1>
-                {vehicle.make} {vehicle.model} {vehicle.year}{" "}
+            <h1>
+              {vehicle.year} {vehicle.make} {vehicle.model} {vehicle.trim} {" "}
               </h1>{" "}
-              <h3> ${vehicle.price} / day </h3>
+              <h2> ${vehicle.price} / day </h2>
             </div>
-            <h3>{vehicle.trim}</h3>
+            {/* <h3>{vehicle.trim}</h3> */}
             <div className="one-spot-info">
             <li>
                 {vehicle.avgStarRating} ★ • ({vehicle.numReviews} trips)
@@ -259,6 +259,9 @@ function GetOneVehiclePage() {
                 {vehicle.numSeats} Seats
               </li>
             </div>
+          <div className="cardimage-one">
+            <img className="cardimage-one" src={vehicle.VehicleImages[0]?.url} alt={""} />
+          </div>
           </div>
           {/* <div className="one-spot-images-section"></div> */}
           <div className="one-spot-description-section">
@@ -287,7 +290,7 @@ function GetOneVehiclePage() {
           <h2>Pick Up Location</h2>
           <iframe
             title="Pick up location"
-            width="1400"
+            width="1424"
             height="750"
             style={{ border: 0, paddingBottom: 0 }}
             loading="lazy"

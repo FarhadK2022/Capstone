@@ -26,7 +26,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
   }, [showMenu]);
 
   const logout = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     dispatch(sessionActions.logout());
   };
 
@@ -66,9 +66,12 @@ function ProfileButton({ user, setLogin, setShowModal }) {
               </button>
             </li>
             <li>
+              <Link exact to='/cars'>
+
               <button className="profile-button" onClick={logout}>
                 Log Out
               </button>
+              </Link>
             </li>
           </ul>
         ) : (

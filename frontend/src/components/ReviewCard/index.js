@@ -35,6 +35,9 @@ function ReviewCard({ review }) {
             </div>
           <div className="middle-line">
             <p>{review.review}</p>
+          </div>
+
+        </div>
             <EditReviewFormModal review={review} />
             <button
               className="button"
@@ -45,9 +48,6 @@ function ReviewCard({ review }) {
             >
               Delete
             </button>
-          </div>
-
-        </div>
       </div>
     );
   } else {

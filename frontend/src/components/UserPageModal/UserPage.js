@@ -31,10 +31,10 @@ function UserPage() {
 
   return (
     <>
-      <div style={{ backgroundColor: "lightgray" }}>
-        <h1 style={{ paddingTop: 55 }}>GT Cockpit</h1>
-        <h2>Your Listings:</h2>
-        <div className="cars-list">
+      <div style={{ backgroundColor: "none", display: "flex", flexDirection: "column", width: "1400px" }}>
+        <h1 style={{ paddingTop: 55, display: "flex", justifyContent: "center" }}>GT Cockpit</h1>
+        <h2 >Your Listings:</h2>
+        <div className="cars-list" style={{ display: "flex", flexDirection: "row", width: "1400px" }}>
           {vehiclesObj.map((vehicle) => (
             <div className="card" key={vehicle.id} value={vehicle.id}>
               <VehicleCardUser vehicle={vehicle} />
@@ -42,7 +42,7 @@ function UserPage() {
           ))}
         </div>
         <h2>Your Bookings:</h2>
-        <div className="cars-list">
+        <div className="cars-list" style={{ display: "flex", flexDirection: "row", justifyContent: "center", width: "1400px", columnGap: "40px", rowGap: "40px" }}>
           {bookingsArr.map((booking) => (
             <div className="card" key={booking.id} value={booking.id}>
               <BookingCard booking={booking} />
@@ -50,7 +50,7 @@ function UserPage() {
           ))}
         </div>
         <h2>Your Reviews:</h2>
-        <div className="reviews-section">
+        <div className="reviews-section" style={{ display: "flex", flexDirection: "row", justifyContent: "center", width: "1400px", columnGap: "30px", rowGap: "40px" }}>
           {reviewsArr.map((review) => (
             <div className="reviewcard" key={review.id} value={review.id}>
               <ReviewCard review={review} />

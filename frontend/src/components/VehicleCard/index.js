@@ -8,7 +8,7 @@ function VehicleCardAll({ vehicle }) {
           <img src={vehicle.previewImage} alt={""} />
           <div className="card-info">
             <h2>
-              {vehicle.make} {vehicle.model} {vehicle.year}
+            {vehicle.year} {vehicle.make} {vehicle.model}
             </h2>
             <h3>{vehicle.avgRating} ★ </h3>
           </div>

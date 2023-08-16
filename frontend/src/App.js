@@ -17,7 +17,7 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(
       setTimeout(() => {
         setIsLoaded(true);
-      }, 1500)
+      }, 2000)
     );
   }, [dispatch]);
 
@@ -29,10 +29,11 @@ function App() {
         <Navigation isLoaded={isLoaded} />
         {isLoaded && (
           <Switch>
-            {/* <Route exact path="/">
-              <SplashPage />
+            <Route exact path="/">
+            <GetAllVehiclesPage />
+              {/* <SplashPage /> */}
             </Route>
-            <Route exact path="/home">
+            {/* <Route exact path="/home">
               <HomePage />
             </Route> */}
             <Route exact path="/profile">

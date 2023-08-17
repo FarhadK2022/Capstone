@@ -32,7 +32,7 @@ function UserPage() {
   return (
     <>
       <div style={{ backgroundColor: "none", display: "flex", flexDirection: "column", width: "1400px" }}>
-        <h1 style={{ paddingTop: 55, display: "flex", justifyContent: "center" }}>GT Cockpit</h1>
+        <h1 style={{ paddingTop: 55, display: "flex", justifyContent: "center", fontSize: 50 }}>Welcome to Your GetThere Cockpit</h1>
         <h2 >Your Listings:</h2>
         <div className="cars-list" style={{ display: "flex", flexDirection: "row", width: "1400px" }}>
           {vehiclesObj.map((vehicle) => (

@@ -10,11 +10,12 @@ function VehicleCardAll({ vehicle }) {
             <h2>
             {vehicle.year} {vehicle.make} {vehicle.model}
             </h2>
-            <h3>{vehicle.avgRating} ★ </h3>
           </div>
-          {/* <div className="card-price">
-            <h2>${vehicle.price} / day</h2>
-          </div> */}
+          <div className="card-price">
+            <h3>${vehicle.price} / day</h3>
+
+          </div>
+            <h3>{vehicle.avgRating} ★ </h3>
         </div>
       </div>
     </>

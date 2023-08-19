@@ -8,11 +8,11 @@
   width: 100px;
   height: 50px;
   color: white;
-  background-color: #ff385c;
+
   margin-top: 15px;
 }
 
 .inputField {
   display: block;
-  margin: 10px;
+  margin-left: 0px;
 }

@@ -14,8 +14,8 @@ function VehicleCardAll({ vehicle }) {
           <div className="card-price">
             <h3>${vehicle.price} / day</h3>
 
-          </div>
             <h3>{vehicle.avgRating} ★ </h3>
+          </div>
         </div>
       </div>
     </>

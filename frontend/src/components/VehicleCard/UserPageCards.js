@@ -20,7 +20,7 @@ function VehicleCardUser({ vehicle, setShowModal }) {
             </h2>
           </div>
           <div className="card-price">
-          <h3>${vehicle.price} / day</h3>
+          <h3>${vehicle.price}/day</h3>
             {/* <h3>{vehicle.avgRating} ★</h3> */}
           <EditVehicleFormModal setShowModal={setShowModal} vehicle={vehicle} />
           <button

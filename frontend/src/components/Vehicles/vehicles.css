@@ -56,6 +56,9 @@
   box-shadow: #e7e7e8 0px 2px 2px;
   background-color: white;
 }
+.card:hover{
+  background-color: #e7e7e8;
+}
 .card-info{
   display: flex;
   justify-content: space-between;

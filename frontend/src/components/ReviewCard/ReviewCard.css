@@ -3,14 +3,14 @@
   border-style: solid; */
   border-radius: 10px;
   /* border-width: 1px; */
-  border: .5px solid black;
-  height: 255px;
-  width: 630px;
+  border: .5px solid lightgray;
+  height: auto;
+  width: 400px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   /* align-items: center; */
-  /* justify-content: space-between; */
+  justify-content: space-evenly;
 }
 .reviewinfo{
   display: flex;
@@ -21,8 +21,8 @@
   align-content: flex-start;
   align-items: flex-start;
   font-size: medium;
-  max-height: 255px;
-  max-width: 630px;
+  /* max-height: auto; */
+  max-width: 400px;
   margin-left: 5px;
   margin-top: 4px;
   overflow-wrap: break-word;

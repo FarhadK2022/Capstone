@@ -18,10 +18,10 @@ function VehicleCardUser({ vehicle, setShowModal }) {
             <h2>
               {vehicle.make} {vehicle.model} {vehicle.year}
             </h2>
-            <h3>{vehicle.avgRating} ★</h3>
           </div>
           <div className="card-price">
-          <h2>${vehicle.price} / day</h2>
+          <h3>${vehicle.price}/day</h3>
+            {/* <h3>{vehicle.avgRating} ★</h3> */}
           <EditVehicleFormModal setShowModal={setShowModal} vehicle={vehicle} />
           <button
               className="button"

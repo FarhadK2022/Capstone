@@ -19,6 +19,7 @@ function BookingCard({ booking }) {
             <h3>Start:{" "} {booking.startDate}</h3>
             <h3>End:{" "} {booking.endDate}</h3>
           </div>
+            <div className="card-price">
             <EditBookingFormModal booking={booking} />
             <button
               className="button"
@@ -29,7 +30,6 @@ function BookingCard({ booking }) {
             >
               Delete
             </button>
-          <div className="card-price">
           </div>
         </div>
       </div>
